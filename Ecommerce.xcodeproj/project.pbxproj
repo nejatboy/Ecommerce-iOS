@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		93E95C291937E56C17387982 /* Pods_Ecommerce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5571A5455F36BA1C85C12642 /* Pods_Ecommerce.framework */; };
+		D93B92372C56DB0400F0BF6F /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B92362C56DB0400F0BF6F /* Views.swift */; };
 		D9B02A722C558B890018B499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A712C558B890018B499 /* AppDelegate.swift */; };
 		D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A732C558B890018B499 /* SceneDelegate.swift */; };
 		D9B02A762C558B890018B499 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A752C558B890018B499 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 		12850CFE24D90EED6EAFC908 /* Pods-Ecommerce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.debug.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.debug.xcconfig"; sourceTree = "<group>"; };
 		5571A5455F36BA1C85C12642 /* Pods_Ecommerce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ecommerce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92495ACF000742C0014B461 /* Pods-Ecommerce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.release.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.release.xcconfig"; sourceTree = "<group>"; };
+		D93B92362C56DB0400F0BF6F /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		D9B02A6E2C558B890018B499 /* Ecommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B02A712C558B890018B499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9B02A732C558B890018B499 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				D9B02A8A2C559D880018B499 /* ViewModel.swift */,
 				D9B02A8C2C559DA00018B499 /* NavigationController.swift */,
 				D9B02A8E2C559DE40018B499 /* TabbarController.swift */,
+				D93B92362C56DB0400F0BF6F /* Views.swift */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				D9B02A722C558B890018B499 /* AppDelegate.swift in Sources */,
 				D9B02A892C559D4E0018B499 /* Controller.swift in Sources */,
 				D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */,
+				D93B92372C56DB0400F0BF6F /* Views.swift in Sources */,
 				D9B02A8F2C559DE40018B499 /* TabbarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
