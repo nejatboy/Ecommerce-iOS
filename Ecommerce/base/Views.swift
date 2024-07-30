@@ -16,12 +16,17 @@ class Label: UILabel {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
+        
+        configure()
     }
     
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    func configure() { }
 }
 
 
@@ -34,12 +39,17 @@ class Button: UIButton {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
+        
+        configure()
     }
     
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    func configure() { }
 }
 
 
@@ -52,10 +62,15 @@ class TextField: UITextField {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
+        
+        configure()
     }
     
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    func configure() { }
 }
