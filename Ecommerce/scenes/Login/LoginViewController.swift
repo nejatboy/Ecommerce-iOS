@@ -27,22 +27,30 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configureUI()
     }
     
     // MARK: - Assistants
-   
+    
     func configureUI(){
         
         view.backgroundColor = .purple
-        view.addSubview(emailText)
-        view.addSubview(passwordText)
-        view.addSubview(loginButton)
+    
+        let stack = UIStackView(arrangedSubviews: [emailText,passwordText,loginButton])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.distribution = .fillEqually
+        stack.spacing = 20
+        stack.axis = .vertical
+        view.addSubview(stack)
+        NSLayoutConstraint.activate(
+        [
+            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
+            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
+            stack.heightAnchor.constraint(equalToConstant: 200)
+        ])
         
-        emailText.currentAnchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor,padding: UIEdgeInsets(top: 90, left: 5, bottom: 0, right: 5))
-        passwordText.currentAnchor(top: emailText.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor,padding: UIEdgeInsets(top: 20, left: 5, bottom: 0, right: 5))
-        loginButton.currentAnchor(top: passwordText.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor,padding: UIEdgeInsets(top: 30, left: 5, bottom: 0, right: 5),currentSize: CGSize(width: 0, height:65))
     }
 
 }
