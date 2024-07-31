@@ -8,8 +8,6 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
-    // MARK: - Properties
     
     private let emailText = CustomTextField(placeHolder: "Email", isSecureText: false)
     private let passwordText = CustomTextField(placeHolder: "Password",isSecureText: true)
@@ -22,16 +20,14 @@ class LoginViewController: UIViewController {
         btn.layer.cornerRadius = 0.5
         return btn
     }()
-    
-    // MARK: - Lifecycle
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
     }
-    
-    // MARK: - Assistants
+
     
     func configureUI(){
         
@@ -43,14 +39,12 @@ class LoginViewController: UIViewController {
         stack.spacing = 20
         stack.axis = .vertical
         view.addSubview(stack)
-        NSLayoutConstraint.activate(
-        [
+        
+        NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
             stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
             stack.heightAnchor.constraint(equalToConstant: 200)
         ])
-        
     }
-
 }
