@@ -29,16 +29,15 @@ class LoginViewController: UIViewController {
     }
 
     
-    func configureUI(){
-        
-        view.backgroundColor = .purple
-    
+    func configureUI(){ 
         let stack = UIStackView(arrangedSubviews: [emailText,passwordText,loginButton])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .fillEqually
         stack.spacing = 20
         stack.axis = .vertical
+        
         view.addSubview(stack)
+        view.backgroundColor = .purple
         
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
