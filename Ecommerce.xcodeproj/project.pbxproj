@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		93E95C291937E56C17387982 /* Pods_Ecommerce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5571A5455F36BA1C85C12642 /* Pods_Ecommerce.framework */; };
+		C43FCFB92C56DCB9005A1AFA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFB82C56DCB9005A1AFA /* LoginViewController.swift */; };
+		C43FCFBB2C56DE77005A1AFA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFBA2C56DE77005A1AFA /* CustomTextField.swift */; };
 		D93B92372C56DB0400F0BF6F /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B92362C56DB0400F0BF6F /* Views.swift */; };
 		D9B02A722C558B890018B499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A712C558B890018B499 /* AppDelegate.swift */; };
 		D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A732C558B890018B499 /* SceneDelegate.swift */; };
@@ -29,6 +31,9 @@
 		12850CFE24D90EED6EAFC908 /* Pods-Ecommerce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.debug.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.debug.xcconfig"; sourceTree = "<group>"; };
 		5571A5455F36BA1C85C12642 /* Pods_Ecommerce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ecommerce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92495ACF000742C0014B461 /* Pods-Ecommerce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.release.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.release.xcconfig"; sourceTree = "<group>"; };
+
+		C43FCFB82C56DCB9005A1AFA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C43FCFBA2C56DE77005A1AFA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D93B92362C56DB0400F0BF6F /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		D9B02A6E2C558B890018B499 /* Ecommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B02A712C558B890018B499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +80,15 @@
 				A92495ACF000742C0014B461 /* Pods-Ecommerce.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C43FCFB72C56DC91005A1AFA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C43FCFBA2C56DE77005A1AFA /* CustomTextField.swift */,
+				C43FCFB82C56DCB9005A1AFA /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		D9B02A652C558B890018B499 = {
@@ -128,6 +142,7 @@
 		D9B02A902C559DF80018B499 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C43FCFB72C56DC91005A1AFA /* Login */,
 				D9B02A912C559E1F0018B499 /* splash */,
 			);
 			path = scenes;
@@ -274,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9B02A932C559E2A0018B499 /* SplashController.swift in Sources */,
+				C43FCFBB2C56DE77005A1AFA /* CustomTextField.swift in Sources */,
 				D9B02A8B2C559D880018B499 /* ViewModel.swift in Sources */,
 				D9F564CB2C597BA600DEDC66 /* Buttons.swift in Sources */,
 				D9F564CE2C597C1E00DEDC66 /* Device.swift in Sources */,
@@ -283,6 +299,7 @@
 				D9B02A722C558B890018B499 /* AppDelegate.swift in Sources */,
 				D9B02A892C559D4E0018B499 /* Controller.swift in Sources */,
 				D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */,
+				C43FCFB92C56DCB9005A1AFA /* LoginViewController.swift in Sources */,
 				D93B92372C56DB0400F0BF6F /* Views.swift in Sources */,
 				D9B02A8F2C559DE40018B499 /* TabbarController.swift in Sources */,
 			);
