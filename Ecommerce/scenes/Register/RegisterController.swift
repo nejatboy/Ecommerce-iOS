@@ -9,10 +9,8 @@ import UIKit
 
 class RegisterController:UIViewController{
     
-    // MARK: - Properties
-    
     private let name: UITextField = {
-       let text = UITextField()
+        let text = UITextField()
         text.placeholder = "Name"
         text.font = UIFont.systemFont(ofSize: 20)
         text.textColor = .red
@@ -21,7 +19,7 @@ class RegisterController:UIViewController{
         return text
     }()
     private let surName: UITextField = {
-       let text = UITextField()
+        let text = UITextField()
         text.placeholder = "SurName"
         text.font = UIFont.systemFont(ofSize: 20)
         text.textColor = .red
@@ -29,7 +27,6 @@ class RegisterController:UIViewController{
         text.textAlignment = .left
         return text
     }()
-    
     private let emailField  : UITextField =  {
         let textfield = UITextField()
         textfield.placeholder = "Email"
@@ -68,9 +65,13 @@ class RegisterController:UIViewController{
         btn.addTarget(self, action: #selector(touchLogIn), for: .touchUpInside)
         return btn
     }()
+    private let segmentedController : UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: ["Bireysel","Ticari"])
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: #selector(touchSegmentedController), for: .valueChanged)
+        return segmentedControl
+    }()
     
-    
-    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,37 +80,47 @@ class RegisterController:UIViewController{
         configureUI()
     }
     
-    // MARK: - Assistants
     
     func configureUI(){
-        
-        let stack = UIStackView(arrangedSubviews: [name,surName,emailField,passwordField,againPasswordField])
+        view.addSubview(segmentedController)
+        let stack = UIStackView(arrangedSubviews: [name,surName,emailField,passwordField,againPasswordField,segmentedController])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .fillEqually
         stack.axis = .vertical
         stack.spacing = 5
         view.addSubview(stack)
-        NSLayoutConstraint.activate(
-        [
+       
+        NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 20),
             stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 10),
             stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 10),
-            stack.heightAnchor.constraint(equalToConstant: 150),
+            stack.heightAnchor.constraint(equalToConstant: 250),
             stack.widthAnchor.constraint(equalToConstant:100)
         ])
         
     }
     
-    // MARK: - Actions
     
     @objc  func touchRegister(){
-        
         print("PRİNT: Register button is clicked.")
     }
     
     @objc func touchLogIn(){
         
         
+    }
+    
+    
+    @objc func touchSegmentedController(){
+        
+        switch segmentedController.selectedSegmentIndex{
+        case 0 :
+            print("PRİNT: You chose Individual.")
+        case 1:
+            print("PRİNT: You chose Commercial.")
+        default:
+            print("PRİNT: You chose default Individual.")
+        }
     }
     
 }
