@@ -51,7 +51,6 @@ class RegisterController:UIViewController{
     private let registerButton : UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("Register", for: .normal)
-        btn.isEnabled = false
         btn.setTitleColor(UIColor(white: 1, alpha: 0.65), for: .normal)
         btn.backgroundColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         btn.layer.cornerRadius = 6
@@ -83,7 +82,7 @@ class RegisterController:UIViewController{
     
     func configureUI(){
         view.addSubview(segmentedController)
-        let stack = UIStackView(arrangedSubviews: [name,surName,emailField,passwordField,againPasswordField,segmentedController])
+        let stack = UIStackView(arrangedSubviews: [name,surName,emailField,passwordField,againPasswordField,registerButton, segmentedController])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .fillEqually
         stack.axis = .vertical
@@ -93,7 +92,7 @@ class RegisterController:UIViewController{
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 20),
             stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 10),
-            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 10),
+            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             stack.heightAnchor.constraint(equalToConstant: 250),
             stack.widthAnchor.constraint(equalToConstant:100)
         ])
