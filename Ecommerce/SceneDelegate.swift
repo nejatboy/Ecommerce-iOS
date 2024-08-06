@@ -21,6 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = RegisterController()
         window.makeKeyAndVisible()
         
+        LoadingView.instance.setup(window: window)
+        
         self.window = window
     }
 

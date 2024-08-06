@@ -27,6 +27,7 @@
 		D9CCD8682C62C42900CA713C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCD8672C62C42900CA713C /* AuthService.swift */; };
 		D9CCD86A2C62C45B00CA713C /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCD8692C62C45B00CA713C /* DatabaseService.swift */; };
 		D9CCD86C2C62C73300CA713C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCD86B2C62C73300CA713C /* Extensions.swift */; };
+		D9CCD86E2C62E05B00CA713C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCD86D2C62E05B00CA713C /* LoadingView.swift */; };
 		D9F564CB2C597BA600DEDC66 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F564CA2C597BA600DEDC66 /* Buttons.swift */; };
 		D9F564CE2C597C1E00DEDC66 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F564CD2C597C1E00DEDC66 /* Device.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		D9CCD8672C62C42900CA713C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Ecommerce/base/AuthService.swift; sourceTree = SOURCE_ROOT; };
 		D9CCD8692C62C45B00CA713C /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		D9CCD86B2C62C73300CA713C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D9CCD86D2C62E05B00CA713C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D9F564CA2C597BA600DEDC66 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		D9F564CD2C597C1E00DEDC66 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				D9F564CA2C597BA600DEDC66 /* Buttons.swift */,
+				D9CCD86D2C62E05B00CA713C /* LoadingView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				C43FCFB92C56DCB9005A1AFA /* LoginViewController.swift in Sources */,
 				D93B92372C56DB0400F0BF6F /* Views.swift in Sources */,
 				D9B02A8F2C559DE40018B499 /* TabbarController.swift in Sources */,
+				D9CCD86E2C62E05B00CA713C /* LoadingView.swift in Sources */,
 				D9CCD8682C62C42900CA713C /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

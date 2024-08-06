@@ -11,4 +11,11 @@ import UIKit
 class Controller<VM: ViewModel>: UIViewController {
     
     lazy var viewModel = VM()
+    
+    
+    override func loadView() {
+        super.loadView()
+        
+        view.backgroundColor = .lightGray
+    }
 }
