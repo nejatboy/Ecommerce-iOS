@@ -8,7 +8,4 @@
 
 class SplashViewModel: ViewModel {
     
-    func showProgress() {
-        
-    }
 }
