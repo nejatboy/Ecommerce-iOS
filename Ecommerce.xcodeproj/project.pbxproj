@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		93E95C291937E56C17387982 /* Pods_Ecommerce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5571A5455F36BA1C85C12642 /* Pods_Ecommerce.framework */; };
+		C423BD2E2C5E674A0066ACBC /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C423BD2D2C5E674A0066ACBC /* RegisterController.swift */; };
 		C43FCFB92C56DCB9005A1AFA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFB82C56DCB9005A1AFA /* LoginViewController.swift */; };
 		C43FCFBB2C56DE77005A1AFA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFBA2C56DE77005A1AFA /* CustomTextField.swift */; };
-		C423BD2E2C5E674A0066ACBC /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C423BD2D2C5E674A0066ACBC /* RegisterController.swift */; };
 		D93B92372C56DB0400F0BF6F /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B92362C56DB0400F0BF6F /* Views.swift */; };
 		D9B02A722C558B890018B499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A712C558B890018B499 /* AppDelegate.swift */; };
 		D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A732C558B890018B499 /* SceneDelegate.swift */; };
@@ -24,6 +24,9 @@
 		D9B02A8F2C559DE40018B499 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A8E2C559DE40018B499 /* TabbarController.swift */; };
 		D9B02A932C559E2A0018B499 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A922C559E2A0018B499 /* SplashController.swift */; };
 		D9B02A952C559E3A0018B499 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A942C559E3A0018B499 /* SplashViewModel.swift */; };
+		D9CCD8682C62C42900CA713C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCD8672C62C42900CA713C /* AuthService.swift */; };
+		D9CCD86A2C62C45B00CA713C /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCD8692C62C45B00CA713C /* DatabaseService.swift */; };
+		D9CCD86C2C62C73300CA713C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCD86B2C62C73300CA713C /* Extensions.swift */; };
 		D9F564CB2C597BA600DEDC66 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F564CA2C597BA600DEDC66 /* Buttons.swift */; };
 		D9F564CE2C597C1E00DEDC66 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F564CD2C597C1E00DEDC66 /* Device.swift */; };
 /* End PBXBuildFile section */
@@ -32,9 +35,9 @@
 		12850CFE24D90EED6EAFC908 /* Pods-Ecommerce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.debug.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.debug.xcconfig"; sourceTree = "<group>"; };
 		5571A5455F36BA1C85C12642 /* Pods_Ecommerce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ecommerce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92495ACF000742C0014B461 /* Pods-Ecommerce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.release.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.release.xcconfig"; sourceTree = "<group>"; };
+		C423BD2D2C5E674A0066ACBC /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		C43FCFB82C56DCB9005A1AFA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C43FCFBA2C56DE77005A1AFA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		C423BD2D2C5E674A0066ACBC /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		D93B92362C56DB0400F0BF6F /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		D9B02A6E2C558B890018B499 /* Ecommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B02A712C558B890018B499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +53,9 @@
 		D9B02A8E2C559DE40018B499 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		D9B02A922C559E2A0018B499 /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		D9B02A942C559E3A0018B499 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		D9CCD8672C62C42900CA713C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Ecommerce/base/AuthService.swift; sourceTree = SOURCE_ROOT; };
+		D9CCD8692C62C45B00CA713C /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		D9CCD86B2C62C73300CA713C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D9F564CA2C597BA600DEDC66 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		D9F564CD2C597C1E00DEDC66 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +89,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C423BD2C2C5E672B0066ACBC /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				C423BD2D2C5E674A0066ACBC /* RegisterController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		C43FCFB72C56DC91005A1AFA /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,14 +104,6 @@
 				C43FCFB82C56DCB9005A1AFA /* LoginViewController.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		C423BD2C2C5E672B0066ACBC /* Register */ = {
-			isa = PBXGroup;
-			children = (
-				C423BD2D2C5E674A0066ACBC /* RegisterController.swift */,
-			);
-			path = Register;
 			sourceTree = "<group>";
 		};
 		D9B02A652C558B890018B499 = {
@@ -121,6 +127,7 @@
 		D9B02A702C558B890018B499 /* Ecommerce */ = {
 			isa = PBXGroup;
 			children = (
+				D9CCD8662C62C42000CA713C /* services */,
 				D9F564CC2C597C1800DEDC66 /* utils */,
 				D9F564C92C597B9700DEDC66 /* components */,
 				D9B02A872C559D350018B499 /* base */,
@@ -167,6 +174,15 @@
 			path = splash;
 			sourceTree = "<group>";
 		};
+		D9CCD8662C62C42000CA713C /* services */ = {
+			isa = PBXGroup;
+			children = (
+				D9CCD8672C62C42900CA713C /* AuthService.swift */,
+				D9CCD8692C62C45B00CA713C /* DatabaseService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		D9F564C92C597B9700DEDC66 /* components */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				D9F564CD2C597C1E00DEDC66 /* Device.swift */,
+				D9CCD86B2C62C73300CA713C /* Extensions.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -298,6 +315,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9CCD86A2C62C45B00CA713C /* DatabaseService.swift in Sources */,
+				D9CCD86C2C62C73300CA713C /* Extensions.swift in Sources */,
 				D9B02A932C559E2A0018B499 /* SplashController.swift in Sources */,
 				C43FCFBB2C56DE77005A1AFA /* CustomTextField.swift in Sources */,
 				C423BD2E2C5E674A0066ACBC /* RegisterController.swift in Sources */,
@@ -313,6 +332,7 @@
 				C43FCFB92C56DCB9005A1AFA /* LoginViewController.swift in Sources */,
 				D93B92372C56DB0400F0BF6F /* Views.swift in Sources */,
 				D9B02A8F2C559DE40018B499 /* TabbarController.swift in Sources */,
+				D9CCD8682C62C42900CA713C /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
