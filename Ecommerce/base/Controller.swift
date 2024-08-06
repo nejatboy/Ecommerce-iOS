@@ -8,6 +8,7 @@
 import UIKit
 
 
-class Controller: UIViewController {
+class Controller<VM: ViewModel>: UIViewController {
     
+    lazy var viewModel = VM()
 }

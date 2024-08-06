@@ -8,4 +8,7 @@
 
 class ViewModel {
     
+    required init() {
+        
+    }
 }

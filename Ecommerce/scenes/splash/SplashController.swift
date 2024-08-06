@@ -6,6 +6,6 @@
 //
 
 
-class SplashController: Controller {
+class SplashController: Controller<SplashViewModel> {
     
 }
