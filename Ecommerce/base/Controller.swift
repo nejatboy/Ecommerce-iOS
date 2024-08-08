@@ -16,6 +16,18 @@ class Controller<VM: ViewModel>: UIViewController {
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor(named: "snow")
+    }
+    
+    
+    /// Loading göstermek için kullanırız
+    func showLoading() {
+        LoadingView.instance.show()
+    }
+    
+    
+    /// Loading gizlemek için kullanırız
+    func hideLoading() {
+        LoadingView.instance.hide()
     }
 }
