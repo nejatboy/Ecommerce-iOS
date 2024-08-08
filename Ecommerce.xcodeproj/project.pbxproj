@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		201D72C0EF8D202C9A193567 /* Pods_Ecommerce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A8C6DABEDE011C1C453873 /* Pods_Ecommerce.framework */; };
 		C423BD2E2C5E674A0066ACBC /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C423BD2D2C5E674A0066ACBC /* RegisterController.swift */; };
-		C43FCFB92C56DCB9005A1AFA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFB82C56DCB9005A1AFA /* LoginViewController.swift */; };
+		C42C80032C657E6F009D499A /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80022C657E6F009D499A /* RegisterViewModel.swift */; };
+		C42C80052C657EE9009D499A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80042C657EE9009D499A /* LoginViewModel.swift */; };
+		C43FCFB92C56DCB9005A1AFA /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFB82C56DCB9005A1AFA /* LoginController.swift */; };
 		C43FCFBB2C56DE77005A1AFA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFBA2C56DE77005A1AFA /* CustomTextField.swift */; };
 		D93B92372C56DB0400F0BF6F /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B92362C56DB0400F0BF6F /* Views.swift */; };
 		D9578F682C65696200D6DB1E /* TextFieldLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9578F672C65696200D6DB1E /* TextFieldLayout.swift */; };
@@ -31,15 +32,17 @@
 		D9CCD86E2C62E05B00CA713C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCD86D2C62E05B00CA713C /* LoadingView.swift */; };
 		D9F564CB2C597BA600DEDC66 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F564CA2C597BA600DEDC66 /* Buttons.swift */; };
 		D9F564CE2C597C1E00DEDC66 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F564CD2C597C1E00DEDC66 /* Device.swift */; };
+		E48A16221C3BA4555456AD04 /* Pods_Ecommerce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3078625EF13FE0A4CFCA136 /* Pods_Ecommerce.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9BB68FE276FFA9EE33FB67F1 /* Pods-Ecommerce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.debug.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.debug.xcconfig"; sourceTree = "<group>"; };
+		02D4373426EC8798603F4737 /* Pods-Ecommerce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.release.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.release.xcconfig"; sourceTree = "<group>"; };
+		8E4A067E0C7D83D303BC9230 /* Pods-Ecommerce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.debug.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.debug.xcconfig"; sourceTree = "<group>"; };
 		C423BD2D2C5E674A0066ACBC /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
-		C43FCFB82C56DCB9005A1AFA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C42C80022C657E6F009D499A /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		C42C80042C657EE9009D499A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C43FCFB82C56DCB9005A1AFA /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		C43FCFBA2C56DE77005A1AFA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		C9A8C6DABEDE011C1C453873 /* Pods_Ecommerce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ecommerce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDB0A95051EF3AD9568F0A3B /* Pods-Ecommerce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.release.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.release.xcconfig"; sourceTree = "<group>"; };
 		D93B92362C56DB0400F0BF6F /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		D9578F672C65696200D6DB1E /* TextFieldLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLayout.swift; sourceTree = "<group>"; };
 		D9B02A6E2C558B890018B499 /* Ecommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +65,7 @@
 		D9CCD86D2C62E05B00CA713C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D9F564CA2C597BA600DEDC66 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		D9F564CD2C597C1E00DEDC66 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		E3078625EF13FE0A4CFCA136 /* Pods_Ecommerce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ecommerce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,17 +73,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				201D72C0EF8D202C9A193567 /* Pods_Ecommerce.framework in Frameworks */,
+				E48A16221C3BA4555456AD04 /* Pods_Ecommerce.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4C584FBE83F87C68CB89B4AE /* Frameworks */ = {
+		43E95E73C84C16765748718E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C9A8C6DABEDE011C1C453873 /* Pods_Ecommerce.framework */,
+				E3078625EF13FE0A4CFCA136 /* Pods_Ecommerce.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -87,8 +91,8 @@
 		7660C6698174C1F854842D88 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9BB68FE276FFA9EE33FB67F1 /* Pods-Ecommerce.debug.xcconfig */,
-				CDB0A95051EF3AD9568F0A3B /* Pods-Ecommerce.release.xcconfig */,
+				8E4A067E0C7D83D303BC9230 /* Pods-Ecommerce.debug.xcconfig */,
+				02D4373426EC8798603F4737 /* Pods-Ecommerce.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				C423BD2D2C5E674A0066ACBC /* RegisterController.swift */,
+				C42C80022C657E6F009D499A /* RegisterViewModel.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -105,7 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				C43FCFBA2C56DE77005A1AFA /* CustomTextField.swift */,
-				C43FCFB82C56DCB9005A1AFA /* LoginViewController.swift */,
+				C43FCFB82C56DCB9005A1AFA /* LoginController.swift */,
+				C42C80042C657EE9009D499A /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -116,7 +122,7 @@
 				D9B02A702C558B890018B499 /* Ecommerce */,
 				D9B02A6F2C558B890018B499 /* Products */,
 				7660C6698174C1F854842D88 /* Pods */,
-				4C584FBE83F87C68CB89B4AE /* Frameworks */,
+				43E95E73C84C16765748718E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -213,11 +219,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9B02A822C558B8A0018B499 /* Build configuration list for PBXNativeTarget "Ecommerce" */;
 			buildPhases = (
-				75C3235B1EDD3A5AFC23C058 /* [CP] Check Pods Manifest.lock */,
+				B5425BC4C40DCBE8010AECAC /* [CP] Check Pods Manifest.lock */,
 				D9B02A6A2C558B890018B499 /* Sources */,
 				D9B02A6B2C558B890018B499 /* Frameworks */,
 				D9B02A6C2C558B890018B499 /* Resources */,
-				1B4508C8B2C6E866E63A04D5 /* [CP] Embed Pods Frameworks */,
+				868223C45B4EE95A5EB8C64C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -275,7 +281,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1B4508C8B2C6E866E63A04D5 /* [CP] Embed Pods Frameworks */ = {
+		868223C45B4EE95A5EB8C64C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -292,7 +298,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ecommerce/Pods-Ecommerce-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		75C3235B1EDD3A5AFC23C058 /* [CP] Check Pods Manifest.lock */ = {
+		B5425BC4C40DCBE8010AECAC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -323,6 +329,7 @@
 			files = (
 				D9CCD86A2C62C45B00CA713C /* DatabaseService.swift in Sources */,
 				D9CCD86C2C62C73300CA713C /* Extensions.swift in Sources */,
+				C42C80052C657EE9009D499A /* LoginViewModel.swift in Sources */,
 				D9B02A932C559E2A0018B499 /* SplashController.swift in Sources */,
 				C43FCFBB2C56DE77005A1AFA /* CustomTextField.swift in Sources */,
 				C423BD2E2C5E674A0066ACBC /* RegisterController.swift in Sources */,
@@ -335,8 +342,9 @@
 				D9B02A722C558B890018B499 /* AppDelegate.swift in Sources */,
 				D9B02A892C559D4E0018B499 /* Controller.swift in Sources */,
 				D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */,
-				C43FCFB92C56DCB9005A1AFA /* LoginViewController.swift in Sources */,
+				C43FCFB92C56DCB9005A1AFA /* LoginController.swift in Sources */,
 				D93B92372C56DB0400F0BF6F /* Views.swift in Sources */,
+				C42C80032C657E6F009D499A /* RegisterViewModel.swift in Sources */,
 				D9578F682C65696200D6DB1E /* TextFieldLayout.swift in Sources */,
 				D9B02A8F2C559DE40018B499 /* TabbarController.swift in Sources */,
 				D9CCD86E2C62E05B00CA713C /* LoadingView.swift in Sources */,
@@ -479,7 +487,7 @@
 		};
 		D9B02A832C558B8A0018B499 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9BB68FE276FFA9EE33FB67F1 /* Pods-Ecommerce.debug.xcconfig */;
+			baseConfigurationReference = 8E4A067E0C7D83D303BC9230 /* Pods-Ecommerce.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -508,7 +516,7 @@
 		};
 		D9B02A842C558B8A0018B499 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CDB0A95051EF3AD9568F0A3B /* Pods-Ecommerce.release.xcconfig */;
+			baseConfigurationReference = 02D4373426EC8798603F4737 /* Pods-Ecommerce.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
