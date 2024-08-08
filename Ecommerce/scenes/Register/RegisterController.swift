@@ -105,13 +105,10 @@ class RegisterController:Controller<RegisterViewModel>{
     }
     
     @objc func touchLogIn(){
-        
-        
     }
     
     
     @objc func touchSegmentedController(){
-        
         switch segmentedController.selectedSegmentIndex{
         case 0 :
             print("PRİNT: You chose Individual.")
@@ -121,5 +118,4 @@ class RegisterController:Controller<RegisterViewModel>{
             print("PRİNT: You chose default Individual.")
         }
     }
-    
 }
