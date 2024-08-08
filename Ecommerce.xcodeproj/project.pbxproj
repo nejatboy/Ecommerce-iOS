@@ -12,6 +12,7 @@
 		C43FCFB92C56DCB9005A1AFA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFB82C56DCB9005A1AFA /* LoginViewController.swift */; };
 		C43FCFBB2C56DE77005A1AFA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFBA2C56DE77005A1AFA /* CustomTextField.swift */; };
 		D93B92372C56DB0400F0BF6F /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B92362C56DB0400F0BF6F /* Views.swift */; };
+		D9578F682C65696200D6DB1E /* TextFieldLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9578F672C65696200D6DB1E /* TextFieldLayout.swift */; };
 		D9B02A722C558B890018B499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A712C558B890018B499 /* AppDelegate.swift */; };
 		D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A732C558B890018B499 /* SceneDelegate.swift */; };
 		D9B02A762C558B890018B499 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A752C558B890018B499 /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 		C43FCFB82C56DCB9005A1AFA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C43FCFBA2C56DE77005A1AFA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D93B92362C56DB0400F0BF6F /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		D9578F672C65696200D6DB1E /* TextFieldLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLayout.swift; sourceTree = "<group>"; };
 		D9B02A6E2C558B890018B499 /* Ecommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B02A712C558B890018B499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9B02A732C558B890018B499 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				D9F564CA2C597BA600DEDC66 /* Buttons.swift */,
 				D9CCD86D2C62E05B00CA713C /* LoadingView.swift */,
+				D9578F672C65696200D6DB1E /* TextFieldLayout.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */,
 				C43FCFB92C56DCB9005A1AFA /* LoginViewController.swift in Sources */,
 				D93B92372C56DB0400F0BF6F /* Views.swift in Sources */,
+				D9578F682C65696200D6DB1E /* TextFieldLayout.swift in Sources */,
 				D9B02A8F2C559DE40018B499 /* TabbarController.swift in Sources */,
 				D9CCD86E2C62E05B00CA713C /* LoadingView.swift in Sources */,
 				D9CCD8682C62C42900CA713C /* AuthService.swift in Sources */,

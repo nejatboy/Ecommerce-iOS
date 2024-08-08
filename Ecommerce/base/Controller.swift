@@ -16,7 +16,7 @@ class Controller<VM: ViewModel>: UIViewController {
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor(named: "snow")
     }
     
     
