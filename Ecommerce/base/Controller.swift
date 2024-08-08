@@ -18,4 +18,16 @@ class Controller<VM: ViewModel>: UIViewController {
         
         view.backgroundColor = .lightGray
     }
+    
+    
+    /// Loading göstermek için kullanırız
+    func showLoading() {
+        LoadingView.instance.show()
+    }
+    
+    
+    /// Loading gizlemek için kullanırız
+    func hideLoading() {
+        LoadingView.instance.hide()
+    }
 }
