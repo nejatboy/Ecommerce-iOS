@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginController: Controller<LoginViewModel> {
     
     private let emailText = CustomTextField(placeHolder: "Email", isSecureText: false)
     private let passwordText = CustomTextField(placeHolder: "Password",isSecureText: true)

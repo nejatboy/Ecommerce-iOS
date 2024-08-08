@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisterController:UIViewController{
+class RegisterController: Controller<RegisterViewModel> {
     
     private let name: UITextField = {
         let text = UITextField()
@@ -110,6 +110,7 @@ class RegisterController:UIViewController{
     
     @objc func touchLogIn(){
 
+        
     }
     
     
