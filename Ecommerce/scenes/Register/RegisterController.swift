@@ -96,22 +96,24 @@ class RegisterController:UIViewController{
             stack.heightAnchor.constraint(equalToConstant: 250),
             stack.widthAnchor.constraint(equalToConstant:100)
         ])
-        
     }
     
     
     @objc  func touchRegister(){
-        print("PRİNT: Register button is clicked.")
+        guard let email = emailField.text else {return}
+        guard let password = passwordField.text else {return}
+
+        AuthService.instance.registerUser(email: email, password: password) { result in
+            print("The user's firebase authentication registration has been made.")
+        }
     }
     
     @objc func touchLogIn(){
-        
-        
+
     }
     
     
     @objc func touchSegmentedController(){
-        
         switch segmentedController.selectedSegmentIndex{
         case 0 :
             print("PRİNT: You chose Individual.")
