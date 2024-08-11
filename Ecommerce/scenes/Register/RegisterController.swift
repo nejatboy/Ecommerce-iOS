@@ -102,10 +102,12 @@ class RegisterController: Controller<RegisterViewModel> {
     @objc  func touchRegister(){
         guard let email = emailField.text else {return}
         guard let password = passwordField.text else {return}
-
+        showLoading()
         AuthService.instance.registerUser(email: email, password: password) { result in
             print("The user's firebase authentication registration has been made.")
+            self.hideLoading()
         }
+        hideLoading()
     }
     
     @objc func touchLogIn(){
