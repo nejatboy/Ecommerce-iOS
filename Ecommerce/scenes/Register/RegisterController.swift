@@ -9,6 +9,7 @@ import UIKit
 
 class RegisterController: Controller<RegisterViewModel> {
     
+    
     private let name: UITextField = {
         let text = UITextField()
         text.placeholder = "Name"
@@ -100,19 +101,31 @@ class RegisterController: Controller<RegisterViewModel> {
     
     
     @objc  func touchRegister(){
-        guard let email = emailField.text else {return}
-        guard let password = passwordField.text else {return}
+        guard let email = emailField.text,!email.isEmpty else {return}
+        guard let password = passwordField.text, !password.isEmpty else {return}
+        guard let againPassword = againPasswordField.text, !againPassword.isEmpty else {return}
+        guard let name = name.text, !name.isEmpty else {return}
+        guard let surName = surName.text, !surName.isEmpty else {return}
+        
+        let registerViewModel = RegisterViewModel(email: email, password: password, againPassword: againPassword, name: name, surName: surName)
+        
         showLoading()
-        AuthService.instance.registerUser(email: email, password: password) { result in
-            print("The user's firebase authentication registration has been made.")
+        
+        registerViewModel.getService { success in
+            if success {
+                print("PRİNT: Successfully to register user")
+                self.hideLoading()
+            }
+            else{
+                print("PRİNT: Failed to register user !")
+            }
             self.hideLoading()
         }
-        hideLoading()
     }
+    
     
     @objc func touchLogIn(){
 
-        
     }
     
     
