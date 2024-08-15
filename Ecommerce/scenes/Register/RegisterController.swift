@@ -9,6 +9,7 @@ import UIKit
 
 class RegisterController: Controller<RegisterViewModel> {
     
+    
     private let name: UITextField = {
         let text = UITextField()
         text.placeholder = "Name"
@@ -18,7 +19,7 @@ class RegisterController: Controller<RegisterViewModel> {
         text.textAlignment = .left
         return text
     }()
-    private let surName: UITextField = {
+    private let surname: UITextField = {
         let text = UITextField()
         text.placeholder = "SurName"
         text.font = UIFont.systemFont(ofSize: 20)
@@ -82,7 +83,7 @@ class RegisterController: Controller<RegisterViewModel> {
     
     func configureUI(){
         view.addSubview(segmentedController)
-        let stack = UIStackView(arrangedSubviews: [name,surName,emailField,passwordField,againPasswordField,registerButton, segmentedController])
+        let stack = UIStackView(arrangedSubviews: [name,surname,emailField,passwordField,againPasswordField,registerButton, segmentedController])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .fillEqually
         stack.axis = .vertical
@@ -96,21 +97,34 @@ class RegisterController: Controller<RegisterViewModel> {
             stack.heightAnchor.constraint(equalToConstant: 250),
             stack.widthAnchor.constraint(equalToConstant:100)
         ])
-        
     }
     
     
     @objc  func touchRegister(){
-        print("PRİNT: Register button is clicked.")
+        guard
+            let email = emailField.text,!email.isEmpty,
+            let password = passwordField.text, !password.isEmpty,
+            let againPassword = againPasswordField.text, !againPassword.isEmpty,
+            let name = name.text, !name.isEmpty,
+            let surname = surname.text, !surname.isEmpty
+        else {
+            return
+        }
+        
+        showLoading()
+        
+        viewModel.registerUser(email: email, password: password, againPassword: againPassword, name: name, surname: surname) {
+            self.show(message: "Register Success", type: .success)
+        }
     }
     
+    
     @objc func touchLogIn(){
-        
+
     }
     
     
     @objc func touchSegmentedController(){
-        
         switch segmentedController.selectedSegmentIndex{
         case 0 :
             print("PRİNT: You chose Individual.")
