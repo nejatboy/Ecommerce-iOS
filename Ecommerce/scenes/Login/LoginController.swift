@@ -18,6 +18,7 @@ class LoginController: Controller<LoginViewModel> {
         btn.tintColor = .red
         btn.layer.masksToBounds = true
         btn.layer.cornerRadius = 0.5
+        btn.addTarget(self, action: #selector(touchLogin), for: .touchUpInside)
         return btn
     }()
 
@@ -45,5 +46,19 @@ class LoginController: Controller<LoginViewModel> {
             stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
             stack.heightAnchor.constraint(equalToConstant: 200)
         ])
+    }
+    
+    
+    @objc func touchLogin(){
+        guard let email = emailText.text,let password = passwordText.text
+        else{
+            return
+        }
+              
+        showLoading()
+        
+        viewModel.login(email: email, password: password) {
+            self.show(message: "Login Success.", type: .success)
+        }
     }
 }
