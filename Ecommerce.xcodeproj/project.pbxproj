@@ -30,6 +30,9 @@
 		D9CCD86A2C62C45B00CA713C /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCD8692C62C45B00CA713C /* DatabaseService.swift */; };
 		D9CCD86C2C62C73300CA713C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCD86B2C62C73300CA713C /* Extensions.swift */; };
 		D9CCD86E2C62E05B00CA713C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCD86D2C62E05B00CA713C /* LoadingView.swift */; };
+		D9D028812C68FEE3008D3731 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D028802C68FEE3008D3731 /* AlertView.swift */; };
+		D9D028832C68FFA7008D3731 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D028822C68FFA7008D3731 /* Enums.swift */; };
+		D9D028852C6901EC008D3731 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D028842C6901EC008D3731 /* Models.swift */; };
 		D9F564CB2C597BA600DEDC66 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F564CA2C597BA600DEDC66 /* Buttons.swift */; };
 		D9F564CE2C597C1E00DEDC66 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F564CD2C597C1E00DEDC66 /* Device.swift */; };
 		E48A16221C3BA4555456AD04 /* Pods_Ecommerce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3078625EF13FE0A4CFCA136 /* Pods_Ecommerce.framework */; };
@@ -63,6 +66,9 @@
 		D9CCD8692C62C45B00CA713C /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		D9CCD86B2C62C73300CA713C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D9CCD86D2C62E05B00CA713C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D9D028802C68FEE3008D3731 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		D9D028822C68FFA7008D3731 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		D9D028842C6901EC008D3731 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		D9F564CA2C597BA600DEDC66 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		D9F564CD2C597C1E00DEDC66 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		E3078625EF13FE0A4CFCA136 /* Pods_Ecommerce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ecommerce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +167,8 @@
 				D9B02A8C2C559DA00018B499 /* NavigationController.swift */,
 				D9B02A8E2C559DE40018B499 /* TabbarController.swift */,
 				D93B92362C56DB0400F0BF6F /* Views.swift */,
+				D9D028822C68FFA7008D3731 /* Enums.swift */,
+				D9D028842C6901EC008D3731 /* Models.swift */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -199,6 +207,7 @@
 				D9F564CA2C597BA600DEDC66 /* Buttons.swift */,
 				D9CCD86D2C62E05B00CA713C /* LoadingView.swift */,
 				D9578F672C65696200D6DB1E /* TextFieldLayout.swift */,
+				D9D028802C68FEE3008D3731 /* AlertView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -345,10 +354,13 @@
 				C43FCFB92C56DCB9005A1AFA /* LoginController.swift in Sources */,
 				D93B92372C56DB0400F0BF6F /* Views.swift in Sources */,
 				C42C80032C657E6F009D499A /* RegisterViewModel.swift in Sources */,
+				D9D028812C68FEE3008D3731 /* AlertView.swift in Sources */,
 				D9578F682C65696200D6DB1E /* TextFieldLayout.swift in Sources */,
 				D9B02A8F2C559DE40018B499 /* TabbarController.swift in Sources */,
 				D9CCD86E2C62E05B00CA713C /* LoadingView.swift in Sources */,
+				D9D028832C68FFA7008D3731 /* Enums.swift in Sources */,
 				D9CCD8682C62C42900CA713C /* AuthService.swift in Sources */,
+				D9D028852C6901EC008D3731 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,4 +30,15 @@ class Controller<VM: ViewModel>: UIViewController {
     func hideLoading() {
         LoadingView.instance.hide()
     }
+    
+    
+    /// Kullanıcıya mesaj göstermek için kullanılırız
+    ///
+    /// - Parameters:
+    ///   - message: Gösterilecek olan mesaj.
+    ///   - type: Başarılı / Hata / Uyarı mesaj tipleridir.
+    func show(message: String?, type: AlertType) {
+        let okAction = AlertModel(title: "Okay")
+        AlertView.instance.show(type: type, message: message, actions: [okAction])
+    }
 }

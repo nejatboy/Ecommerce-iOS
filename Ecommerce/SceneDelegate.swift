@@ -22,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         
         LoadingView.instance.setup(window: window)
+        AlertView.instance.setup(window: window)
         
         self.window = window
     }

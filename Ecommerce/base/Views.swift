@@ -34,11 +34,14 @@ class Label: UILabel {
 // MARK: Button
 class Button: UIButton {
     
+    var action: Handler?
+    
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
+        addTarget(self, action: #selector(clicked), for: .touchUpInside)
         
         configure()
     }
@@ -49,7 +52,19 @@ class Button: UIButton {
     }
     
     
+    override var isHighlighted: Bool {
+        didSet {
+            alpha = isHighlighted ? 0.5 : 1
+        }
+    }
+    
+    
     func configure() { }
+    
+    
+    @objc private func clicked() {
+        action?()
+    }
 }
 
 
@@ -193,4 +208,59 @@ class UserInteractionView: View {
             ]
         }
     }
+}
+
+
+
+//MARK: ImageView
+class ImageView: UIImageView {
+    
+    init() {
+        super.init(frame: .zero)
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        configure()
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func configure() { }
+    
+    
+    func set(cornerRadius: CGFloat) {
+        layer.cornerRadius = cornerRadius
+        
+        NSLayoutConstraint.activate([
+            widthAnchor.constraint(equalToConstant: cornerRadius * 2),
+            heightAnchor.constraint(equalToConstant: cornerRadius * 2)
+        ])
+    }
+}
+
+
+
+//MARK: StackView
+class StackView: UIStackView {
+    
+    
+    init() {
+        super.init(frame: .zero)
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        configure()
+    }
+    
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func configure() { }
 }
