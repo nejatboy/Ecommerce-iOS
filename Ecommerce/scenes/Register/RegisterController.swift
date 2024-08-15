@@ -19,7 +19,7 @@ class RegisterController: Controller<RegisterViewModel> {
         text.textAlignment = .left
         return text
     }()
-    private let surName: UITextField = {
+    private let surname: UITextField = {
         let text = UITextField()
         text.placeholder = "SurName"
         text.font = UIFont.systemFont(ofSize: 20)
@@ -83,7 +83,7 @@ class RegisterController: Controller<RegisterViewModel> {
     
     func configureUI(){
         view.addSubview(segmentedController)
-        let stack = UIStackView(arrangedSubviews: [name,surName,emailField,passwordField,againPasswordField,registerButton, segmentedController])
+        let stack = UIStackView(arrangedSubviews: [name,surname,emailField,passwordField,againPasswordField,registerButton, segmentedController])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .fillEqually
         stack.axis = .vertical
@@ -101,25 +101,20 @@ class RegisterController: Controller<RegisterViewModel> {
     
     
     @objc  func touchRegister(){
-        guard let email = emailField.text,!email.isEmpty else {return}
-        guard let password = passwordField.text, !password.isEmpty else {return}
-        guard let againPassword = againPasswordField.text, !againPassword.isEmpty else {return}
-        guard let name = name.text, !name.isEmpty else {return}
-        guard let surName = surName.text, !surName.isEmpty else {return}
-        
-        let registerViewModel = RegisterViewModel(email: email, password: password, againPassword: againPassword, name: name, surName: surName)
+        guard
+            let email = emailField.text,!email.isEmpty,
+            let password = passwordField.text, !password.isEmpty,
+            let againPassword = againPasswordField.text, !againPassword.isEmpty,
+            let name = name.text, !name.isEmpty,
+            let surname = surname.text, !surname.isEmpty
+        else {
+            return
+        }
         
         showLoading()
         
-        registerViewModel.getService { success in
-            if success {
-                print("PRİNT: Successfully to register user")
-                self.hideLoading()
-            }
-            else{
-                print("PRİNT: Failed to register user !")
-            }
-            self.hideLoading()
+        viewModel.registerUser(email: email, password: password, againPassword: againPassword, name: name, surname: surname) {
+            self.show(message: "Register Success", type: .success)
         }
     }
     

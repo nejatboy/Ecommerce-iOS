@@ -28,8 +28,7 @@ struct AuthService {
                 return
             }
             
-            //TODO: Show error message
-           
+            show(message: error?.localizedDescription, type: .error)
         }
     }
     
@@ -47,5 +46,11 @@ struct AuthService {
             
             show(message: error?.localizedDescription, type: .error)
         }
+    }
+    
+    
+    private func show(message: String?, type: AlertType) {
+        let okAction = AlertModel(title: "Okay")
+        AlertView.instance.show(type: type, message: message, actions: [okAction])
     }
 }
