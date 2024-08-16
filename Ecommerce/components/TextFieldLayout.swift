@@ -85,13 +85,12 @@ class TextFieldLayout: View, UITextFieldDelegate {
     
     
     private func showErrorForInput() {
-        guard let placeholder = placeholder else { return }
+        guard let placeholder = placeholder else {
+            return
+        }
         
-//        AlertView.instance.show(
-//            type: .error,
-//            message: String(format: Localize.Error.noInput, placeholder),
-//            actions: AlertModel(title: Localize.Button.ok)
-//        )
+        let okAction = AlertModel(title: "Okay")
+        AlertView.instance.show(type: .error, message: "Please enter '\(placeholder)'", actions: [okAction])
     }
     
     

@@ -20,19 +20,45 @@ class Controller<VM: ViewModel>: UIViewController {
     }
     
     
-    /// Loading göstermek için kullanırız
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        customizeViews()
+    }
+    
+    
+    ///Sayfadaki view'ları özelleştireceksek. Override edip içerisinde yapabiliriz.
+    func customizeViews() {
+        
+    }
+    
+    
+    /// Dizi haline controller'da eklemek istediğimiz view'ları verebiliriz.
+    func addSubviews(_ subview: UIView...) {
+        subview.forEach {
+            view.addSubview($0)
+        }
+    }
+    
+    /// Aktif etmek istediğimiz constraint'leri dizi halince verebiliriz.
+    func activateConstraints(_ constraints: NSLayoutConstraint...) {
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    
+    /// Loading göstermek için kullanırız.
     func showLoading() {
         LoadingView.instance.show()
     }
     
     
-    /// Loading gizlemek için kullanırız
+    /// Loading gizlemek için kullanırız.
     func hideLoading() {
         LoadingView.instance.hide()
     }
     
     
-    /// Kullanıcıya mesaj göstermek için kullanılırız
+    /// Kullanıcıya mesaj göstermek için kullanılırız.
     ///
     /// - Parameters:
     ///   - message: Gösterilecek olan mesaj.
