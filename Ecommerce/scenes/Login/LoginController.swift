@@ -49,8 +49,10 @@ class LoginController: Controller<LoginViewModel> {
     }
     
     
-    @objc func touchLogin(){
-        guard let email = emailText.text,let password = passwordText.text
+    @objc func touchLogin() {
+        guard 
+            let email = emailText.text,
+            let password = passwordText.text
         else{
             return
         }

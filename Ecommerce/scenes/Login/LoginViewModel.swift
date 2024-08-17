@@ -10,9 +10,8 @@ import Foundation
 class LoginViewModel: ViewModel {
     
     
-    func login(email: String, password: String, completion: Handler?){
-        guard !email.isEmpty, !password.isEmpty
-        else{
+    func login(email: String, password: String, completion: Handler?) {
+        guard !email.isEmpty, !password.isEmpty else{
             return
         }
         
