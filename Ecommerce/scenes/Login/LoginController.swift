@@ -9,41 +9,34 @@ import UIKit
 
 class LoginController: Controller<LoginViewModel> {
     
-    private let emailText = CustomTextField(placeHolder: "Email", isSecureText: false)
-    private let passwordText = CustomTextField(placeHolder: "Password",isSecureText: true)
-    private let loginButton : UIButton = {
-        let btn = UIButton()
-        btn.setTitle("LogIn", for: .normal)
-        btn.backgroundColor = .blue
-        btn.tintColor = .red
-        btn.layer.masksToBounds = true
-        btn.layer.cornerRadius = 0.5
-        return btn
-    }()
-
+    private let emailTextField = TextFieldLayout()
+    private let passwordTextField = TextFieldLayout()
+    private let loginButton = ButtonPrimary()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureUI()
+        addSubviews(emailTextField,passwordTextField,loginButton)
+        
+        activateConstraints(
+            emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emailTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 160),
+            
+            passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor,constant: 20),
+            
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,constant: 20)
+        )
     }
-
     
-    func configureUI(){ 
-        let stack = UIStackView(arrangedSubviews: [emailText,passwordText,loginButton])
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.distribution = .fillEqually
-        stack.spacing = 20
-        stack.axis = .vertical
+    
+    override func customizeViews() {
+        emailTextField.placeholder = "Email"
+        passwordTextField.placeholder = "Password"
         
-        view.addSubview(stack)
-        view.backgroundColor = .purple
-        
-        NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
-            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
-            stack.heightAnchor.constraint(equalToConstant: 200)
-        ])
+        loginButton.setTitle("Login", for: .normal)
     }
+    
 }
