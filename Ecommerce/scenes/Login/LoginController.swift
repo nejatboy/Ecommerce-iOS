@@ -53,7 +53,7 @@ class LoginController: Controller<LoginViewModel> {
         guard 
             let email = emailText.text,
             let password = passwordText.text
-        else{
+        else {
             return
         }
               
