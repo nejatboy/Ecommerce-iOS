@@ -29,7 +29,7 @@ struct ParserService {
             name: snapshot.get("name") as? String,
             surname: snapshot.get("surname") as? String,
             email: snapshot.get("email") as? String,
-            type: UserType(rawValue: snapshot.get("type") as? String ?? "individual")
+            type: UserType(rawValue: snapshot.get("type") as? String ?? UserType.individual.rawValue)
         )
     }
 }

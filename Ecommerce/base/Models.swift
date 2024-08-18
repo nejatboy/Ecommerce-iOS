@@ -22,7 +22,7 @@ struct User: Codable {
 
 
 
-enum UserType: String, Codable {
-    case individual = "individual"
-    case corporate = "corporate"
+enum UserType: String, Codable, CaseIterable {
+    case individual = "Individual"
+    case corporate = "Corporate"
 }
