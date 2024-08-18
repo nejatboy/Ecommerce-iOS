@@ -19,7 +19,11 @@ struct DatabaseService {
         
     }
     
-    
+    /// Kullanıcı bilgilerini kaydetmek kullanılır.
+    ///
+    /// - Parameters:
+    ///   - user: Kaydedeciğimiz user'ın modelleşmiş halidir. 'uid' alanı mutlaka dolu olmalıdır.
+    ///   - completion: Başarılı kaydı ifade eder.
     func saveUser(user: User, completion: Handler?) {
         guard let uid = user.uid else {
             return
@@ -36,6 +40,11 @@ struct DatabaseService {
     }
     
     
+    /// Kullanıcı bilgilerini kaydetmek kullanılır.
+    ///
+    /// - Parameters:
+    ///   - uid: Bilgilerini istediğimiz kullanıcının Authentication uid'sidir.
+    ///   - completion: Başarılı işlemdir ve User modeli döner.
     func fetchUser(uid: String, completion: Callback<User>?) {
         db.collection("Users").document(uid).getDocument { snapshot, error in
             if let error = error {
