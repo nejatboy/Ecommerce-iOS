@@ -14,21 +14,15 @@ class RegisterController: Controller<RegisterViewModel> {
     private let emailTextField = TextFieldLayout()
     private let passwordTextField = TextFieldLayout()
     private let againPasswordTextField = TextFieldLayout()
-    private let segmentedController : UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(items: ["Bireysel","Ticari"])
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.addTarget(self, action: #selector(touchSegmentedController), for: .valueChanged)
-        return segmentedControl
-    }()
+    private let segmentView = SegmentView<UserType>()
     private let registerButton = ButtonPrimary()
     private let loginButton = ButtonSecondary()
-    
+    private let chooseButton = ButtonSecondary()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addSubviews(nameTextField, surnameTextField, emailTextField, passwordTextField, againPasswordTextField, segmentedController, registerButton, loginButton)
+        addSubviews(nameTextField, surnameTextField, emailTextField, passwordTextField, againPasswordTextField, segmentView, chooseButton, registerButton, loginButton)
         
         activateConstraints(
             nameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -51,13 +45,17 @@ class RegisterController: Controller<RegisterViewModel> {
             againPasswordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             againPasswordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             
-            segmentedController.topAnchor.constraint(equalTo: againPasswordTextField.bottomAnchor, constant: 10),
-            segmentedController.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            segmentedController.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            segmentedController.heightAnchor.constraint(equalToConstant: 60),
-            segmentedController.widthAnchor.constraint(equalToConstant: Device.width * 0.8),
+            segmentView.topAnchor.constraint(equalTo: againPasswordTextField.bottomAnchor, constant: 10),
+            segmentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            segmentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            segmentView.heightAnchor.constraint(equalToConstant: 60),
+            segmentView.widthAnchor.constraint(equalToConstant: Device.width * 0.8),
             
-            registerButton.topAnchor.constraint(equalTo: segmentedController.bottomAnchor, constant: 15),
+            chooseButton.topAnchor.constraint(equalTo: segmentView.bottomAnchor, constant: 10),
+            chooseButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            chooseButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            
+            registerButton.topAnchor.constraint(equalTo: chooseButton.bottomAnchor, constant: 15),
             registerButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             registerButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             
@@ -76,18 +74,15 @@ class RegisterController: Controller<RegisterViewModel> {
         againPasswordTextField.placeholder = "Again Password"
         
         registerButton.setTitle("Register", for: .normal)
+       
+        chooseButton.setTitle("Choose", for: .normal)
+        chooseButton.action = choseButtonClicked
         
         loginButton.setTitle("Login", for: .normal)
     }
     
-    @objc func touchSegmentedController(){
-        switch segmentedController.selectedSegmentIndex{
-        case 0 :
-            print("PRİNT: You chose Individual.")
-        case 1:
-            print("PRİNT: You chose Commercial.")
-        default:
-            print("PRİNT: You chose default Individual.")
-        }
+    
+    private func choseButtonClicked(){
+        show(message: "You chose " + segmentView.currentElement.rawValue , type: .success)
     }
 }

@@ -17,7 +17,7 @@ class LoginController: Controller<LoginViewModel> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         addSubviews(emailTextField, passwordTextField, loginButton)
         
         activateConstraints(
