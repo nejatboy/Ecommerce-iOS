@@ -9,11 +9,12 @@ import UIKit
 
 class LoginController: Controller<LoginViewModel> {
     
+  
     private let emailTextField = TextFieldLayout()
     private let passwordTextField = TextFieldLayout()
     private let loginButton = ButtonPrimary()
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,5 +39,4 @@ class LoginController: Controller<LoginViewModel> {
         
         loginButton.setTitle("Login", for: .normal)
     }
-    
 }
