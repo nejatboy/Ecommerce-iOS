@@ -28,7 +28,7 @@ class RegisterController: Controller<RegisterViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addSubviews(nameTextField,surnameTextField,emailTextField,passwordTextField,againPasswordTextField,segmentedController,registerButton,loginButton)
+        addSubviews(nameTextField, surnameTextField, emailTextField, passwordTextField, againPasswordTextField, segmentedController, registerButton, loginButton)
         
         activateConstraints(
             nameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -55,7 +55,7 @@ class RegisterController: Controller<RegisterViewModel> {
             segmentedController.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             segmentedController.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             segmentedController.heightAnchor.constraint(equalToConstant: 60),
-            segmentedController.widthAnchor.constraint(equalToConstant: Device.width*0.8),
+            segmentedController.widthAnchor.constraint(equalToConstant: Device.width * 0.8),
             
             registerButton.topAnchor.constraint(equalTo: segmentedController.bottomAnchor, constant: 15),
             registerButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),

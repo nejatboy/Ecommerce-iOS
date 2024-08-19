@@ -18,17 +18,17 @@ class LoginController: Controller<LoginViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addSubviews(emailTextField,passwordTextField,loginButton)
+        addSubviews(emailTextField, passwordTextField, loginButton)
         
         activateConstraints(
             emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             emailTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 160),
             
             passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor,constant: 20),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
             
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,constant: 20)
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20)
         )
     }
     
