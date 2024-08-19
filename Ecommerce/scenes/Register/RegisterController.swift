@@ -9,120 +9,76 @@ import UIKit
 
 class RegisterController: Controller<RegisterViewModel> {
     
-    
-    private let name: UITextField = {
-        let text = UITextField()
-        text.placeholder = "Name"
-        text.font = UIFont.systemFont(ofSize: 20)
-        text.textColor = .red
-        text.borderStyle = .roundedRect
-        text.textAlignment = .left
-        return text
-    }()
-    private let surname: UITextField = {
-        let text = UITextField()
-        text.placeholder = "SurName"
-        text.font = UIFont.systemFont(ofSize: 20)
-        text.textColor = .red
-        text.borderStyle = .roundedRect
-        text.textAlignment = .left
-        return text
-    }()
-    private let emailField  : UITextField =  {
-        let textfield = UITextField()
-        textfield.placeholder = "Email"
-        textfield.keyboardType = .emailAddress
-        textfield.borderStyle = .roundedRect
-        return textfield
-    }()
-    private let passwordField : UITextField = {
-        let text  = UITextField()
-        text.placeholder = "Password"
-        text.borderStyle = .roundedRect
-        text.isSecureTextEntry = true
-        return text
-    }()
-    private let againPasswordField : UITextField = {
-        let text  = UITextField()
-        text.placeholder = "Again Password"
-        text.isSecureTextEntry = true
-        text.borderStyle = .roundedRect
-        return text
-    }()
-    private let registerButton : UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setTitle("Register", for: .normal)
-        btn.setTitleColor(UIColor(white: 1, alpha: 0.65), for: .normal)
-        btn.backgroundColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
-        btn.layer.cornerRadius = 6
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 21)
-        btn.addTarget(self, action: #selector(touchRegister), for: .touchUpInside)
-        return btn
-    }()
-    private let logInButton : UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setTitle("SignUp", for: .normal)
-        btn.addTarget(self, action: #selector(touchLogIn), for: .touchUpInside)
-        return btn
-    }()
+    private let nameTextField = TextFieldLayout()
+    private let surnameTextField = TextFieldLayout()
+    private let emailTextField = TextFieldLayout()
+    private let passwordTextField = TextFieldLayout()
+    private let againPasswordTextField = TextFieldLayout()
     private let segmentedController : UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: ["Bireysel","Ticari"])
         segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.addTarget(self, action: #selector(touchSegmentedController), for: .valueChanged)
         return segmentedControl
     }()
+    private let registerButton = ButtonPrimary()
+    private let loginButton = ButtonSecondary()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        configureUI()
-    }
-    
-    
-    func configureUI(){
-        view.addSubview(segmentedController)
-        let stack = UIStackView(arrangedSubviews: [name,surname,emailField,passwordField,againPasswordField,registerButton, segmentedController])
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.distribution = .fillEqually
-        stack.axis = .vertical
-        stack.spacing = 5
-        view.addSubview(stack)
-       
-        NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 20),
-            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 10),
-            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            stack.heightAnchor.constraint(equalToConstant: 250),
-            stack.widthAnchor.constraint(equalToConstant:100)
-        ])
-    }
-    
-    
-    @objc  func touchRegister(){
-        guard
-            let email = emailField.text,!email.isEmpty,
-            let password = passwordField.text, !password.isEmpty,
-            let againPassword = againPasswordField.text, !againPassword.isEmpty,
-            let name = name.text, !name.isEmpty,
-            let surname = surname.text, !surname.isEmpty
-        else {
-            return
-        }
+        addSubviews(nameTextField, surnameTextField, emailTextField, passwordTextField, againPasswordTextField, segmentedController, registerButton, loginButton)
         
-        showLoading()
+        activateConstraints(
+            nameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            nameTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            nameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            
+            surnameTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10),
+            surnameTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            surnameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            
+            emailTextField.topAnchor.constraint(equalTo: surnameTextField.bottomAnchor, constant: 10),
+            emailTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            emailTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10),
+            passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            
+            againPasswordTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10),
+            againPasswordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            againPasswordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            
+            segmentedController.topAnchor.constraint(equalTo: againPasswordTextField.bottomAnchor, constant: 10),
+            segmentedController.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            segmentedController.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            segmentedController.heightAnchor.constraint(equalToConstant: 60),
+            segmentedController.widthAnchor.constraint(equalToConstant: Device.width * 0.8),
+            
+            registerButton.topAnchor.constraint(equalTo: segmentedController.bottomAnchor, constant: 15),
+            registerButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            registerButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            
+            loginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 50),
+            loginButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            loginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+        )
+    }
+    
+    
+    override func customizeViews() {
+        nameTextField.placeholder = "Name"
+        surnameTextField.placeholder = "Surname"
+        emailTextField.placeholder = "Email"
+        passwordTextField.placeholder = "Password"
+        againPasswordTextField.placeholder = "Again Password"
         
-        viewModel.registerUser(email: email, password: password, againPassword: againPassword, name: name, surname: surname) {
-            self.show(message: "Register Success", type: .success)
-        }
+        registerButton.setTitle("Register", for: .normal)
+        
+        loginButton.setTitle("Login", for: .normal)
     }
-    
-    
-    @objc func touchLogIn(){
-
-    }
-    
     
     @objc func touchSegmentedController(){
         switch segmentedController.selectedSegmentIndex{
@@ -134,5 +90,4 @@ class RegisterController: Controller<RegisterViewModel> {
             print("PRİNT: You chose default Individual.")
         }
     }
-    
 }
