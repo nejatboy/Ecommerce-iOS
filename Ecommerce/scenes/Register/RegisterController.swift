@@ -26,42 +26,31 @@ class RegisterController: Controller<RegisterViewModel> {
         
         activateConstraints(
             nameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            nameTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            nameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             surnameTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10),
-            surnameTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            surnameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            surnameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             emailTextField.topAnchor.constraint(equalTo: surnameTextField.bottomAnchor, constant: 10),
-            emailTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            emailTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             againPasswordTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10),
-            againPasswordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            againPasswordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            againPasswordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             segmentView.topAnchor.constraint(equalTo: againPasswordTextField.bottomAnchor, constant: 10),
-            segmentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            segmentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            segmentView.heightAnchor.constraint(equalToConstant: 60),
-            segmentView.widthAnchor.constraint(equalToConstant: Device.width * 0.8),
+            segmentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             chooseButton.topAnchor.constraint(equalTo: segmentView.bottomAnchor, constant: 10),
-            chooseButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            chooseButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            chooseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             registerButton.topAnchor.constraint(equalTo: chooseButton.bottomAnchor, constant: 15),
-            registerButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            registerButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             loginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 50),
-            loginButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            loginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
     }
     

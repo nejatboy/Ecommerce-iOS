@@ -5,11 +5,9 @@
 //  Created by muhammed dursun on 28.07.2024.
 //
 
-import UIKit
 
 class LoginController: Controller<LoginViewModel> {
     
-  
     private let emailTextField = TextFieldLayout()
     private let passwordTextField = TextFieldLayout()
     private let loginButton = ButtonPrimary()
