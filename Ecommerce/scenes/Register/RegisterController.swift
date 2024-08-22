@@ -5,9 +5,9 @@
 //  Created by muhammed dursun on 3.08.2024.
 //
 
-import UIKit
 
 class RegisterController: Controller<RegisterViewModel> {
+    
     
     private let nameTextField = TextFieldLayout()
     private let surnameTextField = TextFieldLayout()
@@ -17,12 +17,12 @@ class RegisterController: Controller<RegisterViewModel> {
     private let segmentView = SegmentView<UserType>()
     private let registerButton = ButtonPrimary()
     private let loginButton = ButtonSecondary()
-    private let chooseButton = ButtonSecondary()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addSubviews(nameTextField, surnameTextField, emailTextField, passwordTextField, againPasswordTextField, segmentView, chooseButton, registerButton, loginButton)
+        addSubviews(nameTextField, surnameTextField, emailTextField, passwordTextField, againPasswordTextField, segmentView, registerButton, loginButton)
         
         activateConstraints(
             nameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -43,10 +43,7 @@ class RegisterController: Controller<RegisterViewModel> {
             segmentView.topAnchor.constraint(equalTo: againPasswordTextField.bottomAnchor, constant: 10),
             segmentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            chooseButton.topAnchor.constraint(equalTo: segmentView.bottomAnchor, constant: 10),
-            chooseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            registerButton.topAnchor.constraint(equalTo: chooseButton.bottomAnchor, constant: 15),
+            registerButton.topAnchor.constraint(equalTo: segmentView.bottomAnchor, constant: 15),
             registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             loginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 50),
@@ -64,14 +61,6 @@ class RegisterController: Controller<RegisterViewModel> {
         
         registerButton.setTitle("Register", for: .normal)
        
-        chooseButton.setTitle("Choose", for: .normal)
-        chooseButton.action = choseButtonClicked
-        
         loginButton.setTitle("Login", for: .normal)
-    }
-    
-    
-    private func choseButtonClicked(){
-        show(message: "You chose " + segmentView.currentElement.rawValue , type: .success)
     }
 }

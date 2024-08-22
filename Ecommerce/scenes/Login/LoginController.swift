@@ -8,6 +8,7 @@
 
 class LoginController: Controller<LoginViewModel> {
     
+    
     private let emailTextField = TextFieldLayout()
     private let passwordTextField = TextFieldLayout()
     private let loginButton = ButtonPrimary()
