@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let window = UIWindow(windowScene: scene)
-        window.rootViewController = LoginController()
+        window.rootViewController = RegisterController()
         window.makeKeyAndVisible()
         
         LoadingView.instance.setup(window: window)
