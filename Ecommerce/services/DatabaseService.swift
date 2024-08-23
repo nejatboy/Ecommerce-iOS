@@ -35,6 +35,8 @@ struct DatabaseService {
                 return
             }
             
+            UserDefaultsService.instance.save(user, key: .user)
+            
             completion?()
         }
     }
@@ -56,6 +58,8 @@ struct DatabaseService {
                 show(message: "Cannot parsed.", type: .error)
                 return
             }
+            
+            UserDefaultsService.instance.save(user, key: .user)
             
             completion?(user)
         }

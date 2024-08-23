@@ -49,6 +49,21 @@ struct AuthService {
     }
     
     
+    /// Kullanıcı logout yapmak için kullanırız.
+    /// - Parameters:
+    ///   - completion: Çıkış başarılı ise çalışır
+    func logOut(completion: Handler?) {
+        do {
+            try Auth.auth().signOut()
+            UserDefaultsService.instance.remove(key: .user)
+            completion?()
+            
+        } catch let signOutError as NSError {
+            show(message: signOutError.localizedDescription, type: .error)
+        }
+    }
+    
+    
     private func show(message: String?, type: AlertType) {
         let okAction = AlertModel(title: "Okay")
         AlertView.instance.show(type: type, message: message, actions: [okAction])
