@@ -67,17 +67,17 @@ class RegisterController: Controller<RegisterViewModel> {
     
    
     private func registerButtonClicked() {
-         let preferUserType = segmentView.currentElement
-       
         guard
             let name = nameTextField.text, !name.isEmpty,
             let surname = surnameTextField.text, !surname.isEmpty,
             let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextField.text, !password.isEmpty,
             let againPassword = againPasswordTextField.text, !againPassword.isEmpty
-        else{
+        else {
             return
         }
+        
+        let preferUserType = segmentView.currentElement
         
         showLoading()
         
