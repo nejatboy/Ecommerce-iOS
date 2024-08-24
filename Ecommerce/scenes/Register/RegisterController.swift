@@ -60,7 +60,29 @@ class RegisterController: Controller<RegisterViewModel> {
         againPasswordTextField.placeholder = "Again Password"
         
         registerButton.setTitle("Register", for: .normal)
-       
+        registerButton.action = registerButtonClicked
+        
         loginButton.setTitle("Login", for: .normal)
+    }
+    
+   
+    private func registerButtonClicked() {
+        guard
+            let name = nameTextField.text, !name.isEmpty,
+            let surname = surnameTextField.text, !surname.isEmpty,
+            let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty,
+            let againPassword = againPasswordTextField.text, !againPassword.isEmpty
+        else {
+            return
+        }
+        
+        let preferUserType = segmentView.currentElement
+        
+        showLoading()
+        
+        viewModel.registerUser(email: email, password: password, againPassword: againPassword, name: name, surname: surname, type: preferUserType) {
+            self.show(message: "Register success.", type: .success)
+        }
     }
 }
