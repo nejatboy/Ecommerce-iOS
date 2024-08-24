@@ -65,19 +65,10 @@ class RegisterController: Controller<RegisterViewModel> {
         loginButton.setTitle("Login", for: .normal)
     }
     
-    @objc func touchSegmentedController(){
-        switch segmentedController.selectedSegmentIndex{
-        case 0 :
-            print("PRİNT: You chose Individual.")
-        case 1:
-            print("PRİNT: You chose Commercial.")
-        default:
-            print("PRİNT: You chose default Individual.")
-        }
-    }
    
-    
     private func registerButtonClicked() {
+         let preferUserType = segmentView.currentElement
+       
         guard
             let name = nameTextField.text, !name.isEmpty,
             let surname = surnameTextField.text, !surname.isEmpty,
@@ -88,8 +79,10 @@ class RegisterController: Controller<RegisterViewModel> {
             return
         }
         
+        showLoading()
         
-        viewModel.registerUser(email: email, password: password, againPassword: againPassword, name: name, surname: surname, completion: <#T##Handler?##Handler?##() -> Void#>)
-        
+        viewModel.registerUser(email: email, password: password, againPassword: againPassword, name: name, surname: surname, type: preferUserType) {
+            self.show(message: "Register success.", type: .success)
+        }
     }
 }
