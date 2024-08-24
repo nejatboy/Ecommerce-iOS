@@ -60,7 +60,36 @@ class RegisterController: Controller<RegisterViewModel> {
         againPasswordTextField.placeholder = "Again Password"
         
         registerButton.setTitle("Register", for: .normal)
-       
+        registerButton.action = registerButtonClicked
+        
         loginButton.setTitle("Login", for: .normal)
+    }
+    
+    @objc func touchSegmentedController(){
+        switch segmentedController.selectedSegmentIndex{
+        case 0 :
+            print("PRİNT: You chose Individual.")
+        case 1:
+            print("PRİNT: You chose Commercial.")
+        default:
+            print("PRİNT: You chose default Individual.")
+        }
+    }
+   
+    
+    private func registerButtonClicked() {
+        guard
+            let name = nameTextField.text, !name.isEmpty,
+            let surname = surnameTextField.text, !surname.isEmpty,
+            let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty,
+            let againPassword = againPasswordTextField.text, !againPassword.isEmpty
+        else{
+            return
+        }
+        
+        
+        viewModel.registerUser(email: email, password: password, againPassword: againPassword, name: name, surname: surname, completion: <#T##Handler?##Handler?##() -> Void#>)
+        
     }
 }
