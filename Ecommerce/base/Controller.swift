@@ -8,7 +8,7 @@
 import UIKit
 
 
-class Controller<VM: ViewModel>: UIViewController {
+class Controller<VM: ViewModel, NC: NavigationController>: UIViewController {
     
     lazy var viewModel = VM()
     
@@ -24,6 +24,12 @@ class Controller<VM: ViewModel>: UIViewController {
         super.viewDidLoad()
         
         customizeViews()
+    }
+    
+    
+    ///navigationController yerine özelleştirilmiş olan navController kullanacağız.
+    var navController: NC? {
+        navigationController as? NC
     }
     
     

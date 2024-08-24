@@ -1,13 +1,12 @@
 //
-//  LoginViewController.swift
+//  SignInController.swift
 //  Ecommerce
 //
 //  Created by muhammed dursun on 28.07.2024.
 //
 
 
-class LoginController: Controller<LoginViewModel> {
-    
+class SignInController: Controller<SignInViewModel, LoginNavigationController> {
     
     private let emailTextField = TextFieldLayout()
     private let passwordTextField = TextFieldLayout()

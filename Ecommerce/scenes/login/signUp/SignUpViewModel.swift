@@ -1,12 +1,12 @@
 //
-//  RegisterViewModel.swift
+//  SignUpViewModel.swift
 //  Ecommerce
 //
 //  Created by muhammed dursun on 9.08.2024.
 //
 
 
-class RegisterViewModel: ViewModel {
+class SignUpViewModel: ViewModel {
     
     
     func registerUser(email: String, password: String, againPassword: String, name: String, surname: String, type: UserType, completion: Handler?){

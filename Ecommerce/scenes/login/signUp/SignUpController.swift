@@ -1,13 +1,12 @@
 //
-//  RegisterController.swift
+//  SignUpController.swift
 //  Ecommerce
 //
 //  Created by muhammed dursun on 3.08.2024.
 //
 
 
-class RegisterController: Controller<RegisterViewModel> {
-    
+class SignUpController: Controller<SignUpViewModel, LoginNavigationController> {
     
     private let nameTextField = TextFieldLayout()
     private let surnameTextField = TextFieldLayout()
