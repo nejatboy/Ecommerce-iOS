@@ -30,6 +30,11 @@ class LoginNavigationController: NavigationController {
     
     
     func navigateToSignUp() {
-        //TODO
+        let signUpController = SignUpController()
+        pushViewController(signUpController, animated: true)
+        
+        viewControllers.removeAll {
+            $0 is SignInController
+        }
     }
 }
