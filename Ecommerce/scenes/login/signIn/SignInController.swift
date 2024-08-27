@@ -44,6 +44,7 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
         signUpButton.action = signUpButtonClicked
     }
     
+    
     private func signUpButtonClicked() {
         navController?.navigateToSignUp()
     }

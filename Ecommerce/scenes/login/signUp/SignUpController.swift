@@ -62,6 +62,7 @@ class SignUpController: Controller<SignUpViewModel, LoginNavigationController> {
         registerButton.action = registerButtonClicked
         
         loginButton.setTitle("Login", for: .normal)
+        loginButton.action = signInButtonClickked
     }
     
    
@@ -83,5 +84,9 @@ class SignUpController: Controller<SignUpViewModel, LoginNavigationController> {
         viewModel.registerUser(email: email, password: password, againPassword: againPassword, name: name, surname: surname, type: preferUserType) {
             self.show(message: "Register success.", type: .success)
         }
+    }
+    
+    private func signInButtonClickked(){
+        navController?.navigateToSignIn()
     }
 }
