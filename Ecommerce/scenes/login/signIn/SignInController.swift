@@ -46,6 +46,6 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
     
     
     private func signUpButtonClicked() {
-        navController?.navigateToSignUp()
+        navController?.signInToSignUp()
     }
 }

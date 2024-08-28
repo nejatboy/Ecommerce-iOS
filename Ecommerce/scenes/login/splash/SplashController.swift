@@ -13,7 +13,7 @@ class SplashController: Controller<SplashViewModel, LoginNavigationController> {
         super.viewDidLoad()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.navController?.navigateToSignIn()
+            self.navController?.splashToSignIn()
         }
     }
 }

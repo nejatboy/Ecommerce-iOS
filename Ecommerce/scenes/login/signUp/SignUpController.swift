@@ -62,7 +62,7 @@ class SignUpController: Controller<SignUpViewModel, LoginNavigationController> {
         registerButton.action = registerButtonClicked
         
         loginButton.setTitle("Login", for: .normal)
-        loginButton.action = signInButtonClickked
+        loginButton.action = signInButtonClicked
     }
     
    
@@ -86,7 +86,8 @@ class SignUpController: Controller<SignUpViewModel, LoginNavigationController> {
         }
     }
     
-    private func signInButtonClickked(){
-        navController?.navigateToSignIn()
+    
+    private func signInButtonClicked(){
+        navController?.splashToSignIn()
     }
 }
