@@ -9,10 +9,14 @@ import Foundation
 
 class SplashController: Controller<SplashViewModel, LoginNavigationController> {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        showLoading()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.hideLoading()
             self.navController?.splashToSignIn()
         }
     }
