@@ -23,13 +23,18 @@ class LoginNavigationController: NavigationController {
         let signInController = SignInController()
         pushViewController(signInController, animated: true)
         
-        viewControllers.removeAll {
+        viewControllers.removeAll{
             $0 is SplashController
         }
     }
     
     
     func navigateToSignUp() {
-        //TODO
+        let signUpController = SignUpController()
+        pushViewController(signUpController, animated: true)
+        
+        viewControllers.removeAll {
+            $0 is SignInController
+        }
     }
 }

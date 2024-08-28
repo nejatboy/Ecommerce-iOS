@@ -11,12 +11,12 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
     private let emailTextField = TextFieldLayout()
     private let passwordTextField = TextFieldLayout()
     private let loginButton = ButtonPrimary()
-    
+    private let signUpButton = ButtonSecondary()
 
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        addSubviews(emailTextField, passwordTextField, loginButton)
+        addSubviews(emailTextField, passwordTextField, loginButton, signUpButton)
         
         activateConstraints(
             emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -26,7 +26,10 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
             
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20)
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
+            
+            signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            signUpButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         )
     }
     
@@ -36,5 +39,13 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
         passwordTextField.placeholder = "Password"
         
         loginButton.setTitle("Login", for: .normal)
+        
+        signUpButton.setTitle("SignUp", for: .normal)
+        signUpButton.action = signUpButtonClicked
+    }
+    
+    
+    private func signUpButtonClicked() {
+        navController?.navigateToSignUp()
     }
 }
