@@ -58,6 +58,9 @@ class SignUpController: Controller<SignUpViewModel, LoginNavigationController> {
         passwordTextField.placeholder = "Password"
         againPasswordTextField.placeholder = "Again Password"
         
+        passwordTextField.isSecureTextEntry = true
+        againPasswordTextField.isSecureTextEntry = true
+        
         registerButton.setTitle("Register", for: .normal)
         registerButton.action = registerButtonClicked
         
