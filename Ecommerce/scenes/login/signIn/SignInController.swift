@@ -38,6 +38,8 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
         emailTextField.placeholder = "Email"
         passwordTextField.placeholder = "Password"
         
+        passwordTextField.isSecureTextEntry = true
+        
         loginButton.setTitle("Login", for: .normal)
         
         signUpButton.setTitle("SignUp", for: .normal)
