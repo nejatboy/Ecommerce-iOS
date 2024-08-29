@@ -21,7 +21,7 @@ class LoginNavigationController: NavigationController {
     
     func splashToSignIn() {
         let signInController = SignInController()
-        setViewControllers([signInController], animated: true)
+        pushViewController(signInController, animated: true)
         
         viewControllers.removeAll{
             $0 is SplashController
@@ -31,11 +31,11 @@ class LoginNavigationController: NavigationController {
     
     func signInToSignUp() {
         let signUpController = SignUpController()
-        setViewControllers([signUpController], animated: true)
+        pushViewController(signUpController, animated: true)
     }
     
     
     func signUpToSignIn() {
-        //TODO
+       popViewController(animated: true)
     }
 }

@@ -88,6 +88,6 @@ class SignUpController: Controller<SignUpViewModel, LoginNavigationController> {
     
     
     private func signInButtonClicked(){
-        navController?.splashToSignIn()
+        navController?.signUpToSignIn()
     }
 }
