@@ -38,4 +38,9 @@ class LoginNavigationController: NavigationController {
     func signUpToSignIn() {
        popViewController(animated: true)
     }
+    
+    
+    func leaveFromLogin() {
+        //TODO
+    }
 }

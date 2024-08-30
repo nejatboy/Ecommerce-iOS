@@ -16,6 +16,8 @@
 		D946D3E92C81EB9F00A56EF7 /* TrainingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3E82C81EB9F00A56EF7 /* TrainingController.swift */; };
 		D946D3EC2C81EBD200A56EF7 /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3EB2C81EBD200A56EF7 /* TrainingViewModel.swift */; };
 		D946D3EE2C81EC8700A56EF7 /* TrainingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3ED2C81EC8700A56EF7 /* TrainingTableView.swift */; };
+		D946D3F22C82112B00A56EF7 /* CorporateTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3F12C82112B00A56EF7 /* CorporateTabbarController.swift */; };
+		D946D3F42C82114D00A56EF7 /* IndividualTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3F32C82114D00A56EF7 /* IndividualTabbarController.swift */; };
 		D94F15B42C7218BF00CD0850 /* ParserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94F15B32C7218BF00CD0850 /* ParserService.swift */; };
 		D94F15B62C723A3F00CD0850 /* SegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94F15B52C723A3F00CD0850 /* SegmentView.swift */; };
 		D9578F682C65696200D6DB1E /* TextFieldLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9578F672C65696200D6DB1E /* TextFieldLayout.swift */; };
@@ -57,6 +59,8 @@
 		D946D3E82C81EB9F00A56EF7 /* TrainingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingController.swift; sourceTree = "<group>"; };
 		D946D3EB2C81EBD200A56EF7 /* TrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewModel.swift; sourceTree = "<group>"; };
 		D946D3ED2C81EC8700A56EF7 /* TrainingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTableView.swift; sourceTree = "<group>"; };
+		D946D3F12C82112B00A56EF7 /* CorporateTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CorporateTabbarController.swift; path = Ecommerce/scenes/training/CorporateTabbarController.swift; sourceTree = SOURCE_ROOT; };
+		D946D3F32C82114D00A56EF7 /* IndividualTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualTabbarController.swift; sourceTree = "<group>"; };
 		D94F15B32C7218BF00CD0850 /* ParserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserService.swift; sourceTree = "<group>"; };
 		D94F15B52C723A3F00CD0850 /* SegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentView.swift; sourceTree = "<group>"; };
 		D9578F672C65696200D6DB1E /* TextFieldLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLayout.swift; sourceTree = "<group>"; };
@@ -145,6 +149,22 @@
 			path = training;
 			sourceTree = "<group>";
 		};
+		D946D3EF2C82111900A56EF7 /* individual */ = {
+			isa = PBXGroup;
+			children = (
+				D946D3F32C82114D00A56EF7 /* IndividualTabbarController.swift */,
+			);
+			path = individual;
+			sourceTree = "<group>";
+		};
+		D946D3F02C82111E00A56EF7 /* corporate */ = {
+			isa = PBXGroup;
+			children = (
+				D946D3F12C82112B00A56EF7 /* CorporateTabbarController.swift */,
+			);
+			path = corporate;
+			sourceTree = "<group>";
+		};
 		D99F670A2C7A37D500519F89 /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +231,8 @@
 		D9B02A902C559DF80018B499 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D946D3F02C82111E00A56EF7 /* corporate */,
+				D946D3EF2C82111900A56EF7 /* individual */,
 				D946D3EA2C81EBC000A56EF7 /* training */,
 				D99F670A2C7A37D500519F89 /* login */,
 			);
@@ -391,11 +413,13 @@
 				D9B02A892C559D4E0018B499 /* Controller.swift in Sources */,
 				D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */,
 				D946D3EE2C81EC8700A56EF7 /* TrainingTableView.swift in Sources */,
+				D946D3F42C82114D00A56EF7 /* IndividualTabbarController.swift in Sources */,
 				D9B559A42C7916FD007DA2C8 /* UserDefaultsService.swift in Sources */,
 				C43FCFB92C56DCB9005A1AFA /* SignInController.swift in Sources */,
 				D93B92372C56DB0400F0BF6F /* Views.swift in Sources */,
 				D946D3EC2C81EBD200A56EF7 /* TrainingViewModel.swift in Sources */,
 				C42C80032C657E6F009D499A /* SignUpViewModel.swift in Sources */,
+				D946D3F22C82112B00A56EF7 /* CorporateTabbarController.swift in Sources */,
 				D9D028812C68FEE3008D3731 /* AlertView.swift in Sources */,
 				D9578F682C65696200D6DB1E /* TextFieldLayout.swift in Sources */,
 				D9B02A8F2C559DE40018B499 /* TabbarController.swift in Sources */,
