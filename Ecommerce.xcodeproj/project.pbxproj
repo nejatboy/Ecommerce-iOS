@@ -13,6 +13,9 @@
 		C43FCFB92C56DCB9005A1AFA /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFB82C56DCB9005A1AFA /* SignInController.swift */; };
 		D93B92372C56DB0400F0BF6F /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B92362C56DB0400F0BF6F /* Views.swift */; };
 		D946D3E72C81EB4100A56EF7 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3E62C81EB4100A56EF7 /* TableView.swift */; };
+		D946D3E92C81EB9F00A56EF7 /* TrainingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3E82C81EB9F00A56EF7 /* TrainingController.swift */; };
+		D946D3EC2C81EBD200A56EF7 /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3EB2C81EBD200A56EF7 /* TrainingViewModel.swift */; };
+		D946D3EE2C81EC8700A56EF7 /* TrainingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3ED2C81EC8700A56EF7 /* TrainingTableView.swift */; };
 		D94F15B42C7218BF00CD0850 /* ParserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94F15B32C7218BF00CD0850 /* ParserService.swift */; };
 		D94F15B62C723A3F00CD0850 /* SegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94F15B52C723A3F00CD0850 /* SegmentView.swift */; };
 		D9578F682C65696200D6DB1E /* TextFieldLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9578F672C65696200D6DB1E /* TextFieldLayout.swift */; };
@@ -51,6 +54,9 @@
 		C43FCFB82C56DCB9005A1AFA /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		D93B92362C56DB0400F0BF6F /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		D946D3E62C81EB4100A56EF7 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		D946D3E82C81EB9F00A56EF7 /* TrainingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingController.swift; sourceTree = "<group>"; };
+		D946D3EB2C81EBD200A56EF7 /* TrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewModel.swift; sourceTree = "<group>"; };
+		D946D3ED2C81EC8700A56EF7 /* TrainingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTableView.swift; sourceTree = "<group>"; };
 		D94F15B32C7218BF00CD0850 /* ParserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserService.swift; sourceTree = "<group>"; };
 		D94F15B52C723A3F00CD0850 /* SegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentView.swift; sourceTree = "<group>"; };
 		D9578F672C65696200D6DB1E /* TextFieldLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLayout.swift; sourceTree = "<group>"; };
@@ -129,6 +135,16 @@
 			path = signIn;
 			sourceTree = "<group>";
 		};
+		D946D3EA2C81EBC000A56EF7 /* training */ = {
+			isa = PBXGroup;
+			children = (
+				D946D3E82C81EB9F00A56EF7 /* TrainingController.swift */,
+				D946D3EB2C81EBD200A56EF7 /* TrainingViewModel.swift */,
+				D946D3ED2C81EC8700A56EF7 /* TrainingTableView.swift */,
+			);
+			path = training;
+			sourceTree = "<group>";
+		};
 		D99F670A2C7A37D500519F89 /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +211,7 @@
 		D9B02A902C559DF80018B499 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D946D3EA2C81EBC000A56EF7 /* training */,
 				D99F670A2C7A37D500519F89 /* login */,
 			);
 			path = scenes;
@@ -359,6 +376,7 @@
 				D9CCD86A2C62C45B00CA713C /* DatabaseService.swift in Sources */,
 				D94F15B62C723A3F00CD0850 /* SegmentView.swift in Sources */,
 				D9CCD86C2C62C73300CA713C /* Extensions.swift in Sources */,
+				D946D3E92C81EB9F00A56EF7 /* TrainingController.swift in Sources */,
 				C42C80052C657EE9009D499A /* SignInViewModel.swift in Sources */,
 				D9B02A932C559E2A0018B499 /* SplashController.swift in Sources */,
 				C423BD2E2C5E674A0066ACBC /* SignUpController.swift in Sources */,
@@ -372,9 +390,11 @@
 				D9B02A722C558B890018B499 /* AppDelegate.swift in Sources */,
 				D9B02A892C559D4E0018B499 /* Controller.swift in Sources */,
 				D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */,
+				D946D3EE2C81EC8700A56EF7 /* TrainingTableView.swift in Sources */,
 				D9B559A42C7916FD007DA2C8 /* UserDefaultsService.swift in Sources */,
 				C43FCFB92C56DCB9005A1AFA /* SignInController.swift in Sources */,
 				D93B92372C56DB0400F0BF6F /* Views.swift in Sources */,
+				D946D3EC2C81EBD200A56EF7 /* TrainingViewModel.swift in Sources */,
 				C42C80032C657E6F009D499A /* SignUpViewModel.swift in Sources */,
 				D9D028812C68FEE3008D3731 /* AlertView.swift in Sources */,
 				D9578F682C65696200D6DB1E /* TextFieldLayout.swift in Sources */,

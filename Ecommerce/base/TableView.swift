@@ -11,7 +11,7 @@ import UIKit
 //MARK: TableView
 class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate, UITableViewDataSource {
     
-    var items: [ITEM] = []
+    private var items: [ITEM] = []
     private let cellId = UUID().uuidString
     
     ///Tıklanan item'ı handle etmek için kullanırız.
@@ -125,7 +125,7 @@ class TableViewCell<ITEM>: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        customizeViews()
+        configure()
     }
     
     
@@ -134,8 +134,8 @@ class TableViewCell<ITEM>: UITableViewCell {
     }
     
     
-    ///Sayfadaki view'ları özelleştireceksek. Override edip içerisinde yapabiliriz.
-    func customizeViews() {}
+    ///Özelleştirmek için override ediniz.
+    func configure() {}
     
     
     /// Dizi haline contentView'a eklemek istediğimiz view'ları verebiliriz.
