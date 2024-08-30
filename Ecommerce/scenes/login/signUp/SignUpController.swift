@@ -61,10 +61,10 @@ class SignUpController: Controller<SignUpViewModel, LoginNavigationController> {
         passwordTextField.isSecureTextEntry = true
         againPasswordTextField.isSecureTextEntry = true
         
-        registerButton.setTitle("SignUp", for: .normal)
+        registerButton.setTitle("Sign Up", for: .normal)
         registerButton.action = registerButtonClicked
         
-        loginButton.setTitle("SignIn", for: .normal)
+        loginButton.setTitle("Sign In", for: .normal)
         loginButton.action = signInButtonClicked
     }
     
