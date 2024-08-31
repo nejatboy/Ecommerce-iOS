@@ -40,9 +40,9 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
         
         passwordTextField.isSecureTextEntry = true
         
-        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitle("Sign In", for: .normal)
         
-        signUpButton.setTitle("SignUp", for: .normal)
+        signUpButton.setTitle("Sign Up", for: .normal)
         signUpButton.action = signUpButtonClicked
     }
     
