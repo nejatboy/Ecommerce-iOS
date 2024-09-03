@@ -40,7 +40,14 @@ class LoginNavigationController: NavigationController {
     }
     
     
-    func leaveFromLogin() {
-        //TODO
+    func leaveFromLogin(userTypeString:String) {
+        if userTypeString == "Individual" {
+            let individualTabBarController = IndividualTabbarController()
+            pushViewController(individualTabBarController, animated: true)
+        }
+        else {
+            let corparateTabBarController = CorporateTabbarController()
+            pushViewController(corparateTabBarController, animated: true)
+        }
     }
 }

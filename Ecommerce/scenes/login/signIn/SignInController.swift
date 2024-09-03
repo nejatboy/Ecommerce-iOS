@@ -41,6 +41,7 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
         passwordTextField.isSecureTextEntry = true
         
         loginButton.setTitle("Sign In", for: .normal)
+        loginButton.action = signInButtonClicked
         
         signUpButton.setTitle("Sign Up", for: .normal)
         signUpButton.action = signUpButtonClicked
@@ -49,5 +50,20 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
     
     private func signUpButtonClicked() {
         navController?.signInToSignUp()
+    }
+    
+    
+    private func signInButtonClicked(){
+        guard
+            let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text,!password.isEmpty
+        else {
+            return
+        }
+        AuthService.instance.login(email: email, password: password) { uid in
+            DatabaseService.instance.fetchUser(uid: uid) { user in
+                self.navController?.leaveFromLogin(userTypeString: user.type?.rawValue ?? "-")
+            }
+        }
     }
 }
