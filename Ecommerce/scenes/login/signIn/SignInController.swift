@@ -60,10 +60,8 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
         else {
             return
         }
-        AuthService.instance.login(email: email, password: password) { uid in
-            DatabaseService.instance.fetchUser(uid: uid) { user in
-                self.navController?.leaveFromLogin(userTypeString: user.type?.rawValue ?? "-")
-            }
+        viewModel.login(email: email, password: password) { [weak self] user in
+            self?.navController?.leaveFromLogin(userType: user.type)
         }
     }
 }

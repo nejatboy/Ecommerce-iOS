@@ -86,7 +86,7 @@ class SignUpController: Controller<SignUpViewModel, LoginNavigationController> {
         
         viewModel.registerUser(email: email, password: password, againPassword: againPassword, name: name, surname: surname, type: preferUserType) {
             self.show(message: "Register success.", type: .success)
-            self.navController?.leaveFromLogin(userTypeString: preferUserType.rawValue)
+            self.navController?.leaveFromLogin(userType: preferUserType)
         }
     }
     

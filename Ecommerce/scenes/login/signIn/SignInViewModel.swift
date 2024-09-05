@@ -9,13 +9,15 @@
 class SignInViewModel: ViewModel {
     
     
-    func login(email: String, password: String, completion: Handler?) {
+    func login(email: String, password: String, completion: Callback<User>?) {
         guard !email.isEmpty, !password.isEmpty else {
             return
         }
         
         AuthService.instance.login(email: email, password: password) { uid in
-            completion?()
+            DatabaseService.instance.fetchUser(uid: uid) { user in
+                completion?(user)
+            }
         }
     }
 }
