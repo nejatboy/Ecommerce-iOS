@@ -53,15 +53,17 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
     }
     
     
-    private func signInButtonClicked(){
+    private func signInButtonClicked() {
         guard
             let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextField.text,!password.isEmpty
         else {
             return
         }
+        showLoading()
         viewModel.login(email: email, password: password) { [weak self] user in
             self?.navController?.leaveFromLogin(userType: user.type)
+            self?.hideLoading()
         }
     }
 }

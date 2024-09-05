@@ -40,19 +40,9 @@ class LoginNavigationController: NavigationController {
     }
     
     
-    func leaveFromLogin(userType:UserType?) {
-        switch userType{
-        case .individual:
-            let individualTabBarController = IndividualTabbarController()
-            individualTabBarController.modalPresentationStyle = .fullScreen
-            present(individualTabBarController, animated: true, completion: nil)
-            
-        case .corporate:
-            let corparateTabBarController = CorporateTabbarController()
-            corparateTabBarController.modalPresentationStyle = .fullScreen
-            present(corparateTabBarController, animated: true, completion: nil)
-        case .none:
-            print("-")
-        }
+    func leaveFromLogin(userType: UserType?) {
+        let tabbarController = (userType == .individual) ? IndividualTabbarController() : CorporateTabbarController()
+        tabbarController.modalPresentationStyle = .fullScreen
+        present(tabbarController, animated: true, completion: nil)
     }
 }
