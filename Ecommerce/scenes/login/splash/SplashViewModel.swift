@@ -8,4 +8,14 @@
 
 class SplashViewModel: ViewModel {
     
+    
+    func checkUser(navigation : LoginNavigationController?) {
+        
+        if let currentUser = UserDefaultsService.instance.currentUser {
+            navigation?.leaveFromLogin(userType: currentUser .type)
+        }
+        else {
+            navigation?.splashToSignIn()
+        }
+    }
 }
