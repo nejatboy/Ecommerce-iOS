@@ -15,9 +15,18 @@ class SplashController: Controller<SplashViewModel, LoginNavigationController> {
         
         showLoading()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.hideLoading()
-            self.navController?.splashToSignIn()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: checkCurrentUser)
+    }
+    
+    
+    private func checkCurrentUser() {
+        hideLoading()
+        
+        if let currentUser = viewModel.currentUser {
+            navController?.leaveFromLogin(userType: currentUser.type)
+            return
         }
+        
+        navController?.splashToSignIn()
     }
 }
