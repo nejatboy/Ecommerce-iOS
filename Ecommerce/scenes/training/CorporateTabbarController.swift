@@ -12,6 +12,22 @@ class CorporateTabbarController: TabbarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemRed
+        let productController = CorProductNavigationController()
+        productController.tabBarItem = .init(title: "", image: .iconInfo, selectedImage: nil)
+        
+        let profileController = CorProfileNavigationController()
+        profileController.tabBarItem = .init(title: "", image: .iconProfile, selectedImage: nil)
+        
+        viewControllers = [productController, profileController]
+    }
+    
+    
+    var productNavivationController: CorProductNavigationController? {
+        findController()
+    }
+    
+    
+    var profileNavigationController: CorProfileNavigationController? {
+        findController()
     }
 }
