@@ -9,12 +9,7 @@
 class SplashViewModel: ViewModel {
     
     
-    func check(completion: Callback<Bool>) {
-        var currentUser = UserDefaultsService.instance.currentUser
-        if currentUser != nil {
-            completion(true)
-        } else {
-            completion(false)
-        }
+    var currentUser: User? {
+        UserDefaultsService.instance.currentUser
     }
 }
