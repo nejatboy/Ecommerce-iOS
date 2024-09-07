@@ -18,7 +18,11 @@ class SplashController: Controller<SplashViewModel, LoginNavigationController> {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.hideLoading()
             
-            self.viewModel.checkUser(navigation: self.navController)
+            if let currentUser = self.viewModel.currentUser  {
+                self.navController?.leaveFromLogin(userType: currentUser.type)
+            } else {
+                self.navController?.splashToSignIn()
+            }
         }
     }
 }
