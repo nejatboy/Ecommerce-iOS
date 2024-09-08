@@ -14,7 +14,6 @@ class TabbarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.backgroundColor = .lightGray
         tabBar.tintColor = .systemRed
     }
     
