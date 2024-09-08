@@ -11,6 +11,7 @@ import UIKit
 class Controller<VM: ViewModel, NC: NavigationController>: UIViewController {
     
     lazy var viewModel = VM()
+    private var navigationBarClicked: Handler?
     
     
     override func loadView() {
@@ -72,5 +73,17 @@ class Controller<VM: ViewModel, NC: NavigationController>: UIViewController {
     func show(message: String?, type: AlertType) {
         let okAction = AlertModel(title: "Okay")
         AlertView.instance.show(type: type, message: message, actions: [okAction])
+    }
+    
+    
+    ///Navigation Bar'ın sağına button eklemek için kullanırız.
+    func setNavButton(icon: UIImage?, onClicked: Handler?) {
+        navigationBarClicked = onClicked
+        navigationItem.rightBarButtonItem = .init(image: icon, style: .done, target: self, action: #selector(navButtonClicked))
+    }
+    
+    
+    @objc private func navButtonClicked() {
+        navigationBarClicked?()
     }
 }

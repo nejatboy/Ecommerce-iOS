@@ -62,6 +62,7 @@ extension UIImage {
     static let iconSuccess = UIImage(systemName: "checkmark.circle")
     static let iconProfile = UIImage(systemName: "person.crop.circle")
     static let iconInfo = UIImage(systemName: "info.circle")
+    static let iconAdd = UIImage(systemName: "plus")
 //    static let iconBack = UIImage(systemName: "arrow.backward")
 //    static let iconAdd = UIImage(systemName: "plus")
 //    static let iconEdit = UIImage(systemName: "pencil")

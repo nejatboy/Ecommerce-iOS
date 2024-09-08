@@ -15,6 +15,7 @@ class TabbarController: UITabBarController {
         super.viewDidLoad()
         
         tabBar.backgroundColor = .lightGray
+        tabBar.tintColor = .systemRed
     }
     
     

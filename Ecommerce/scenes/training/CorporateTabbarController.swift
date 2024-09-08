@@ -12,17 +12,17 @@ class CorporateTabbarController: TabbarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let productController = CorProductNavigationController()
-        productController.tabBarItem = .init(title: "", image: .iconInfo, selectedImage: nil)
+        let shopsController = CorShopsNavigationController()
+        shopsController.tabBarItem = .init(title: "Shops", image: .iconInfo, selectedImage: nil)
         
         let profileController = CorProfileNavigationController()
-        profileController.tabBarItem = .init(title: "", image: .iconProfile, selectedImage: nil)
+        profileController.tabBarItem = .init(title: "Profile", image: .iconProfile, selectedImage: nil)
         
-        viewControllers = [productController, profileController]
+        viewControllers = [shopsController, profileController]
     }
     
     
-    var productNavivationController: CorProductNavigationController? {
+    var shopsNavivationController: CorShopsNavigationController? {
         findController()
     }
     

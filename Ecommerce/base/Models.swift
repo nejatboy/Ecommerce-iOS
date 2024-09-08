@@ -26,3 +26,13 @@ enum UserType: String, Codable, CaseIterable {
     case individual = "Individual"
     case corporate = "Corporate"
 }
+
+
+
+struct Shop: Encodable {
+    var uid: String?
+    let name: String?
+    let latitude: Double?
+    let longitude: Double?
+    let ownerUid: String? = UserDefaultsService.instance.currentUser?.uid
+}

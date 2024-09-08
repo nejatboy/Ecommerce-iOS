@@ -12,8 +12,6 @@ class CorProfileNavigationController: NavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        isNavigationBarHidden = true
-        
         let rootController = CorProfileController()
         viewControllers = [rootController]
     }

@@ -12,6 +12,6 @@ class CorProfileController: Controller<CorProfileViewModel, CorProfileNavigation
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemGreen
+        navigationItem.title = "Profile"
     }
 }

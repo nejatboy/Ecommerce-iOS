@@ -66,6 +66,24 @@ struct DatabaseService {
     }
     
     
+    ///Ticari kullanıcının dükkan eklemesi için kullanırız.
+    func addShop(shop: Shop, completion: Handler?) {
+        guard let userUid = UserDefaultsService.instance.currentUser?.uid else {
+            show(message: "Please log in.", type: .error)
+            return
+        }
+        
+        db.collection("Shops").document().setData(shop.dictionary) { error in
+            if let error = error {
+                show(message: error.localizedDescription, type: .error)
+                return
+            }
+            
+            completion?()
+        }
+    }
+    
+    
     private func show(message: String?, type: AlertType) {
         let okAction = AlertModel(title: "Okay")
         AlertView.instance.show(type: type, message: message, actions: [okAction])
