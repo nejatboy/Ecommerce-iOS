@@ -32,4 +32,30 @@ struct ParserService {
             type: UserType(rawValue: snapshot.get("type") as? String ?? UserType.individual.rawValue)
         )
     }
+    
+    
+    func parseToShops(snapshot: QuerySnapshot?) -> [Shop]? {
+        guard let snapshot = snapshot else {
+            return nil
+        }
+        
+        var shops: [Shop] = []
+        
+        for document in snapshot.documents {
+            let shop = parseToShop(document: document)
+            shops.append(shop)
+        }
+        
+        return shops
+    }
+    
+    
+    private func parseToShop(document: QueryDocumentSnapshot) -> Shop {
+        Shop(
+            uid: document.documentID,
+            name: document.get("name") as? String,
+            latitude: document.get("latitude") as? Double,
+            longitude: document.get("longitude") as? Double
+        )
+    }
 }

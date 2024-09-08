@@ -84,6 +84,24 @@ struct DatabaseService {
     }
     
     
+    func getMyShops(completion: Callback<[Shop]?>?) {
+        guard let userUid = UserDefaultsService.instance.currentUser?.uid else {
+            show(message: "Please log in.", type: .error)
+            return
+        }
+        
+        db.collection("Shops").whereField("ownerUid", isEqualTo: userUid).getDocuments { snapshot, error in
+            if let error = error {
+                show(message: error.localizedDescription, type: .error)
+                return
+            }
+            
+            let shops = ParserService.instance.parseToShops(snapshot: snapshot)
+            completion?(shops)
+        }
+    }
+    
+    
     private func show(message: String?, type: AlertType) {
         let okAction = AlertModel(title: "Okay")
         AlertView.instance.show(type: type, message: message, actions: [okAction])
