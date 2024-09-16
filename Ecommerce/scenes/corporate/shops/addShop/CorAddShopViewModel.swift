@@ -10,7 +10,6 @@ import MapKit
 
 class CorAddShopViewModel: ViewModel {
     
-    
     private(set) var selectedCoordinate : CLLocationCoordinate2D?
     
     
@@ -23,8 +22,12 @@ class CorAddShopViewModel: ViewModel {
         selectedCoordinate = location.coordinate
     }
     
+    
     func createRegion() -> MKCoordinateRegion? {
-        guard let coordinate = selectedCoordinate else { return nil }
-        return MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000,longitudinalMeters: 1000)
+        guard let coordinate = selectedCoordinate
+        else {
+            return nil
+        }
+        return MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
     }
 }

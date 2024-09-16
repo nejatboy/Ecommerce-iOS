@@ -71,15 +71,15 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
          
          viewModel.updateCoordinate(for: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude))
      }
-     
-     
-     override func customizeViews() {
-         nameTextField.placeholder = "Name"
-         
-         addShopButton.setTitle("Add Shop", for: .normal)
-         addShopButton.action = addShopButtonClicked
-     }
-     
+    
+    
+    override func customizeViews() {
+        nameTextField.placeholder = "Name"
+        
+        addShopButton.setTitle("Add Shop", for: .normal)
+        addShopButton.action = addShopButtonClicked
+    }
+    
      
      func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
            guard let location = locations.last else { return }
