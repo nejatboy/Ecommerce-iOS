@@ -13,7 +13,7 @@ class CorAddShopViewModel: ViewModel {
     private(set) var selectedCoordinate : CLLocationCoordinate2D?
     
     
-    func addShop(name: String,latitude: Double, longitude: Double,completion: Handler?) {
+    func addShop(name: String, latitude: Double, longitude: Double, completion: Handler?) {
         DatabaseService.instance.addShop(shop: Shop(name: name, latitude: latitude, longitude: longitude), completion: completion)
     }
     
