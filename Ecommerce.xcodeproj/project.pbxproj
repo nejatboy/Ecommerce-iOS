@@ -12,6 +12,7 @@
 		C42C80052C657EE9009D499A /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80042C657EE9009D499A /* SignInViewModel.swift */; };
 		C43FCFB92C56DCB9005A1AFA /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFB82C56DCB9005A1AFA /* SignInController.swift */; };
 		C4519CA52C8E358E0039ACCF /* CorAddShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4519CA42C8E358E0039ACCF /* CorAddShopController.swift */; };
+		C4E19A8F2C98C2BF00EBA228 /* CorShopTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E19A8E2C98C2BF00EBA228 /* CorShopTableView.swift */; };
 		D93B92372C56DB0400F0BF6F /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B92362C56DB0400F0BF6F /* Views.swift */; };
 		D946D3E72C81EB4100A56EF7 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3E62C81EB4100A56EF7 /* TableView.swift */; };
 		D946D3E92C81EB9F00A56EF7 /* TrainingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3E82C81EB9F00A56EF7 /* TrainingController.swift */; };
@@ -62,6 +63,7 @@
 		C42C80042C657EE9009D499A /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		C43FCFB82C56DCB9005A1AFA /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		C4519CA42C8E358E0039ACCF /* CorAddShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorAddShopController.swift; sourceTree = "<group>"; };
+		C4E19A8E2C98C2BF00EBA228 /* CorShopTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorShopTableView.swift; sourceTree = "<group>"; };
 		D93B92362C56DB0400F0BF6F /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		D946D3E62C81EB4100A56EF7 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		D946D3E82C81EB9F00A56EF7 /* TrainingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingController.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			children = (
 				D95308312C8CB5F800914617 /* CorShopsController.swift */,
 				D95308332C8CB61100914617 /* CorShopsViewModel.swift */,
+				C4E19A8E2C98C2BF00EBA228 /* CorShopTableView.swift */,
 			);
 			path = root;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				D9CCD8682C62C42900CA713C /* AuthService.swift in Sources */,
 				D94F15B42C7218BF00CD0850 /* ParserService.swift in Sources */,
 				D9D028852C6901EC008D3731 /* Models.swift in Sources */,
+				C4E19A8F2C98C2BF00EBA228 /* CorShopTableView.swift in Sources */,
 				D9D7CAD62C7A39AF0006B2FB /* LoginNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
