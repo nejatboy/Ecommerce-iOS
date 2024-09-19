@@ -24,8 +24,7 @@ class CorAddShopViewModel: ViewModel {
     
     
     func createRegion() -> MKCoordinateRegion? {
-        guard let coordinate = selectedCoordinate
-        else {
+        guard let coordinate = selectedCoordinate else {
             return nil
         }
         return MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)

@@ -10,12 +10,10 @@ import MapKit
 
 class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationController>, CLLocationManagerDelegate, MKMapViewDelegate {
     
-    
     private let nameTextField = TextFieldLayout()
     private let addShopButton = ButtonSecondary()
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
-    
     
     
     override func viewDidLoad() {
