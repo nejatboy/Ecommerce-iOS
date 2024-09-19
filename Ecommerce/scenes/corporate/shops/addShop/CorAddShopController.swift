@@ -28,7 +28,7 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         
         activateConstraints(
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 10),
+            mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             mapView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mapView.heightAnchor.constraint(equalToConstant: 300),
@@ -80,7 +80,9 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
+        guard let location = locations.last else {
+            return
+        }
         viewModel.updateCoordinate(for: location)
         
         if let region = viewModel.createRegion() {
