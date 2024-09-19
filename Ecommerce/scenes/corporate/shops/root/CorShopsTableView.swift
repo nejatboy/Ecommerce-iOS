@@ -6,7 +6,7 @@
 //
 
 
-class CorShopTableView: TableView<Shop, CorShopCell> {
+class CorShopsTableView: TableView<Shop, CorShopsCell> {
     
     
     override func configure() {
@@ -15,7 +15,7 @@ class CorShopTableView: TableView<Shop, CorShopCell> {
 }
 
 
-class CorShopCell: TableViewCell<Shop> {
+class CorShopsCell: TableViewCell<Shop> {
     
     private let shopLabel = Label()
     

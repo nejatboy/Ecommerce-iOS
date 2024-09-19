@@ -8,12 +8,10 @@
 
 class CorShopsViewModel: ViewModel {
     
-    private var items = [Shop]()
     
     func fetchMyShops(completion: Callback<[Shop]?>?) {
         DatabaseService.instance.getMyShops { shops in
-            self.items = shops!
-            completion?(self.items)
+            completion?(shops)
         }
     }
 }

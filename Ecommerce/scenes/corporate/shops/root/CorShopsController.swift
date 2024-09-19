@@ -9,9 +9,9 @@ import Foundation
 
 class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationController> {
     
-    private let tableView = CorShopTableView()
+    private let tableView = CorShopsTableView()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,9 +29,7 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         )
         
-        getShops {
-            print("success")
-        }
+        getShops()
     }
     
     
@@ -39,10 +37,13 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
         show(message: item.name, type: .success)
     }
     
-    private func getShops(completion: Handler?) {
+    private func getShops() {
         DispatchQueue.main.async {
             self.viewModel.fetchMyShops { [weak self] shops in
-                self?.tableView.addItems(shops!)
+                guard let shops = shops else {
+                    return
+                }
+                self?.tableView.addItems(shops)
                 self?.tableView.reloadData()
             }
         }
