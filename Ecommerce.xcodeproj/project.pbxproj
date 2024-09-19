@@ -113,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4DB6BD12C8FACA3004DF615 /* CoreLocation.framework in Frameworks */,
 				E48A16221C3BA4555456AD04 /* Pods_Ecommerce.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +124,7 @@
 		43E95E73C84C16765748718E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C4DB6BD02C8FACA3004DF615 /* CoreLocation.framework */,
 				E3078625EF13FE0A4CFCA136 /* Pods_Ecommerce.framework */,
 			);
 			name = Frameworks;
@@ -645,9 +647,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 85UT9GCS2Q;
+				DEVELOPMENT_TEAM = 4Q3P58HHV5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ecommerce/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "lcoation permission";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -674,9 +678,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 85UT9GCS2Q;
+				DEVELOPMENT_TEAM = 4Q3P58HHV5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ecommerce/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "lcoation permission";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
