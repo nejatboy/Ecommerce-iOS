@@ -38,14 +38,9 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
     }
     
     private func getShops() {
-        DispatchQueue.main.async {
-            self.viewModel.fetchMyShops { [weak self] shops in
-                guard let shops = shops else {
-                    return
-                }
-                self?.tableView.addItems(shops)
-                self?.tableView.reloadData()
-            }
+        self.viewModel.fetchMyShops { [weak self] shops in
+            self?.tableView.addItems(shops ?? [])
+            self?.tableView.reloadData()
         }
     }
 }

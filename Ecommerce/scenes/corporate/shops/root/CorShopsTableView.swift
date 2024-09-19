@@ -10,7 +10,7 @@ class CorShopsTableView: TableView<Shop, CorShopsCell> {
     
     
     override func configure() {
-        backgroundColor = .systemGray
+        
     }
 }
 
@@ -21,7 +21,7 @@ class CorShopsCell: TableViewCell<Shop> {
     
     
     override func configure() {
-        selectionBackgroundColor = .blue
+        selectionBackgroundColor = .lightGray
         backgroundColor = .clear
         
         shopLabel.textColor = .red
