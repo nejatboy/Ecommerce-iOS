@@ -33,6 +33,13 @@ class TrainingController: Controller<TrainingViewModel, NavigationController> {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         )
+        
+        LocationService.instance.request(listener: locationReceived)
+    }
+    
+    
+    private func locationReceived(coordinate: Coordinate) {
+        show(message: "Konum alındı.", type: .success)
     }
     
     

@@ -36,3 +36,10 @@ struct Shop: Encodable {
     let longitude: Double?
     let ownerUid: String? = UserDefaultsService.instance.currentUser?.uid
 }
+
+
+
+struct Coordinate {
+    let latitude: Double?
+    let longitude: Double?
+}

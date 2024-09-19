@@ -29,6 +29,7 @@
 		D95308322C8CB5F800914617 /* CorShopsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95308312C8CB5F800914617 /* CorShopsController.swift */; };
 		D95308342C8CB61100914617 /* CorShopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95308332C8CB61100914617 /* CorShopsViewModel.swift */; };
 		D9578F682C65696200D6DB1E /* TextFieldLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9578F672C65696200D6DB1E /* TextFieldLayout.swift */; };
+		D97846842C9CBE73008ED603 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97846832C9CBE73008ED603 /* LocationService.swift */; };
 		D9B02A722C558B890018B499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A712C558B890018B499 /* AppDelegate.swift */; };
 		D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A732C558B890018B499 /* SceneDelegate.swift */; };
 		D9B02A7B2C558B8A0018B499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9B02A7A2C558B8A0018B499 /* Assets.xcassets */; };
@@ -80,6 +81,7 @@
 		D95308312C8CB5F800914617 /* CorShopsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorShopsController.swift; sourceTree = "<group>"; };
 		D95308332C8CB61100914617 /* CorShopsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorShopsViewModel.swift; sourceTree = "<group>"; };
 		D9578F672C65696200D6DB1E /* TextFieldLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLayout.swift; sourceTree = "<group>"; };
+		D97846832C9CBE73008ED603 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		D9B02A6E2C558B890018B499 /* Ecommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B02A712C558B890018B499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9B02A732C558B890018B499 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				D9CCD8692C62C45B00CA713C /* DatabaseService.swift */,
 				D94F15B32C7218BF00CD0850 /* ParserService.swift */,
 				D9B559A32C7916FD007DA2C8 /* UserDefaultsService.swift */,
+				D97846832C9CBE73008ED603 /* LocationService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				D95308272C8CB4F500914617 /* CorProfileNavigationController.swift in Sources */,
 				C43FCFB92C56DCB9005A1AFA /* SignInController.swift in Sources */,
 				D93B92372C56DB0400F0BF6F /* Views.swift in Sources */,
+				D97846842C9CBE73008ED603 /* LocationService.swift in Sources */,
 				D946D3EC2C81EBD200A56EF7 /* TrainingViewModel.swift in Sources */,
 				C42C80032C657E6F009D499A /* SignUpViewModel.swift in Sources */,
 				D946D3F22C82112B00A56EF7 /* CorporateTabbarController.swift in Sources */,
