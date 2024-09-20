@@ -37,10 +37,10 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
         show(message: item.name, type: .success)
     }
     
+    
     private func getShops() {
-        self.viewModel.fetchMyShops { [weak self] shops in
-            self?.tableView.addItems(shops ?? [])
-            self?.tableView.reloadData()
+        viewModel.fetchMyShops { [weak self] shops in
+            self?.tableView.addItems(shops)
         }
     }
 }

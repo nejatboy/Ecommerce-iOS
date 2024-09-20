@@ -9,7 +9,7 @@
 class CorShopsViewModel: ViewModel {
     
     
-    func fetchMyShops(completion: Callback<[Shop]?>?) {
+    func fetchMyShops(completion: Callback<[Shop]>?) {
         DatabaseService.instance.getMyShops { shops in
             guard let shops = shops else {
                 return

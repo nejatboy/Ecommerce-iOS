@@ -24,7 +24,7 @@ class CorShopsCell: TableViewCell<Shop> {
         selectionBackgroundColor = .lightGray
         backgroundColor = .clear
         
-        shopLabel.textColor = .red
+        shopLabel.textColor = .systemRed
         
         addSubviews(shopLabel)
         
