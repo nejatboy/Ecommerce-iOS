@@ -8,12 +8,11 @@
 import MapKit
 
 
-class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationController>, CLLocationManagerDelegate, MKMapViewDelegate {
+class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationController>, MKMapViewDelegate {
     
     private let nameTextField = TextFieldLayout()
     private let addShopButton = ButtonSecondary()
     private let mapView = MKMapView()
-    private let locationManager = CLLocationManager()
     
     
     override func viewDidLoad() {
@@ -40,17 +39,15 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
             addShopButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
         
-        setUpMapView()
+        LocationService.instance.request(listener: locationReceived)
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped(_:)))
         mapView.addGestureRecognizer(tapGesture)
     }
     
     
-    private func setUpMapView() {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        mapView.showsUserLocation = true
+    private func locationReceived(coordinate: Coordinate) {
+        show(message: "Konum alındı.", type: .success)
     }
     
     
@@ -76,18 +73,6 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         
         addShopButton.setTitle("Add Shop", for: .normal)
         addShopButton.action = addShopButtonClicked
-    }
-    
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else {
-            return
-        }
-        viewModel.updateCoordinate(for: location)
-        
-        if let region = viewModel.createRegion() {
-            mapView.setRegion(region, animated: true)
-        }
     }
     
     
