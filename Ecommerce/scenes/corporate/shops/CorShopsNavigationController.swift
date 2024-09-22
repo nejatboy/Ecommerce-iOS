@@ -21,4 +21,8 @@ class CorShopsNavigationController: NavigationController {
         let controller = CorAddShopController()
         pushViewController(controller, animated: true)
     }
+    
+    func corToShopController() {
+        popViewController(animated: true)
+    }
 }

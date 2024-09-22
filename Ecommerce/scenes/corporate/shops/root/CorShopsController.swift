@@ -12,6 +12,17 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
     private let tableView = CorShopsTableView()
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.clear()
+        
+        viewModel.fetchMyShops { [weak self] shops in
+            self?.tableView.addItems(shops)
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,8 +39,6 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         )
-        
-        getShops()
     }
     
     
@@ -38,9 +47,9 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
     }
     
     
-    private func getShops() {
+   /* func getShops() {
         viewModel.fetchMyShops { [weak self] shops in
             self?.tableView.addItems(shops)
         }
-    }
+    }*/
 }
