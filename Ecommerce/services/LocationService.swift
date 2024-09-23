@@ -13,7 +13,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     static let instance = LocationService()
     private var locationManager: CLLocationManager?
-    private var listener: Callback<Coordinate>?
+    private var locationReceived: Callback<Coordinate>?
     
     
     private override init() { }
@@ -28,6 +28,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         manager.delegate = self
         manager.requestWhenInUseAuthorization()
         
+        locationReceived = listener
         locationManager = manager
     }
     
@@ -74,7 +75,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         locationManager = nil
         
         let coordinate = Coordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        listener?(coordinate)
+        locationReceived?(coordinate)
     }
     
     

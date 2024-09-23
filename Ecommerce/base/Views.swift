@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 
 // MARK: Label
@@ -263,4 +264,64 @@ class StackView: UIStackView {
     
     
     func configure() { }
+}
+
+
+
+//MARK: MapView
+class MapView: MKMapView, MKMapViewDelegate {
+    
+    ///Uzun tıklama ile seçilen coordinate buraya set edilir
+    var selectedCoordinate: Coordinate?
+    
+    
+    init() {
+        super.init(frame: .zero)
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        delegate = self
+        showsUserLocation = true
+        
+        configure()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        addGestureRecognizer(tapGesture)
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func configure() { }
+    
+    
+    @objc private func tapped(gestureRecognizer: UILongPressGestureRecognizer) {
+        removeAnnotations(annotations)
+        
+        let touchPoint = gestureRecognizer.location(in: self)
+        let coordinate = convert(touchPoint, toCoordinateFrom: self)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = "Seçilen Konum"
+        
+        addAnnotation(annotation)
+        
+        selectedCoordinate = .init(latitude: coordinate.latitude, longitude: coordinate.longitude)
+    }
+    
+    
+    ///Coordinate'i haritaya region etmek için kullanırız
+    /// - Parameters:
+    ///   - coordinate: Koordinat'lar
+    ///   - meters: Kuşbakışı uzaklık
+    ///   - animated: Animasyon olsun mu olmasın mı
+    func setRegion(coordinate: Coordinate, meters: CLLocationDistance, animated: Bool) {
+        let clLocationCoordinate = CLLocationCoordinate2D(latitude: coordinate.latitude ?? 0, longitude: coordinate.latitude ?? 0)
+        let region = MKCoordinateRegion(center: clLocationCoordinate, latitudinalMeters: meters, longitudinalMeters: meters)
+        
+        setRegion(region, animated: animated)
+    }
 }
