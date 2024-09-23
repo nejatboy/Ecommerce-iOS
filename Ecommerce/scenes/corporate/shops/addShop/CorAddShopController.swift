@@ -38,10 +38,8 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
             addShopButton.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
             addShopButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
-        
-        viewModel.fetchLocation { coordinate in
-            self.locationReceived(coordinate: coordinate)
-        }
+         
+        viewModel.fetchLocation(listener: locationReceived)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped(_:)))
         mapView.addGestureRecognizer(tapGesture)
@@ -49,17 +47,21 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
     
     
     private func locationReceived(coordinate: Coordinate?) {
-        show(message: "Konum alındı.", type: .success)
+        guard let coordinate = coordinate else {
+            return
+        }
         
-        let region = createRegion(for: coordinate!)
+        let region = createRegion(for: coordinate)
         mapView.setRegion(region, animated: true)
         
         let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: (coordinate?.latitude)!, longitude: (coordinate?.longitude)!)
+        annotation.coordinate = CLLocationCoordinate2D(latitude: (coordinate.latitude ?? 39.925533
+), longitude: (coordinate.longitude ?? 32.866287))
         annotation.title = "Current Location"
         
         mapView.addAnnotation(annotation)
     }
+    
     
     func createRegion(for coordinate: Coordinate) -> MKCoordinateRegion {
         return MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: coordinate.latitude!, longitude: coordinate.longitude!), latitudinalMeters: 1000, longitudinalMeters: 1000)
@@ -103,7 +105,7 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         
         viewModel.addShop(name: name, latitude: shopLocation.latitude, longitude: shopLocation.longitude) {
             self.show(message: "Shop added succesfully", type: .success)
+            self.navController?.addShopsToShops()
         }
-        navController?.corToShopController()
     }
 }

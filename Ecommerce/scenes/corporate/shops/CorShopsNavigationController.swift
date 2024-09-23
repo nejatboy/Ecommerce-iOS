@@ -22,7 +22,8 @@ class CorShopsNavigationController: NavigationController {
         pushViewController(controller, animated: true)
     }
     
-    func corToShopController() {
+    
+    func addShopsToShops() {
         popViewController(animated: true)
     }
 }

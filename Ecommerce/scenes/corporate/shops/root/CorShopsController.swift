@@ -17,9 +17,7 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
         
         tableView.clear()
         
-        viewModel.fetchMyShops { [weak self] shops in
-            self?.tableView.addItems(shops)
-        }
+        viewModel.fetchMyShops(completion: tableView.addItems)
     }
     
     
@@ -45,11 +43,4 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
     private func onShopClicked(item: Shop) {
         show(message: item.name, type: .success)
     }
-    
-    
-   /* func getShops() {
-        viewModel.fetchMyShops { [weak self] shops in
-            self?.tableView.addItems(shops)
-        }
-    }*/
 }
