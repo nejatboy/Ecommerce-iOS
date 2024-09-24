@@ -5,20 +5,10 @@
 //  Created by Nejat Boy on 7.09.2024.
 //
 
-import Foundation
 
 class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationController> {
     
     private let tableView = CorShopsTableView()
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableView.clear()
-        
-        viewModel.fetchMyShops(completion: tableView.addItems)
-    }
     
     
     override func viewDidLoad() {
@@ -37,6 +27,15 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         )
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.clear()
+        
+        viewModel.fetchMyShops(completion: tableView.addItems)
     }
     
     

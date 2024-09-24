@@ -46,17 +46,12 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
     }
     
     
-    private func locationReceived(coordinate: Coordinate?) {
-        guard let coordinate = coordinate else {
-            return
-        }
-        
+    private func locationReceived(coordinate: Coordinate) {
         let region = createRegion(for: coordinate)
         mapView.setRegion(region, animated: true)
         
         let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: (coordinate.latitude ?? 39.925533
-), longitude: (coordinate.longitude ?? 32.866287))
+        annotation.coordinate = CLLocationCoordinate2D(latitude: (coordinate.latitude ?? 0.0), longitude: (coordinate.longitude ?? 0.0))
         annotation.title = "Current Location"
         
         mapView.addAnnotation(annotation)
