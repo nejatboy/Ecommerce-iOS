@@ -8,12 +8,11 @@
 import MapKit
 
 
-class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationController>, CLLocationManagerDelegate, MKMapViewDelegate {
+class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationController>, MKMapViewDelegate {
     
     private let nameTextField = TextFieldLayout()
     private let addShopButton = ButtonSecondary()
     private let mapView = MKMapView()
-    private let locationManager = CLLocationManager()
     
     
     override func viewDidLoad() {
@@ -39,18 +38,28 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
             addShopButton.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
             addShopButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
+         
+        viewModel.fetchLocation(listener: locationReceived)
         
-        setUpMapView()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped(_:)))
         mapView.addGestureRecognizer(tapGesture)
     }
     
     
-    private func setUpMapView() {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        mapView.showsUserLocation = true
+    private func locationReceived(coordinate: Coordinate) {
+        let region = createRegion(for: coordinate)
+        mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: (coordinate.latitude ?? 0.0), longitude: (coordinate.longitude ?? 0.0))
+        annotation.title = "Current Location"
+        
+        mapView.addAnnotation(annotation)
+    }
+    
+    
+    func createRegion(for coordinate: Coordinate) -> MKCoordinateRegion {
+        return MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: coordinate.latitude!, longitude: coordinate.longitude!), latitudinalMeters: 1000, longitudinalMeters: 1000)
     }
     
     
@@ -67,7 +76,7 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         annotation.title = "Selected Location"
         mapView.addAnnotation(annotation)
         
-        viewModel.updateCoordinate(for: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude) )
+        viewModel.updateCoordinate(for: Coordinate(latitude: coordinate.latitude, longitude: coordinate.longitude))
     }
     
     
@@ -76,18 +85,6 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         
         addShopButton.setTitle("Add Shop", for: .normal)
         addShopButton.action = addShopButtonClicked
-    }
-    
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else {
-            return
-        }
-        viewModel.updateCoordinate(for: location)
-        
-        if let region = viewModel.createRegion() {
-            mapView.setRegion(region, animated: true)
-        }
     }
     
     
@@ -103,6 +100,7 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         
         viewModel.addShop(name: name, latitude: shopLocation.latitude, longitude: shopLocation.longitude) {
             self.show(message: "Shop added succesfully", type: .success)
+            self.navController?.addShopsToShops()
         }
     }
 }
