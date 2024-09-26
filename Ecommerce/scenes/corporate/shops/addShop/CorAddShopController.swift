@@ -5,25 +5,21 @@
 //  Created by muhammed dursun on 8.09.2024.
 //
 
-import MapKit
 
 
-class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationController>, MKMapViewDelegate {
+class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationController> {
     
     private let nameTextField = TextFieldLayout()
     private let addShopButton = ButtonSecondary()
-    private let mapView = MKMapView()
+    private let mapView = MapView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Add Shop"
-        mapView.delegate = self
         
         addSubviews(nameTextField, addShopButton, mapView)
-        
-        mapView.translatesAutoresizingMaskIntoConstraints = false
         
         activateConstraints(
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -38,45 +34,15 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
             addShopButton.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
             addShopButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
-         
-        viewModel.fetchLocation(listener: locationReceived)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped(_:)))
-        mapView.addGestureRecognizer(tapGesture)
+        viewModel.fetchLocation(listener: locationReceived)
     }
+    
+    
     
     
     private func locationReceived(coordinate: Coordinate) {
-        let region = createRegion(for: coordinate)
-        mapView.setRegion(region, animated: true)
-        
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: (coordinate.latitude ?? 0.0), longitude: (coordinate.longitude ?? 0.0))
-        annotation.title = "Current Location"
-        
-        mapView.addAnnotation(annotation)
-    }
-    
-    
-    func createRegion(for coordinate: Coordinate) -> MKCoordinateRegion {
-        return MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: coordinate.latitude!, longitude: coordinate.longitude!), latitudinalMeters: 1000, longitudinalMeters: 1000)
-    }
-    
-    
-    @objc private func mapViewTapped(_ gesture: UITapGestureRecognizer) {
-        let location = gesture.location(in: mapView)
-        let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
-        
-        if let previousAnnotation = mapView.annotations.first {
-            mapView.removeAnnotation(previousAnnotation)
-        }
-        
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
-        annotation.title = "Selected Location"
-        mapView.addAnnotation(annotation)
-        
-        viewModel.updateCoordinate(for: Coordinate(latitude: coordinate.latitude, longitude: coordinate.longitude))
+        mapView.setRegion(coordinate: coordinate, meters: 1000, animated: true)
     }
     
     
@@ -91,7 +57,7 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
     private func addShopButtonClicked() {
         guard
             let name = nameTextField.text,
-            let shopLocation = viewModel.selectedCoordinate
+            let shopLocation = mapView.selectedCoordinate
         else {
             return
         }

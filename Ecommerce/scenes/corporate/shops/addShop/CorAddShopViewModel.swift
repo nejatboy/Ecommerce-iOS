@@ -8,17 +8,10 @@
 
 class CorAddShopViewModel: ViewModel {
     
-    private(set) var selectedCoordinate : Coordinate?
-    
     
     func addShop(name: String, latitude: Double?, longitude: Double?, completion: Handler?) {
-        /*let shop = Shop(name: name, latitude: latitude, longitude: longitude)
-        DatabaseService.instance.addShop(shop: shop, completion: completion) */
-    }
-    
-    
-    func updateCoordinate(for coordinate: Coordinate) {
-        selectedCoordinate = coordinate
+        let shop = Shop(name: name, latitude: latitude, longitude: longitude)
+        DatabaseService.instance.addShop(shop: shop, completion: completion)
     }
     
     
