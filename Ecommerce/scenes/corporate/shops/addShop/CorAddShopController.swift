@@ -25,7 +25,6 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            mapView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mapView.heightAnchor.constraint(equalToConstant: 300),
             
             nameTextField.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 20),
@@ -37,8 +36,6 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         
         viewModel.fetchLocation(listener: locationReceived)
     }
-    
-    
     
     
     private func locationReceived(coordinate: Coordinate) {
