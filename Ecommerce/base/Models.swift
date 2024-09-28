@@ -43,3 +43,12 @@ struct Coordinate {
     let latitude: Double?
     let longitude: Double?
 }
+
+
+
+struct Product {
+    let uid: String?
+    let name: String?
+    let price: Double?
+    let imageUrl: String?
+}

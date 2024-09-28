@@ -29,6 +29,10 @@
 		D95308322C8CB5F800914617 /* CorShopsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95308312C8CB5F800914617 /* CorShopsController.swift */; };
 		D95308342C8CB61100914617 /* CorShopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95308332C8CB61100914617 /* CorShopsViewModel.swift */; };
 		D9578F682C65696200D6DB1E /* TextFieldLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9578F672C65696200D6DB1E /* TextFieldLayout.swift */; };
+		D968989C2CA84F68003FD87F /* CorAddProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D968989B2CA84F68003FD87F /* CorAddProductViewModel.swift */; };
+		D968989E2CA84F9A003FD87F /* CorAddProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D968989D2CA84F9A003FD87F /* CorAddProductController.swift */; };
+		D96898A12CA84FE3003FD87F /* CorProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96898A02CA84FE3003FD87F /* CorProductsViewModel.swift */; };
+		D96898A32CA84FF6003FD87F /* CorProductsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96898A22CA84FF6003FD87F /* CorProductsController.swift */; };
 		D97846842C9CBE73008ED603 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97846832C9CBE73008ED603 /* LocationService.swift */; };
 		D9B02A722C558B890018B499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A712C558B890018B499 /* AppDelegate.swift */; };
 		D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02A732C558B890018B499 /* SceneDelegate.swift */; };
@@ -81,6 +85,10 @@
 		D95308312C8CB5F800914617 /* CorShopsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorShopsController.swift; sourceTree = "<group>"; };
 		D95308332C8CB61100914617 /* CorShopsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorShopsViewModel.swift; sourceTree = "<group>"; };
 		D9578F672C65696200D6DB1E /* TextFieldLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLayout.swift; sourceTree = "<group>"; };
+		D968989B2CA84F68003FD87F /* CorAddProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorAddProductViewModel.swift; sourceTree = "<group>"; };
+		D968989D2CA84F9A003FD87F /* CorAddProductController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorAddProductController.swift; sourceTree = "<group>"; };
+		D96898A02CA84FE3003FD87F /* CorProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorProductsViewModel.swift; sourceTree = "<group>"; };
+		D96898A22CA84FF6003FD87F /* CorProductsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorProductsController.swift; sourceTree = "<group>"; };
 		D97846832C9CBE73008ED603 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		D9B02A6E2C558B890018B499 /* Ecommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B02A712C558B890018B499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,7 +123,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4DB6BD12C8FACA3004DF615 /* CoreLocation.framework in Frameworks */,
 				E48A16221C3BA4555456AD04 /* Pods_Ecommerce.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,7 +133,6 @@
 		43E95E73C84C16765748718E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C4DB6BD02C8FACA3004DF615 /* CoreLocation.framework */,
 				E3078625EF13FE0A4CFCA136 /* Pods_Ecommerce.framework */,
 			);
 			name = Frameworks;
@@ -208,21 +214,41 @@
 		D953082D2C8CB5A100914617 /* shops */ = {
 			isa = PBXGroup;
 			children = (
+				D968989F2CA84FB2003FD87F /* products */,
+				D968989A2CA84F49003FD87F /* addProduct */,
 				D9D6D2212C8DEBDA00037CCD /* addShop */,
-				D95308302C8CB5D800914617 /* root */,
+				D95308302C8CB5D800914617 /* shops */,
 				D953082E2C8CB5C400914617 /* CorShopsNavigationController.swift */,
 			);
 			path = shops;
 			sourceTree = "<group>";
 		};
-		D95308302C8CB5D800914617 /* root */ = {
+		D95308302C8CB5D800914617 /* shops */ = {
 			isa = PBXGroup;
 			children = (
 				D95308312C8CB5F800914617 /* CorShopsController.swift */,
 				D95308332C8CB61100914617 /* CorShopsViewModel.swift */,
 				C4E19A8E2C98C2BF00EBA228 /* CorShopsTableView.swift */,
 			);
-			path = root;
+			path = shops;
+			sourceTree = "<group>";
+		};
+		D968989A2CA84F49003FD87F /* addProduct */ = {
+			isa = PBXGroup;
+			children = (
+				D968989B2CA84F68003FD87F /* CorAddProductViewModel.swift */,
+				D968989D2CA84F9A003FD87F /* CorAddProductController.swift */,
+			);
+			path = addProduct;
+			sourceTree = "<group>";
+		};
+		D968989F2CA84FB2003FD87F /* products */ = {
+			isa = PBXGroup;
+			children = (
+				D96898A02CA84FE3003FD87F /* CorProductsViewModel.swift */,
+				D96898A22CA84FF6003FD87F /* CorProductsController.swift */,
+			);
+			path = products;
 			sourceTree = "<group>";
 		};
 		D99F670A2C7A37D500519F89 /* login */ = {
@@ -473,8 +499,10 @@
 				D953082F2C8CB5C400914617 /* CorShopsNavigationController.swift in Sources */,
 				C42C80052C657EE9009D499A /* SignInViewModel.swift in Sources */,
 				D953082C2C8CB57400914617 /* CorProfileViewModel.swift in Sources */,
+				D968989E2CA84F9A003FD87F /* CorAddProductController.swift in Sources */,
 				D9B02A932C559E2A0018B499 /* SplashController.swift in Sources */,
 				C423BD2E2C5E674A0066ACBC /* SignUpController.swift in Sources */,
+				D96898A32CA84FF6003FD87F /* CorProductsController.swift in Sources */,
 				D9B02A8B2C559D880018B499 /* ViewModel.swift in Sources */,
 				D9F564CB2C597BA600DEDC66 /* Buttons.swift in Sources */,
 				D946D3E72C81EB4100A56EF7 /* TableView.swift in Sources */,
@@ -485,8 +513,10 @@
 				D9B02A722C558B890018B499 /* AppDelegate.swift in Sources */,
 				D9B02A892C559D4E0018B499 /* Controller.swift in Sources */,
 				D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */,
+				D968989C2CA84F68003FD87F /* CorAddProductViewModel.swift in Sources */,
 				D946D3EE2C81EC8700A56EF7 /* TrainingTableView.swift in Sources */,
 				D946D3F42C82114D00A56EF7 /* IndividualTabbarController.swift in Sources */,
+				D96898A12CA84FE3003FD87F /* CorProductsViewModel.swift in Sources */,
 				D95308322C8CB5F800914617 /* CorShopsController.swift in Sources */,
 				D9B559A42C7916FD007DA2C8 /* UserDefaultsService.swift in Sources */,
 				D95308272C8CB4F500914617 /* CorProfileNavigationController.swift in Sources */,

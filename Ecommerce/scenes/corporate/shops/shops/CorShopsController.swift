@@ -19,7 +19,7 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
         
         addSubviews(tableView)
         
-        tableView.onItemSelected = onShopClicked
+        tableView.onItemSelected = navController?.shopsToProduct
         
         activateConstraints(
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -36,10 +36,5 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
         tableView.clear()
         
         viewModel.fetchMyShops(completion: tableView.addItems)
-    }
-    
-    
-    private func onShopClicked(item: Shop) {
-        show(message: item.name, type: .success)
     }
 }
