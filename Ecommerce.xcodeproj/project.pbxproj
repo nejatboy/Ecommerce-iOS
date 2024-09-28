@@ -10,6 +10,7 @@
 		C423BD2E2C5E674A0066ACBC /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C423BD2D2C5E674A0066ACBC /* SignUpController.swift */; };
 		C42C80032C657E6F009D499A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80022C657E6F009D499A /* SignUpViewModel.swift */; };
 		C42C80052C657EE9009D499A /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80042C657EE9009D499A /* SignInViewModel.swift */; };
+		C439AB3B2CA88F6200400126 /* CorProductsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C439AB3A2CA88F6200400126 /* CorProductsTableView.swift */; };
 		C43FCFB92C56DCB9005A1AFA /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFB82C56DCB9005A1AFA /* SignInController.swift */; };
 		C4519CA52C8E358E0039ACCF /* CorAddShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4519CA42C8E358E0039ACCF /* CorAddShopController.swift */; };
 		C4E19A8F2C98C2BF00EBA228 /* CorShopsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E19A8E2C98C2BF00EBA228 /* CorShopsTableView.swift */; };
@@ -66,6 +67,7 @@
 		C423BD2D2C5E674A0066ACBC /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		C42C80022C657E6F009D499A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		C42C80042C657EE9009D499A /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		C439AB3A2CA88F6200400126 /* CorProductsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorProductsTableView.swift; sourceTree = "<group>"; };
 		C43FCFB82C56DCB9005A1AFA /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		C4519CA42C8E358E0039ACCF /* CorAddShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorAddShopController.swift; sourceTree = "<group>"; };
 		C4E19A8E2C98C2BF00EBA228 /* CorShopsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorShopsTableView.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			children = (
 				D96898A02CA84FE3003FD87F /* CorProductsViewModel.swift */,
 				D96898A22CA84FF6003FD87F /* CorProductsController.swift */,
+				C439AB3A2CA88F6200400126 /* CorProductsTableView.swift */,
 			);
 			path = products;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				D95308272C8CB4F500914617 /* CorProfileNavigationController.swift in Sources */,
 				C43FCFB92C56DCB9005A1AFA /* SignInController.swift in Sources */,
 				D93B92372C56DB0400F0BF6F /* Views.swift in Sources */,
+				C439AB3B2CA88F6200400126 /* CorProductsTableView.swift in Sources */,
 				D97846842C9CBE73008ED603 /* LocationService.swift in Sources */,
 				D946D3EC2C81EBD200A56EF7 /* TrainingViewModel.swift in Sources */,
 				C42C80032C657E6F009D499A /* SignUpViewModel.swift in Sources */,
