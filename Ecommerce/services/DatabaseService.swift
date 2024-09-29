@@ -9,7 +9,7 @@ import FirebaseFirestore
 import FirebaseCore
 
 
-struct DatabaseService {
+struct DatabaseService: Service {
     
     static let instance = DatabaseService()
     private let db = Firestore.firestore()
@@ -68,7 +68,7 @@ struct DatabaseService {
     
     ///Ticari kullanıcının dükkan eklemesi için kullanırız.
     func addShop(shop: Shop, completion: Handler?) {
-        guard let userUid = UserDefaultsService.instance.currentUser?.uid else {
+        guard (UserDefaultsService.instance.currentUser?.uid) != nil else {
             show(message: "Please log in.", type: .error)
             return
         }
@@ -84,6 +84,7 @@ struct DatabaseService {
     }
     
     
+    /// Login olan ticari müşterinin dükkanlarını çekmek için kullanırız.
     func getMyShops(completion: Callback<[Shop]?>?) {
         guard let userUid = UserDefaultsService.instance.currentUser?.uid else {
             show(message: "Please log in.", type: .error)
@@ -102,8 +103,29 @@ struct DatabaseService {
     }
     
     
-    private func show(message: String?, type: AlertType) {
-        let okAction = AlertModel(title: "Okay")
-        AlertView.instance.show(type: type, message: message, actions: [okAction])
+    /// Dükkana ürün eklemek için kullanırız
+    ///
+    /// - Parameters:
+    ///   - product: Ürün modeli.
+    ///   - completion: Başarılı kaydı ifade eder.
+    func addProduct(product: Product, completion: Handler?) {
+        guard (UserDefaultsService.instance.currentUser?.uid) != nil else {
+            show(message: "Please log in.", type: .error)
+            return
+        }
+        
+        guard let shopUid = product.shopUid else {
+            show(message: "Shop cannot find.", type: .error)
+            return
+        }
+        
+        db.collection("Shops").document(shopUid).collection("Products").document().setData(product.dictionary) { error in
+            if let error = error {
+                show(message: error.localizedDescription, type: .error)
+                return
+            }
+            
+            completion?()
+        }
     }
 }
