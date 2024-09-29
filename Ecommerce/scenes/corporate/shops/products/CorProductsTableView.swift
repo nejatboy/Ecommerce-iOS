@@ -26,36 +26,32 @@ class CorProductsCell: TableViewCell<Product> {
         selectionBackgroundColor = .lightGray
         backgroundColor = .clear
         
-        productName.textColor = .systemOrange
-        productPrice.textColor = .systemBlue
+        productName.textColor = .black
+        productPrice.textColor = .gray
         
-        addSubviews(productImage,productName, productPrice)
+        addSubviews(productImage, productName, productPrice)
         
         activateConstraints(
-            productImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3),
+            productImage.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 2),
             productImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 3),
-            productImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 3),
-            productImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 3),
             
-            productName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3),
-            productName.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            productName.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 2),
+            productName.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 5),
             
             productPrice.topAnchor.constraint(equalTo: productName.bottomAnchor, constant: 3),
             productPrice.leadingAnchor.constraint(equalTo: productName.leadingAnchor, constant: 0),
-            productPrice.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 6),
             
-            contentView.bottomAnchor.constraint(equalTo: productImage.bottomAnchor, constant: 100)
+            contentView.bottomAnchor.constraint(equalTo: productPrice.bottomAnchor, constant: 10)
         )
+        
+        productImage.set(cornerRadius: 25)
+        productImage.clipsToBounds = true
     }
     
     
     override func setItem(_ item: Product) {
-       // productImage.image = item.imageUrl
+        productImage.load(photoUrl: item.imageUrl)
         productName.text = item.name
-        if let price = item.price {
-            productPrice.text = String(format: "%.2f", price)
-        } else {
-            productPrice.text = "Ürün fiyatı girilmemiş."
-        }
+        productPrice.text = String(item.price ?? 0.0)
     }
 }

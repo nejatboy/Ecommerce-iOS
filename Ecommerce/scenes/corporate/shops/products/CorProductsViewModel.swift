@@ -11,8 +11,8 @@ class CorProductsViewModel: ViewModel {
     
     var selectedShop: Shop?
     let products: [Product] = [
-        .init(uid: nil, name: "Sucuk", price: 152.72, imageUrl: nil),
-        .init(uid: nil, name: "Silgi", price: 20.50, imageUrl: nil),
-        .init(uid: nil, name: "Kalem", price: 56.99, imageUrl: nil)
+        .init(uid: nil, name: "Sucuk", price: 152.72, imageUrl: "https://static.ticimax.cloud/40901/uploads/urunresimleri/dogal-klasik-kangal-sucuk-400-gr-295114.jpg" ),
+        .init(uid: nil, name: "Silgi", price: 20.50, imageUrl: "https://www.ersanlisanat.com/u/ersanlisanat/img/c/f/a/faber-castell-dust-free-kirmizi-silgi-kucukcc0f87b1a59491e53cd7b41b292f92cb.jpg"),
+        .init(uid: nil, name: "Kalem", price: 56.99, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKO6AXLxT48tLTZS-WEBE2Ty7VQxL7mu3J_A&s")
     ]
 }
