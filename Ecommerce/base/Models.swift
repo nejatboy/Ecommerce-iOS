@@ -46,9 +46,10 @@ struct Coordinate {
 
 
 
-struct Product {
-    let uid: String?
+struct Product: Codable {
+    var uid: String?
     let name: String?
     let price: Double?
     let imageUrl: String?
+    let shopUid: String?
 }

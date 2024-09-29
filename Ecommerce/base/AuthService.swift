@@ -8,7 +8,7 @@
 import FirebaseAuth
 
 
-struct AuthService {
+struct AuthService: Service {
     
     static let instance = AuthService()
     private let auth = Auth.auth()
@@ -61,11 +61,5 @@ struct AuthService {
         } catch let signOutError as NSError {
             show(message: signOutError.localizedDescription, type: .error)
         }
-    }
-    
-    
-    private func show(message: String?, type: AlertType) {
-        let okAction = AlertModel(title: "Okay")
-        AlertView.instance.show(type: type, message: message, actions: [okAction])
     }
 }

@@ -10,6 +10,7 @@
 		C423BD2E2C5E674A0066ACBC /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C423BD2D2C5E674A0066ACBC /* SignUpController.swift */; };
 		C42C80032C657E6F009D499A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80022C657E6F009D499A /* SignUpViewModel.swift */; };
 		C42C80052C657EE9009D499A /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80042C657EE9009D499A /* SignInViewModel.swift */; };
+		C439AB3B2CA88F6200400126 /* CorProductsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C439AB3A2CA88F6200400126 /* CorProductsTableView.swift */; };
 		C43FCFB92C56DCB9005A1AFA /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFB82C56DCB9005A1AFA /* SignInController.swift */; };
 		C4519CA52C8E358E0039ACCF /* CorAddShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4519CA42C8E358E0039ACCF /* CorAddShopController.swift */; };
 		C4E19A8F2C98C2BF00EBA228 /* CorShopsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E19A8E2C98C2BF00EBA228 /* CorShopsTableView.swift */; };
@@ -29,6 +30,8 @@
 		D95308322C8CB5F800914617 /* CorShopsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95308312C8CB5F800914617 /* CorShopsController.swift */; };
 		D95308342C8CB61100914617 /* CorShopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95308332C8CB61100914617 /* CorShopsViewModel.swift */; };
 		D9578F682C65696200D6DB1E /* TextFieldLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9578F672C65696200D6DB1E /* TextFieldLayout.swift */; };
+		D96499E82CA9C83800894E8D /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96499E72CA9C83800894E8D /* StorageService.swift */; };
+		D96499EA2CA9CAE900894E8D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96499E92CA9CAE900894E8D /* Service.swift */; };
 		D968989C2CA84F68003FD87F /* CorAddProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D968989B2CA84F68003FD87F /* CorAddProductViewModel.swift */; };
 		D968989E2CA84F9A003FD87F /* CorAddProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D968989D2CA84F9A003FD87F /* CorAddProductController.swift */; };
 		D96898A12CA84FE3003FD87F /* CorProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96898A02CA84FE3003FD87F /* CorProductsViewModel.swift */; };
@@ -66,6 +69,7 @@
 		C423BD2D2C5E674A0066ACBC /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		C42C80022C657E6F009D499A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		C42C80042C657EE9009D499A /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		C439AB3A2CA88F6200400126 /* CorProductsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorProductsTableView.swift; sourceTree = "<group>"; };
 		C43FCFB82C56DCB9005A1AFA /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		C4519CA42C8E358E0039ACCF /* CorAddShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorAddShopController.swift; sourceTree = "<group>"; };
 		C4E19A8E2C98C2BF00EBA228 /* CorShopsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorShopsTableView.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 		D95308312C8CB5F800914617 /* CorShopsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorShopsController.swift; sourceTree = "<group>"; };
 		D95308332C8CB61100914617 /* CorShopsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorShopsViewModel.swift; sourceTree = "<group>"; };
 		D9578F672C65696200D6DB1E /* TextFieldLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLayout.swift; sourceTree = "<group>"; };
+		D96499E72CA9C83800894E8D /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		D96499E92CA9CAE900894E8D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		D968989B2CA84F68003FD87F /* CorAddProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorAddProductViewModel.swift; sourceTree = "<group>"; };
 		D968989D2CA84F9A003FD87F /* CorAddProductController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorAddProductController.swift; sourceTree = "<group>"; };
 		D96898A02CA84FE3003FD87F /* CorProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorProductsViewModel.swift; sourceTree = "<group>"; };
@@ -247,6 +253,7 @@
 			children = (
 				D96898A02CA84FE3003FD87F /* CorProductsViewModel.swift */,
 				D96898A22CA84FF6003FD87F /* CorProductsController.swift */,
+				C439AB3A2CA88F6200400126 /* CorProductsTableView.swift */,
 			);
 			path = products;
 			sourceTree = "<group>";
@@ -309,6 +316,7 @@
 				D9D028822C68FFA7008D3731 /* Enums.swift */,
 				D9D028842C6901EC008D3731 /* Models.swift */,
 				D946D3E62C81EB4100A56EF7 /* TableView.swift */,
+				D96499E92CA9CAE900894E8D /* Service.swift */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -341,6 +349,7 @@
 				D94F15B32C7218BF00CD0850 /* ParserService.swift */,
 				D9B559A32C7916FD007DA2C8 /* UserDefaultsService.swift */,
 				D97846832C9CBE73008ED603 /* LocationService.swift */,
+				D96499E72CA9C83800894E8D /* StorageService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -517,11 +526,13 @@
 				D946D3EE2C81EC8700A56EF7 /* TrainingTableView.swift in Sources */,
 				D946D3F42C82114D00A56EF7 /* IndividualTabbarController.swift in Sources */,
 				D96898A12CA84FE3003FD87F /* CorProductsViewModel.swift in Sources */,
+				D96499EA2CA9CAE900894E8D /* Service.swift in Sources */,
 				D95308322C8CB5F800914617 /* CorShopsController.swift in Sources */,
 				D9B559A42C7916FD007DA2C8 /* UserDefaultsService.swift in Sources */,
 				D95308272C8CB4F500914617 /* CorProfileNavigationController.swift in Sources */,
 				C43FCFB92C56DCB9005A1AFA /* SignInController.swift in Sources */,
 				D93B92372C56DB0400F0BF6F /* Views.swift in Sources */,
+				C439AB3B2CA88F6200400126 /* CorProductsTableView.swift in Sources */,
 				D97846842C9CBE73008ED603 /* LocationService.swift in Sources */,
 				D946D3EC2C81EBD200A56EF7 /* TrainingViewModel.swift in Sources */,
 				C42C80032C657E6F009D499A /* SignUpViewModel.swift in Sources */,
@@ -537,6 +548,7 @@
 				D9D028852C6901EC008D3731 /* Models.swift in Sources */,
 				C4E19A8F2C98C2BF00EBA228 /* CorShopsTableView.swift in Sources */,
 				D9D7CAD62C7A39AF0006B2FB /* LoginNavigationController.swift in Sources */,
+				D96499E82CA9C83800894E8D /* StorageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
