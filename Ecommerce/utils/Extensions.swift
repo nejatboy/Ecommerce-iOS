@@ -5,7 +5,7 @@
 //  Created by Nejat Boy on 7.08.2024.
 //
 
-import UIKit
+import SDWebImage
 
 
 //MARK: TypeAlias
@@ -16,6 +16,7 @@ typealias Callback<T> = (T) -> Void
 
 //MARK: UIFont
 extension UIFont {
+    
     
     static func setDynamicFont(size: CGFloat) -> UIFont {
         let width = Device.width
@@ -86,3 +87,23 @@ extension UIImage {
 //    static let warning = UIColor(named: "warning")!
 //    static let snow = UIColor(named: "snow")!
 //}
+
+
+
+//MARK: UIImageView
+extension UIImageView {
+    
+    
+    func load(photoUrl: String?, completion: Callback<UIImage?>? = nil) {
+        guard let photoUrl = photoUrl else {
+            image = nil
+            return
+        }
+        
+        let url = URL(string: photoUrl)
+        
+        sd_setImage(with: url) { image, _, _, _ in
+            completion?(image)
+        }
+    }
+}
