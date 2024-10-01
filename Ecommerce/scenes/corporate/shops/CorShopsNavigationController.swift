@@ -37,7 +37,12 @@ class CorShopsNavigationController: NavigationController {
     
     
     func productsToAddProduct() {
-        let controller = CorAddProductController()
-        pushViewController(controller, animated: true)
+        if #available(iOS 14.0, *) {
+            let controller = CorAddProductController()
+            pushViewController(controller, animated: true)
+        } else {
+            // Fallback on earlier versions
+        }
+        
     }
 }

@@ -13,6 +13,12 @@ class TextFieldLayout: View, UITextFieldDelegate {
     private let textField = TextField()
     private let labelPlaceholder = Label()
     
+    var isNumeric: Bool = false {
+         didSet {
+             textField.delegate = isNumeric ? self : nil
+         }
+     }
+
     
     override func configure() {
         widthAnchor.constraint(equalToConstant: Device.width * 0.8).isActive = true
@@ -42,6 +48,27 @@ class TextFieldLayout: View, UITextFieldDelegate {
             bottomAnchor.constraint(equalTo: textField.bottomAnchor),
             trailingAnchor.constraint(equalTo: textField.trailingAnchor)
         ])
+    }
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard isNumeric else { return true } // Eğer numeric değilse, tüm girişlere izin ver.
+
+          let currentText = textField.text ?? ""
+          guard let stringRange = Range(range, in: currentText) else { return false }
+          let replacementString = string == "," ? "." : string
+          let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+
+          // Geçerli karakter seti (sadece rakamlar ve bir adet ondalık noktası veya virgül)
+          let allowedCharacters = CharacterSet(charactersIn: "0123456789.,")
+          let characterSet = CharacterSet(charactersIn: string)
+
+          // Ondalık sayısı kontrolü (birden fazla olmamalı)
+          let decimalCount = updatedText.components(separatedBy: ".").count - 1
+          let commaCount = updatedText.components(separatedBy: ",").count - 1
+
+          // Geçerli karakter seti ve ondalık sayısının birden fazla olmaması kontrolü
+          return allowedCharacters.isSuperset(of: characterSet) && (decimalCount <= 1) && (commaCount <= 1)
     }
     
     
