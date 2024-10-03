@@ -58,4 +58,31 @@ struct ParserService {
             longitude: document.get("longitude") as? Double
         )
     }
+    
+    
+    func parseToProducts(snapshot: QuerySnapshot?) -> [Product]? {
+        guard let snapshot = snapshot else {
+            return nil
+        }
+        
+        var products: [Product] = []
+        
+        for document in snapshot.documents {
+            let product = parseToProduct(document: document)
+            products.append(product)
+        }
+        
+        return products
+    }
+    
+    
+    private func parseToProduct(document: QueryDocumentSnapshot) -> Product {
+        Product(
+            uid: document.documentID,
+            name: document.get("name") as? String,
+            price: document.get("price") as? Double,
+            imageUrl: document.get("imageUrl") as? String,
+            shopUid: document.get("shopUid") as? String
+        )
+    }
 }
