@@ -128,4 +128,27 @@ struct DatabaseService: Service {
             completion?()
         }
     }
+    
+    
+    /// Dükkana ait ürüneri çekmek için kullanırız
+    ///
+    /// - Parameters:
+    ///   - shopUid: Ürünlerini istediğimiz uid'sidir.
+    ///   - completion: Optional olarak ürünleri döber.
+    func getProducts(of shopUid: String?, completion: Callback<[Product]?>?) {
+        guard let shopUid = shopUid else {
+            show(message: "Shop cannot find.", type: .error)
+            return
+        }
+        
+        db.collection("Shops").document(shopUid).collection("Products").getDocuments { snapshot, error in
+            if let error = error {
+                show(message: error.localizedDescription, type: .error)
+                return
+            }
+            
+            let products = ParserService.instance.parseToProducts(snapshot: snapshot)
+            completion?(products)
+        }
+    }
 }
