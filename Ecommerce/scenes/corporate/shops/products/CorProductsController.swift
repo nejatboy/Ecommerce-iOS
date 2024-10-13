@@ -14,7 +14,13 @@ class CorProductsController: Controller<CorProductsViewModel, CorShopsNavigation
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setNavButton(icon: .add, onClicked: navController?.productsToAddProduct)
+     //   setNavButton(icon: .add, onClicked: navController?.productsToAddProduct)
+        setNavButton(icon: .add) {
+            guard let shop = self.viewModel.selectedShop else {
+                return
+            }
+            self.navController?.productsToAddProduct(shop: shop)
+        }
         
         navigationItem.title = viewModel.selectedShop?.name
         
