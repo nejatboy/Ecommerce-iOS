@@ -92,13 +92,14 @@ class CorAddProductController: Controller<CorAddProductViewModel, CorShopsNaviga
             show(message: "Image is required.", type: .error)
             return
         }
-           
-        let product = Product(name: productName.text,
-                               price: Double(productPrice.text ?? "0"),
-                               imageUrl: nil,
-                               shopUid: viewModel.chooseShop?.uid)
+        let priceText = productPrice.text?.replacingOccurrences(of: ",", with: ".")
         
-        viewModel.a(image: image, name: product.name!, price: product.price ?? 0, shopUid: product.shopUid!) {
+        let product = Product(name: productName.text,
+                               price: Double(priceText ?? "0"),
+                               imageUrl: nil,
+                               shopUid: viewModel.choosenShop?.uid)
+        
+        viewModel.addProduct(image: image, product: product) {
             self.show(message: "Product Add Succesfully.", type: .success)
         }
     }

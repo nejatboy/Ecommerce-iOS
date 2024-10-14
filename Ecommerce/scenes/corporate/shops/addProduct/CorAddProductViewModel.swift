@@ -10,15 +10,27 @@ import UIKit
 
 class CorAddProductViewModel: ViewModel {
     
-    var chooseShop: Shop?
+    var choosenShop: Shop?
     
-    func a(image: UIImage?, name: String, price: Double, shopUid: String, completion: Handler?) {
+   /* func addProduct(image: UIImage?, name: String, price: Double, shopUid: String, completion: Handler?) {
         guard var image = image else {
             return
         }
         
         StorageService.instance.upload(image: &image) { imageUrl in
-            DatabaseService.instance.addProduct(product: Product(name: name, price: price, imageUrl: imageUrl, shopUid: shopUid), completion: completion)
+            let product = Product(name: name, price: price, imageUrl: imageUrl, shopUid: shopUid)
+            DatabaseService.instance.addProduct(product: product, completion: completion)
+        }
+    } */
+    
+    func addProduct(image: UIImage?, product: Product?, completion: Handler?) {
+        guard var image = image else {
+            return
+        }
+        
+        StorageService.instance.upload(image: &image) { imageUrl in
+            let currentProduct = Product(name: product?.name, price: product?.price, imageUrl: imageUrl, shopUid: product?.shopUid)
+            DatabaseService.instance.addProduct(product: currentProduct, completion: completion)
         }
     }
 }
