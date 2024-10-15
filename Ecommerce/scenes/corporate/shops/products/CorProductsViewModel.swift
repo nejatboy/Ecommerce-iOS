@@ -5,7 +5,6 @@
 //  Created by Nejat Boy on 28.09.2024.
 //
 
-import UIKit
 
 class CorProductsViewModel: ViewModel {
     
