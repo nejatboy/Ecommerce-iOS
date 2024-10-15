@@ -20,7 +20,6 @@ class CorProductsController: Controller<CorProductsViewModel, CorShopsNavigation
         
         addSubviews(tableView)
         
-        tableView.addItems(viewModel.products)
         tableView.onItemSelected = onItemClicked
         
         activateConstraints(
@@ -29,6 +28,15 @@ class CorProductsController: Controller<CorProductsViewModel, CorShopsNavigation
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         )
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.clear()
+        
+        viewModel.fetchCurrentShopProducts(completion: tableView.addItems)
     }
     
     
