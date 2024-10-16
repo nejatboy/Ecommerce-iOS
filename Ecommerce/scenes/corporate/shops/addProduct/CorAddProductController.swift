@@ -79,6 +79,8 @@ class CorAddProductController: Controller<CorAddProductViewModel, CorShopsNaviga
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         
+        productImage.image = nil
+        
         guard let croppedImage = info[.editedImage] as? UIImage else {
             return
         }
@@ -88,19 +90,18 @@ class CorAddProductController: Controller<CorAddProductViewModel, CorShopsNaviga
     
     
     func touchAddProduct() {
-        guard let image = productImage.image else {
-            show(message: "Image is required.", type: .error)
-            return
-        }
         let priceText = productPrice.text?.replacingOccurrences(of: ",", with: ".")
         
-        let product = Product(name: productName.text,
-                               price: Double(priceText ?? "0"),
-                               imageUrl: nil,
-                               shopUid: viewModel.choosenShop?.uid)
+        guard let name = productName.text,
+              let price = Double(priceText ?? "0"),
+              let shopUid = viewModel.choosenShopUid
+        else {
+            return
+        }
         
-        viewModel.addProduct(image: image, product: product) {
+        viewModel.addProduct(imageView: productImage, name: name, price: price, shopUid: shopUid) {
             self.show(message: "Product Add Succesfully.", type: .success)
+            self.navController?.popViewController(animated: true)
         }
     }
 }
