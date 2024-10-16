@@ -36,9 +36,9 @@ class CorShopsNavigationController: NavigationController {
     }
     
     
-    func productsToAddProduct(shop: Shop) {
+    func productsToAddProduct(shopUid: String) {
         let controller = CorAddProductController()
-        controller.viewModel.choosenShopUid = shop.uid
+        controller.viewModel.choosenShopUid = shopUid
         pushViewController(controller, animated: true)
     }
 }

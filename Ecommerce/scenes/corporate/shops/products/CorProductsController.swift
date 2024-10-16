@@ -18,7 +18,7 @@ class CorProductsController: Controller<CorProductsViewModel, CorShopsNavigation
             guard let shop = self.viewModel.selectedShop else {
                 return
             }
-            self.navController?.productsToAddProduct(shop: shop)
+            self.navController?.productsToAddProduct(shopUid: shop.uid ?? "")
         }
         
         navigationItem.title = viewModel.selectedShop?.name

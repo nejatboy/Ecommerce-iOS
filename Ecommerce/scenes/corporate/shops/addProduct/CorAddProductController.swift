@@ -41,7 +41,7 @@ class CorAddProductController: Controller<CorAddProductViewModel, CorShopsNaviga
             addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
         
-        addButton.action = touchAddProduct
+        addButton.action = addButtonClicked
     }
     
     
@@ -89,17 +89,8 @@ class CorAddProductController: Controller<CorAddProductViewModel, CorShopsNaviga
     }
     
     
-    func touchAddProduct() {
-        let priceText = productPrice.text?.replacingOccurrences(of: ",", with: ".")
-        
-        guard let name = productName.text,
-              let price = Double(priceText ?? "0"),
-              let shopUid = viewModel.choosenShopUid
-        else {
-            return
-        }
-        
-        viewModel.addProduct(imageView: productImage, name: name, price: price, shopUid: shopUid) {
+    func addButtonClicked() {        
+        viewModel.addProduct(imageView: productImage, name: productName.text, price: productPrice.text) {
             self.show(message: "Product Add Succesfully.", type: .success)
             self.navController?.popViewController(animated: true)
         }
