@@ -15,10 +15,7 @@ class CorProductsController: Controller<CorProductsViewModel, CorShopsNavigation
         super.viewDidLoad()
         
         setNavButton(icon: .add) {
-            guard let shop = self.viewModel.selectedShop else {
-                return
-            }
-            self.navController?.productsToAddProduct(shopUid: shop.uid ?? "")
+            self.navController?.productsToAddProduct(shopUid: self.viewModel.selectedShop?.uid)
         }
         
         navigationItem.title = viewModel.selectedShop?.name
