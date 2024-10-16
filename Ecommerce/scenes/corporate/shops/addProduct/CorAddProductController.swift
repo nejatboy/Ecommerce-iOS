@@ -40,6 +40,8 @@ class CorAddProductController: Controller<CorAddProductViewModel, CorShopsNaviga
             addButton.topAnchor.constraint(equalTo: productPrice.bottomAnchor, constant: 35),
             addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
+        
+        addButton.action = addButtonClicked
     }
     
     
@@ -63,6 +65,7 @@ class CorAddProductController: Controller<CorAddProductViewModel, CorShopsNaviga
         productImage.addGestureRecognizer(tapGesture)
     }
     
+    
     @objc fileprivate func selectPhoto() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -72,13 +75,24 @@ class CorAddProductController: Controller<CorAddProductViewModel, CorShopsNaviga
         present(imagePicker, animated: true)
     }
     
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
+        
+        productImage.image = nil
         
         guard let croppedImage = info[.editedImage] as? UIImage else {
             return
         }
         
         productImage.image = croppedImage
+    }
+    
+    
+    func addButtonClicked() {        
+        viewModel.addProduct(imageView: productImage, name: productName.text, price: productPrice.text) {
+            self.show(message: "Product Add Succesfully.", type: .success)
+            self.navController?.popViewController(animated: true)
+        }
     }
 }
