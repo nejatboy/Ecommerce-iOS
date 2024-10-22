@@ -13,6 +13,15 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
     private let loginButton = ButtonPrimary()
     private let signUpButton = ButtonSecondary()
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -29,7 +38,7 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
             loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
             
             signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signUpButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            signUpButton.bottomAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 410)
         )
     }
     
@@ -37,6 +46,7 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
     override func customizeViews() {
         emailTextField.placeholder = "Email"
         passwordTextField.placeholder = "Password"
+        
         
         passwordTextField.isSecureTextEntry = true
         

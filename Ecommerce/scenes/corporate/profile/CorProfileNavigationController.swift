@@ -9,15 +9,8 @@
 class CorProfileNavigationController: NavigationController {
     
     
-   /* override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let rootController = CorProfileController()
-        viewControllers = [rootController]
-    } */
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         let rootController = CorProfileController()
         viewControllers = [rootController]
@@ -27,6 +20,6 @@ class CorProfileNavigationController: NavigationController {
     func profileToSignIn() {
         let signInController = SignInController()
         signInController.modalPresentationStyle = .fullScreen
-        present(signInController, animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
 }

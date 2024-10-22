@@ -28,20 +28,17 @@ class CorProfileController: Controller<CorProfileViewModel, CorProfileNavigation
         addSubviews(nameText, surnameText, emailText, logOutButton)
         
         activateConstraints(
-            nameText.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            nameText.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            nameText.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            nameText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nameText.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             
-            surnameText.topAnchor.constraint(equalTo: nameText.bottomAnchor, constant: 20),
-            surnameText.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            surnameText.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            surnameText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            surnameText.topAnchor.constraint(equalTo: nameText.bottomAnchor, constant: 15),
             
-            emailText.topAnchor.constraint(equalTo: surnameText.bottomAnchor, constant: 20),
-            emailText.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            emailText.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            emailText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emailText.topAnchor.constraint(equalTo: surnameText.bottomAnchor, constant: 15),
             
-            logOutButton.topAnchor.constraint(equalTo: emailText.bottomAnchor, constant: 35),
-            logOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            logOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logOutButton.bottomAnchor.constraint(equalTo: emailText.bottomAnchor, constant: 105)
         )
         
         getUserInfos()
@@ -70,9 +67,9 @@ class CorProfileController: Controller<CorProfileViewModel, CorProfileNavigation
     private func logOutButtonClicked() {
         AuthService.instance.logOut {
             self.showLoading()
+            self.dismiss(animated: true)
             self.navController?.profileToSignIn()
         }
         self.hideLoading()
     }
-    
 }
