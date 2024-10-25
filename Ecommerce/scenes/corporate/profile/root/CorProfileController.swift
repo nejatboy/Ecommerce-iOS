@@ -19,12 +19,6 @@ class CorProfileController: Controller<CorProfileViewModel, CorProfileNavigation
         
         navigationItem.title = "Profile"
         
-        setNavButton(icon: .actions) {
-            self.nameText.isUserInteractionEnabled = true
-            self.surnameText.isUserInteractionEnabled = true
-            self.emailText.isUserInteractionEnabled = true
-        }
-        
         addSubviews(nameText, surnameText, emailText, logOutButton)
         
         activateConstraints(
@@ -40,10 +34,6 @@ class CorProfileController: Controller<CorProfileViewModel, CorProfileNavigation
             logOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logOutButton.bottomAnchor.constraint(equalTo: emailText.bottomAnchor, constant: 105)
         )
-        
-        getUserInfos()
-        
-        logOutButton.action = logOutButtonClicked
     }
     
     
@@ -52,6 +42,10 @@ class CorProfileController: Controller<CorProfileViewModel, CorProfileNavigation
         self.nameText.isUserInteractionEnabled = false
         self.surnameText.isUserInteractionEnabled = false
         self.emailText.isUserInteractionEnabled = false
+        
+        getUserInfos()
+        
+        logOutButton.action = logOutButtonClicked
     }
     
     
@@ -65,8 +59,8 @@ class CorProfileController: Controller<CorProfileViewModel, CorProfileNavigation
     
     
     private func logOutButtonClicked() {
-        AuthService.instance.logOut {
-            self.showLoading()
+        self.showLoading()
+        viewModel.logOut {
             self.dismiss(animated: true)
             self.navController?.profileToSignIn()
         }

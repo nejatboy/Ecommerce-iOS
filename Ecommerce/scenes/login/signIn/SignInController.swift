@@ -38,7 +38,7 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
             loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
             
             signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signUpButton.bottomAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 410)
+            signUpButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         )
     }
     

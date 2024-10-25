@@ -18,8 +18,6 @@ class CorProfileNavigationController: NavigationController {
     
     
     func profileToSignIn() {
-        let signInController = SignInController()
-        signInController.modalPresentationStyle = .fullScreen
         navigationController?.popToRootViewController(animated: true)
     }
 }

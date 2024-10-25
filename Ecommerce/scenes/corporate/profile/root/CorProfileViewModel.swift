@@ -5,15 +5,18 @@
 //  Created by Nejat Boy on 7.09.2024.
 //
 
-import FirebaseAuth
 
 class CorProfileViewModel: ViewModel {
     
+    func logOut(completion: Handler?) {
+        AuthService.instance.logOut(completion: completion)
+    }
+    
+    
     func fetchUserInfos(completion: Callback<User>?) {
-        guard let uid = UserDefaultsService.instance.currentUser?.uid else {
+        guard let user = UserDefaultsService.instance.currentUser else {
             return
         }
-                
-        DatabaseService.instance.fetchUser(uid: uid, completion: completion)
+        completion?(user)
     }
 }
