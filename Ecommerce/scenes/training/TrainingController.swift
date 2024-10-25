@@ -39,11 +39,17 @@ class TrainingController: Controller<TrainingViewModel, NavigationController> {
     
     
     private func locationReceived(coordinate: Coordinate) {
-        show(message: "Konum alındı.", type: .success)
+//        show(message: "Konum alındı.", type: .success)
     }
     
     
     private func onItemClicked(item: TrainingModel) {
-        show(message: item.title, type: .success)
+        let noAction = AlertModel(title: "No")
+        
+        let yesAction = AlertModel(title: "Yes") {
+            print("Meyve yedim.")
+        }
+        
+        showAlert(type: .warning, message: "Meyve yemek istiyor musun?", actions: [noAction, yesAction])
     }
 }

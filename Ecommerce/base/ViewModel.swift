@@ -34,4 +34,15 @@ class ViewModel {
     func hideLoading() {
         LoadingView.instance.hide()
     }
+    
+    
+    /// Kullanıcıya alert göstermek için kullanılırız.
+    ///
+    /// - Parameters:
+    ///   - message: Gösterilecek olan mesaj.
+    ///   - type: Başarılı / Hata / Uyarı mesaj tipleridir.
+    ///   - actions: Tıklanma işlemleri
+    func showAlert(type: AlertType, message: String?, actions: [AlertModel]) {
+        AlertView.instance.show(type: type, message: message, actions: actions)
+    }
 }
