@@ -15,9 +15,4 @@ class CorProfileNavigationController: NavigationController {
         let rootController = CorProfileController()
         viewControllers = [rootController]
     }
-    
-    
-    func profileToSignIn() {
-        navigationController?.popToRootViewController(animated: true)
-    }
 }

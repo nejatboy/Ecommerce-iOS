@@ -17,8 +17,8 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        emailTextField.text = ""
-        passwordTextField.text = ""
+        emailTextField.text = nil
+        passwordTextField.text = nil
     }
     
     
@@ -46,7 +46,6 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
     override func customizeViews() {
         emailTextField.placeholder = "Email"
         passwordTextField.placeholder = "Password"
-        
         
         passwordTextField.isSecureTextEntry = true
         

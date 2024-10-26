@@ -9,7 +9,11 @@
 class CorProfileViewModel: ViewModel {
     
     func logOut(completion: Handler?) {
-        AuthService.instance.logOut(completion: completion)
+        showLoading()
+        AuthService.instance.logOut {
+            completion?()
+        }
+        self.hideLoading()
     }
     
     

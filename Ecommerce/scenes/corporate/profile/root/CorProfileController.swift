@@ -34,18 +34,20 @@ class CorProfileController: Controller<CorProfileViewModel, CorProfileNavigation
             logOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logOutButton.bottomAnchor.constraint(equalTo: emailText.bottomAnchor, constant: 105)
         )
+        
+        nameText.isUserInteractionEnabled = false
+        surnameText.isUserInteractionEnabled = false
+        emailText.isUserInteractionEnabled = false
+        
+        getUserInfos()
+        
+        logOutButton.action = logOutButtonClicked
+
     }
     
     
     override func customizeViews() {
         logOutButton.setTitle("LogOut", for: .normal)
-        self.nameText.isUserInteractionEnabled = false
-        self.surnameText.isUserInteractionEnabled = false
-        self.emailText.isUserInteractionEnabled = false
-        
-        getUserInfos()
-        
-        logOutButton.action = logOutButtonClicked
     }
     
     
@@ -59,11 +61,14 @@ class CorProfileController: Controller<CorProfileViewModel, CorProfileNavigation
     
     
     private func logOutButtonClicked() {
-        self.showLoading()
-        viewModel.logOut {
-            self.dismiss(animated: true)
-            self.navController?.profileToSignIn()
+        let leaveAction = AlertModel(title: "Yes") {
+            self.viewModel.logOut {
+                self.tabBarController?.dismiss(animated: true)
+            }
         }
-        self.hideLoading()
+        
+        let notLeaveAction = AlertModel(title: "No")
+        
+        showAlert(type: .warning, message: "Do you want to go out ?", actions: [leaveAction, notLeaveAction])
     }
 }
