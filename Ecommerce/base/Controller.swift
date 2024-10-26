@@ -83,6 +83,17 @@ class Controller<VM: ViewModel, NC: NavigationController>: UIViewController {
     }
     
     
+    /// Kullanıcıya alert göstermek için kullanılırız.
+    ///
+    /// - Parameters:
+    ///   - message: Gösterilecek olan mesaj.
+    ///   - type: Başarılı / Hata / Uyarı mesaj tipleridir.
+    ///   - actions: Tıklanma işlemleri
+    func showAlert(type: AlertType, message: String?, actions: [AlertModel]) {
+        AlertView.instance.show(type: type, message: message, actions: actions)
+    }
+    
+    
     @objc private func navButtonClicked() {
         navigationBarClicked?()
     }

@@ -22,7 +22,7 @@ class CorporateTabbarController: TabbarController {
     }
     
     
-    var shopsNavivationController: CorShopsNavigationController? {
+    var shopsNavigationController: CorShopsNavigationController? {
         findController()
     }
     

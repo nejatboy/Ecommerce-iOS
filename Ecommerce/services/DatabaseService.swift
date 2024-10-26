@@ -134,7 +134,7 @@ struct DatabaseService: Service {
     ///
     /// - Parameters:
     ///   - shopUid: Ürünlerini istediğimiz uid'sidir.
-    ///   - completion: Optional olarak ürünleri döber.
+    ///   - completion: Optional olarak ürünleri döner.
     func getProducts(of shopUid: String?, completion: Callback<[Product]?>?) {
         guard let shopUid = shopUid else {
             show(message: "Shop cannot find.", type: .error)
@@ -149,6 +149,29 @@ struct DatabaseService: Service {
             
             let products = ParserService.instance.parseToProducts(snapshot: snapshot)
             completion?(products)
+        }
+    }
+    
+    
+    /// Çevredeki dükkanları getirmek için kullanırız
+    ///
+    /// - Parameters:
+    ///   - coordinate: Bireysel kullanıcın konumu.
+    ///   - completion: Optional olarak dükkanları döner.
+    func getShops(coordinate: Coordinate, completion: Callback<[Shop]?>?) {
+        guard let userUid = UserDefaultsService.instance.currentUser?.uid else {
+            show(message: "Please log in.", type: .error)
+            return
+        }
+        
+        db.collection("Shops").getDocuments { snapshot, error in
+            if let error = error {
+                show(message: error.localizedDescription, type: .error)
+                return
+            }
+            
+            let shops = ParserService.instance.parseToShops(snapshot: snapshot)
+            completion?(shops)
         }
     }
 }

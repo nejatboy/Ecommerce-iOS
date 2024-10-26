@@ -13,6 +13,22 @@ class IndividualTabbarController: TabbarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBlue
+        let shopsController = IndShopsNavigationController()
+        shopsController.tabBarItem = .init(title: "Shops", image: .iconInfo, selectedImage: nil)
+        
+        let profileController = IndProfileNavigationController()
+        profileController.tabBarItem = .init(title: "Profile", image: .iconProfile, selectedImage: nil)
+        
+        viewControllers = [shopsController, profileController]
+    }
+    
+    
+    var shopsNavigationController: IndShopsNavigationController? {
+        findController()
+    }
+    
+    
+    var profileNavigationController: CorProfileNavigationController? {
+        findController()
     }
 }
