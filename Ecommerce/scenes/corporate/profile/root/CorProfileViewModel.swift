@@ -8,10 +8,11 @@
 
 class CorProfileViewModel: ViewModel {
     
+    
     func logOut(completion: Handler?) {
         let noAction = AlertModel(title: "No")
         
-        let yesAction = AlertModel(title: "Yes") { 
+        let yesAction = AlertModel(title: "Yes") {
             self.showLoading()
             AuthService.instance.logOut {
                 self.hideLoading()
