@@ -50,7 +50,7 @@ class CorProfileController: Controller<CorProfileViewModel, CorProfileNavigation
     }
     
     
-    func getUserInfos() {
+   private func getUserInfos() {
         viewModel.fetchUserInfos { user in
             self.nameText.text = user.name
             self.emailText.text = user.email
