@@ -9,11 +9,17 @@
 class CorProfileViewModel: ViewModel {
     
     func logOut(completion: Handler?) {
-        showLoading()
-        AuthService.instance.logOut {
-            completion?()
+        let notLeaveAction = AlertModel(title: "No")
+        
+        let leaveAction = AlertModel(title: "Yes") {
+            self.showLoading()
+            AuthService.instance.logOut {
+                self.hideLoading()
+                completion?()
+            }
         }
-        self.hideLoading()
+        
+        showAlert(type: .warning, message: "Do you want to go out?", actions: [leaveAction,notLeaveAction])
     }
     
     
