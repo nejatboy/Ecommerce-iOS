@@ -13,6 +13,15 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
     private let loginButton = ButtonPrimary()
     private let signUpButton = ButtonSecondary()
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        emailTextField.text = nil
+        passwordTextField.text = nil
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
