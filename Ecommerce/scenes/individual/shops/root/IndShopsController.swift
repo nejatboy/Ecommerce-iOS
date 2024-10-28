@@ -7,7 +7,6 @@
 
 class IndShopsController: Controller<IndShopsViewModel, IndShopsNavigationController> {
     
-    
     private let tableView = IndShopsTableView()
     
     
@@ -25,35 +24,20 @@ class IndShopsController: Controller<IndShopsViewModel, IndShopsNavigationContro
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         )
         
-        viewModel.fetchLocation { coordinate in
-            self.viewModel.fetchShops(coordinate: coordinate) { shops in
-                if let shops = shops {
-                    self.tableView.addItems(shops)
-                }
-                else {
-                    let okAction = AlertModel(title: "OK")
-                    self.showAlert(type: .error, message: "Dükkan bulunamadı.", actions: [okAction] )
-                }
-                
+        viewModel.fetchLocation(listener: locationReceived)
+    }
+    
+    
+    private func locationReceived(coordinate: Coordinate) {
+        show(message: "Konum alındı." + "latitude : \(coordinate.latitude)" + "\(coordinate.longitude)", type: .success)
+        
+        viewModel.fetchShops(coordinate: coordinate) { shops in
+            if let shops = shops {
+                self.tableView.addItems(shops)
+            }
+            else {
+                self.show(message: "Shop  not found.", type: .error)
             }
         }
     }
-    
-  /*  override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        viewModel.fetchLocation { coordinate in
-            self.viewModel.fetchShops(coordinate: coordinate) { shops in
-                if let shops = shops {
-                    self.tableView.addItems(shops)
-                }
-                else {
-                    let okAction = AlertModel(title: "OK")
-                    self.showAlert(type: .error, message: "Dükkan bulunamadı.", actions: [okAction] )
-                }
-                
-            }
-        }
-    } */
-    
 }
