@@ -7,14 +7,19 @@
 
 class IndProfileViewModel: ViewModel {
     
+    
     func logOut(completion: Handler?) {
-        showLoading()
+        let noAction = AlertModel(title: "No")
         
-        AuthService.instance.logOut {
-            completion?()
+        let yesAction = AlertModel(title: "Yes") {
+            self.showLoading()
+            AuthService.instance.logOut {
+                self.hideLoading()
+                completion?()
+            }
         }
         
-        hideLoading()
+        showAlert(type: .warning, message: "Do you want to go out?", actions: [noAction, yesAction])
     }
     
     

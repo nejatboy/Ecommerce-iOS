@@ -61,15 +61,7 @@ class IndProfileController: Controller<IndProfileViewModel, IndProfileNavigation
     
     private func logOutButtonClicked() {
         viewModel.logOut {
-            let leaveAction = AlertModel(title: "Yes") {
-                self.viewModel.logOut {
-                    self.tabBarController?.dismiss(animated: true)
-                }
-            }
-            
-            let notLeaveAction = AlertModel(title: "No")
-            
-            self.showAlert(type: .warning, message: "Do you want to go out ?", actions: [leaveAction,notLeaveAction])
+            self.tabBarController?.dismiss(animated: true)
         }
     }
 }
