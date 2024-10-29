@@ -29,15 +29,8 @@ class IndShopsController: Controller<IndShopsViewModel, IndShopsNavigationContro
     
     
     private func locationReceived(coordinate: Coordinate) {
-        show(message: "Konum alındı." + "latitude : \(coordinate.latitude)" + "\(coordinate.longitude)", type: .success)
-        
         viewModel.fetchShops(coordinate: coordinate) { shops in
-            if let shops = shops {
-                self.tableView.addItems(shops)
-            }
-            else {
-                self.show(message: "Shop  not found.", type: .error)
-            }
+            self.tableView.addItems(shops ?? [] )
         }
     }
 }
