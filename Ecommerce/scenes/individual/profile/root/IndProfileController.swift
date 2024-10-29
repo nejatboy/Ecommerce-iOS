@@ -36,17 +36,17 @@ class IndProfileController: Controller<IndProfileViewModel, IndProfileNavigation
         )
         
         getUserInfos()
+    }
+    
+    
+    override func customizeViews() {
+        logOutButton.setTitle("Log Out", for: .normal)
         
         logOutButton.action = logOutButtonClicked
         
         nameText.isUserInteractionEnabled = false
         surnameText.isUserInteractionEnabled = false
         emailText.isUserInteractionEnabled = false
-    }
-    
-    
-    override func customizeViews() {
-        logOutButton.setTitle("LogOut", for: .normal)
     }
     
     
