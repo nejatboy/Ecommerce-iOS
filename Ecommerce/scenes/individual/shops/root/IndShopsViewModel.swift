@@ -13,7 +13,7 @@ class IndShopsViewModel: ViewModel {
     }
     
     
-    func fetchShops(coordinate: Coordinate, completion: Callback<[Shop]?>?) {
+    func fetchShops(coordinate: Coordinate, completion: Callback<[Shop]>?) {
         DatabaseService.instance.getShops(coordinate: coordinate) { shops in
             guard let shops = shops else {
                 self.show(message: "Shop not found.", type: .error)

@@ -29,8 +29,6 @@ class IndShopsController: Controller<IndShopsViewModel, IndShopsNavigationContro
     
     
     private func locationReceived(coordinate: Coordinate) {
-        viewModel.fetchShops(coordinate: coordinate) { shops in
-            self.tableView.addItems(shops ?? [] )
-        }
+        viewModel.fetchShops(coordinate: coordinate, completion: tableView.addItems)
     }
 }
