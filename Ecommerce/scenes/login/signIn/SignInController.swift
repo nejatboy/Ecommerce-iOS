@@ -69,10 +69,10 @@ class SignInController: Controller<SignInViewModel, LoginNavigationController> {
         else {
             return
         }
-        showLoading()
+       // showLoading()
         viewModel.login(email: email, password: password) { [weak self] user in
             self?.navController?.leaveFromLogin(userType: user.type)
-            self?.hideLoading()
+           // self?.hideLoading()
         }
     }
 }

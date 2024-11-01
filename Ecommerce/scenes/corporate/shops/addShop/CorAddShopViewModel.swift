@@ -11,7 +11,16 @@ class CorAddShopViewModel: ViewModel {
     
     func addShop(name: String, latitude: Double?, longitude: Double?, completion: Handler?) {
         let shop = Shop(name: name, latitude: latitude, longitude: longitude)
-        DatabaseService.instance.addShop(shop: shop, completion: completion)
+        
+        showLoading()
+        
+        DatabaseService.instance.addShop(shop: shop) {
+            self.show(message: "Shop added succesfully", type: .success)
+            
+            self.hideLoading()
+           
+            completion?()
+        }
     }
     
     

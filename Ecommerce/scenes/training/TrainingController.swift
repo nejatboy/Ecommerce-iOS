@@ -50,6 +50,6 @@ class TrainingController: Controller<TrainingViewModel, NavigationController> {
             print("Meyve yedim.")
         }
         
-        showAlert(type: .warning, message: "Meyve yemek istiyor musun?", actions: [noAction, yesAction])
+  //      showAlert(type: .warning, message: "Meyve yemek istiyor musun?", actions: [noAction, yesAction])
     }
 }

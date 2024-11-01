@@ -91,7 +91,7 @@ class CorAddProductController: Controller<CorAddProductViewModel, CorShopsNaviga
     
     func addButtonClicked() {        
         viewModel.addProduct(imageView: productImage, name: productName.text, price: productPrice.text) {
-            self.show(message: "Product Add Succesfully.", type: .success)
+          //  self.show(message: "Product Add Succesfully.", type: .success)
             self.navController?.popViewController(animated: true)
         }
     }

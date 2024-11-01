@@ -7,9 +7,19 @@
 
 
 class SplashViewModel: ViewModel {
+        
     
-    
-    var currentUser: User? {
-        UserDefaultsService.instance.currentUser
+    func loadCurrentUser(completion: Callback<User>?) {
+        showLoading()
+        
+        let user = UserDefaultsService.instance.currentUser
+        
+        if let user = user{
+            hideLoading()
+            completion?(user)
+        } else {
+            hideLoading()
+            return
+        }
     }
 }

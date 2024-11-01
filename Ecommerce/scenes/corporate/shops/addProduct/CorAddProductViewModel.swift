@@ -35,7 +35,13 @@ class CorAddProductViewModel: ViewModel {
                 shopUid: self.choosenShopUid
             )
             
-            DatabaseService.instance.addProduct(product: product, completion: completion)
+            DatabaseService.instance.addProduct(product: product) {
+                self.show(message: "Product Add Succesfully", type: .success)
+                
+                self.hideLoading()
+                
+                completion?()
+            }
         }
     }
 }

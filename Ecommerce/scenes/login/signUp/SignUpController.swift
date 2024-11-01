@@ -82,10 +82,10 @@ class SignUpController: Controller<SignUpViewModel, LoginNavigationController> {
         
         let preferUserType = segmentView.currentElement
         
-        showLoading()
+       // showLoading()
         
         viewModel.registerUser(email: email, password: password, againPassword: againPassword, name: name, surname: surname, type: preferUserType) {
-            self.show(message: "Register success.", type: .success)
+           // self.show(message: "Register success.", type: .success)
             self.navController?.leaveFromLogin(userType: preferUserType)
         }
     }
