@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C40AA6FF2CCE0C070075544A /* IndShopsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AA6FE2CCE0C070075544A /* IndShopsTableView.swift */; };
 		C423BD2E2C5E674A0066ACBC /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C423BD2D2C5E674A0066ACBC /* SignUpController.swift */; };
 		C42C80032C657E6F009D499A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80022C657E6F009D499A /* SignUpViewModel.swift */; };
 		C42C80052C657EE9009D499A /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80042C657EE9009D499A /* SignInViewModel.swift */; };
@@ -72,6 +73,7 @@
 /* Begin PBXFileReference section */
 		02D4373426EC8798603F4737 /* Pods-Ecommerce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.release.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.release.xcconfig"; sourceTree = "<group>"; };
 		8E4A067E0C7D83D303BC9230 /* Pods-Ecommerce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.debug.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.debug.xcconfig"; sourceTree = "<group>"; };
+		C40AA6FE2CCE0C070075544A /* IndShopsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndShopsTableView.swift; sourceTree = "<group>"; };
 		C423BD2D2C5E674A0066ACBC /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		C42C80022C657E6F009D499A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		C42C80042C657EE9009D499A /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 			children = (
 				D965CF462CCC3F050036213A /* IndShopsViewModel.swift */,
 				D965CF482CCC3F160036213A /* IndShopsController.swift */,
+				C40AA6FE2CCE0C070075544A /* IndShopsTableView.swift */,
 			);
 			path = root;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */,
 				D965CF4E2CCC40010036213A /* IndProfileController.swift in Sources */,
 				D968989C2CA84F68003FD87F /* CorAddProductViewModel.swift in Sources */,
+				C40AA6FF2CCE0C070075544A /* IndShopsTableView.swift in Sources */,
 				D946D3EE2C81EC8700A56EF7 /* TrainingTableView.swift in Sources */,
 				D946D3F42C82114D00A56EF7 /* IndividualTabbarController.swift in Sources */,
 				D965CF472CCC3F050036213A /* IndShopsViewModel.swift in Sources */,
