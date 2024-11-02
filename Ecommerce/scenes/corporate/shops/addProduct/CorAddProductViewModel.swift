@@ -38,8 +38,6 @@ class CorAddProductViewModel: ViewModel {
             DatabaseService.instance.addProduct(product: product) {
                 self.show(message: "Product Add Succesfully", type: .success)
                 
-                self.hideLoading()
-                
                 completion?()
             }
         }

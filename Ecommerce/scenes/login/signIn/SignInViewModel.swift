@@ -14,8 +14,9 @@ class SignInViewModel: ViewModel {
             return
         }
         
+        self.showLoading()
+        
         AuthService.instance.login(email: email, password: password) { uid in
-            self.showLoading()
             DatabaseService.instance.fetchUser(uid: uid) { user in
                 self.hideLoading()
                 completion?(user)

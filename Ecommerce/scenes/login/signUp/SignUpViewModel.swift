@@ -15,12 +15,13 @@ class SignUpViewModel: ViewModel {
             return
         }
         
+        self.showLoading()
+        
         AuthService.instance.registerUser(email: email, password: password) { uid in
             let user = User(uid: uid, name: name, surname: surname, email: email, type: type)
-            self.showLoading()
+            
             DatabaseService.instance.saveUser(user: user) {
                 self.show(message: "Register success.", type: .success)
-                self.hideLoading()
                 completion?()
             }
         }

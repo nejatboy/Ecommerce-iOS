@@ -49,7 +49,5 @@ class TrainingController: Controller<TrainingViewModel, NavigationController> {
         let yesAction = AlertModel(title: "Yes") {
             print("Meyve yedim.")
         }
-        
-  //      showAlert(type: .warning, message: "Meyve yemek istiyor musun?", actions: [noAction, yesAction])
     }
 }

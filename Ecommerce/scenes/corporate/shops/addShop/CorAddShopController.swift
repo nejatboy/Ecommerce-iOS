@@ -59,10 +59,7 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
             return
         }
         
-     //   showLoading()
-        
         viewModel.addShop(name: name, latitude: shopLocation.latitude, longitude: shopLocation.longitude) {
-         //   self.show(message: "Shop added succesfully", type: .success)
             self.navController?.addShopsToShops()
         }
     }

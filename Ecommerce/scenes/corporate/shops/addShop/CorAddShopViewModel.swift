@@ -17,8 +17,6 @@ class CorAddShopViewModel: ViewModel {
         DatabaseService.instance.addShop(shop: shop) {
             self.show(message: "Shop added succesfully", type: .success)
             
-            self.hideLoading()
-           
             completion?()
         }
     }
