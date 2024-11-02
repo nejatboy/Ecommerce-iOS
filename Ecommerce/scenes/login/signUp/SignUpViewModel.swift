@@ -15,7 +15,7 @@ class SignUpViewModel: ViewModel {
             return
         }
         
-        self.showLoading()
+        showLoading()
         
         AuthService.instance.registerUser(email: email, password: password) { uid in
             let user = User(uid: uid, name: name, surname: surname, email: email, type: type)
