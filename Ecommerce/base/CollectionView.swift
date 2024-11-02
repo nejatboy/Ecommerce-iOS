@@ -23,7 +23,7 @@ class CollectionView<ITEM, C: CollectionViewCell<ITEM>, L: CollectionViewFlowLay
     
     private let cellId = UUID().uuidString
     private var items: [ITEM] = []
-    var onItemClicked: Callback<ITEM>?
+    var onItemSelected: Callback<ITEM>?
     
     
     init() {
@@ -54,7 +54,9 @@ class CollectionView<ITEM, C: CollectionViewCell<ITEM>, L: CollectionViewFlowLay
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? C else { return .init() }
+        guard let cell = dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? C else {
+            return .init()
+        }
         
         let item = items[indexPath.item]
         cell.setItem(item: item)
@@ -64,12 +66,12 @@ class CollectionView<ITEM, C: CollectionViewCell<ITEM>, L: CollectionViewFlowLay
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let onItemClicked = onItemClicked else {
+        guard let onItemSelected = onItemSelected else {
             return
         }
 
         let item = items[indexPath.item]
-        onItemClicked(item)
+        onItemSelected(item)
         
         //TODO: deselect
         guard let cell = cellForItem(at: indexPath) else {
@@ -86,17 +88,14 @@ class CollectionView<ITEM, C: CollectionViewCell<ITEM>, L: CollectionViewFlowLay
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        .init()
-    }
-    
-    
+    ///TableView'a liste halinde eleman eklemek için kullanırız.
     func setItems(items: [ITEM]) {
         self.items = items
         reloadData()
     }
     
     
+    /// Listenin sonuna eleman eklemek için kullanırız.
     func addItem(item: ITEM) {
         items.append(item)
         let indexPath = IndexPath(item: items.count - 1, section: 0)
@@ -104,6 +103,7 @@ class CollectionView<ITEM, C: CollectionViewCell<ITEM>, L: CollectionViewFlowLay
     }
     
     
+    /// Listenin sonuna elemanlar eklemek için kullanırız.
     func addItems(newItems: [ITEM]) {
         items.append(contentsOf: newItems)
         
@@ -115,12 +115,35 @@ class CollectionView<ITEM, C: CollectionViewCell<ITEM>, L: CollectionViewFlowLay
         
         reloadItems(at: indexPaths)
     }
+    
+    
+    ///Listeyi temizlemek için kullanırız.
+    func clear() {
+        items.removeAll()
+        reloadData()
+    }
 }
 
 
 
 //MARK: FlowLayout
 class CollectionViewFlowLayout: UICollectionViewFlowLayout {
+    
+    ///Hücreler arası boşluk için override edilir.
+    var margin: Int {
+        0
+    }
+    
+    ///Sütun sayısı belirlemek için override edilir.
+    var numberOfColumn: Int {
+        0
+    }
+    
+    ///Hücre yüksekliğinin, genişliğinin kaç katı olduğunu belirlemek için override edilir.
+    var itemHeightMultiplier: Double {
+        0
+    }
+    
     
     
     required override init() {
@@ -130,6 +153,24 @@ class CollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    override func prepare() {
+        guard let collectionView = collectionView else {
+            return
+        }
+        
+        let margin = CGFloat(margin)
+        let numberOfColumn = CGFloat(numberOfColumn)
+        let itemHeightMultiplier = CGFloat(itemHeightMultiplier)
+        
+        let itemWidth = (collectionView.frame.width - (numberOfColumn + 1) * margin) / numberOfColumn
+
+        sectionInset = .init(top: margin, left: margin, bottom: margin, right: margin)
+        itemSize = .init(width: itemWidth, height: itemWidth * itemHeightMultiplier)
+        minimumLineSpacing = margin
+        minimumInteritemSpacing = margin
     }
 }
 

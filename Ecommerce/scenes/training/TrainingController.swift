@@ -13,41 +13,30 @@ class TrainingController: Controller<TrainingViewModel, NavigationController> {
         .init(title: "Kiraz"),
         .init(title: "Karpuz"),
         .init(title: "Kavun"),
-        .init(title: "Portakal"),
+        .init(title: "Portakal")
     ]
     
-    private let tableView = TrainingTableView()
+    private let collectionView = TrainingCollectionView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addSubviews(tableView)
+        addSubviews(collectionView)
         
-        tableView.addItems(items)
-        tableView.onItemSelected = onItemClicked
+        collectionView.onItemSelected = onItemClicked
+        collectionView.setItems(items: items)
         
         activateConstraints(
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         )
-        
-        LocationService.instance.request(listener: locationReceived)
-    }
-    
-    
-    private func locationReceived(coordinate: Coordinate) {
-//        show(message: "Konum alındı.", type: .success)
     }
     
     
     private func onItemClicked(item: TrainingModel) {
-        let noAction = AlertModel(title: "No")
-        
-        let yesAction = AlertModel(title: "Yes") {
-            print("Meyve yedim.")
-        }
+        print(item.title!)
     }
 }
