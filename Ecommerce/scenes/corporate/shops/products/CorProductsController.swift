@@ -43,6 +43,6 @@ class CorProductsController: Controller<CorProductsViewModel, CorShopsNavigation
     
     
     private func onItemClicked(product: Product) {
-        show(message: product.name, type: .success)
+        viewModel.itemClicked(product: product)
     }
 }

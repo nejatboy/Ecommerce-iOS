@@ -7,7 +7,7 @@
 
 
 class SplashViewModel: ViewModel {
-    
+        
     
     var currentUser: User? {
         UserDefaultsService.instance.currentUser

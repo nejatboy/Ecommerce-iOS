@@ -19,4 +19,9 @@ class CorProductsViewModel: ViewModel {
             completion?(products)
         }
     }
+    
+    
+    func itemClicked(product: Product) {
+        self.show(message: product.name, type: .success)
+    }
 }
