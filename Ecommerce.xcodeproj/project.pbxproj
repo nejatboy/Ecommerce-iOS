@@ -18,6 +18,8 @@
 		D93B92372C56DB0400F0BF6F /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B92362C56DB0400F0BF6F /* Views.swift */; };
 		D94067AC2CD6C28900FA5F1D /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94067AB2CD6C28900FA5F1D /* CollectionView.swift */; };
 		D94067AE2CD6D21600FA5F1D /* TrainingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94067AD2CD6D21600FA5F1D /* TrainingCollectionView.swift */; };
+		D94067B12CD6E6EE00FA5F1D /* IndProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94067B02CD6E6EE00FA5F1D /* IndProductsViewModel.swift */; };
+		D94067B32CD6E70200FA5F1D /* IndProductsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94067B22CD6E70200FA5F1D /* IndProductsController.swift */; };
 		D946D3E72C81EB4100A56EF7 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3E62C81EB4100A56EF7 /* TableView.swift */; };
 		D946D3E92C81EB9F00A56EF7 /* TrainingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3E82C81EB9F00A56EF7 /* TrainingController.swift */; };
 		D946D3EC2C81EBD200A56EF7 /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D3EB2C81EBD200A56EF7 /* TrainingViewModel.swift */; };
@@ -86,6 +88,8 @@
 		D93B92362C56DB0400F0BF6F /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		D94067AB2CD6C28900FA5F1D /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		D94067AD2CD6D21600FA5F1D /* TrainingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCollectionView.swift; sourceTree = "<group>"; };
+		D94067B02CD6E6EE00FA5F1D /* IndProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndProductsViewModel.swift; sourceTree = "<group>"; };
+		D94067B22CD6E70200FA5F1D /* IndProductsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndProductsController.swift; sourceTree = "<group>"; };
 		D946D3E62C81EB4100A56EF7 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		D946D3E82C81EB9F00A56EF7 /* TrainingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingController.swift; sourceTree = "<group>"; };
 		D946D3EB2C81EBD200A56EF7 /* TrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewModel.swift; sourceTree = "<group>"; };
@@ -189,6 +193,15 @@
 			path = signIn;
 			sourceTree = "<group>";
 		};
+		D94067AF2CD6E6BA00FA5F1D /* products */ = {
+			isa = PBXGroup;
+			children = (
+				D94067B02CD6E6EE00FA5F1D /* IndProductsViewModel.swift */,
+				D94067B22CD6E70200FA5F1D /* IndProductsController.swift */,
+			);
+			path = products;
+			sourceTree = "<group>";
+		};
 		D946D3EA2C81EBC000A56EF7 /* training */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				D965CF452CCC3EF40036213A /* root */,
+				D94067AF2CD6E6BA00FA5F1D /* products */,
 				D965CF432CCC3ED60036213A /* IndShopsNavigationController.swift */,
 			);
 			path = shops;
@@ -587,9 +601,11 @@
 				C40AA6FF2CCE0C070075544A /* IndShopsTableView.swift in Sources */,
 				D946D3EE2C81EC8700A56EF7 /* TrainingTableView.swift in Sources */,
 				D946D3F42C82114D00A56EF7 /* IndividualTabbarController.swift in Sources */,
+				D94067B32CD6E70200FA5F1D /* IndProductsController.swift in Sources */,
 				D965CF472CCC3F050036213A /* IndShopsViewModel.swift in Sources */,
 				D96898A12CA84FE3003FD87F /* CorProductsViewModel.swift in Sources */,
 				D96499EA2CA9CAE900894E8D /* Service.swift in Sources */,
+				D94067B12CD6E6EE00FA5F1D /* IndProductsViewModel.swift in Sources */,
 				D95308322C8CB5F800914617 /* CorShopsController.swift in Sources */,
 				D9B559A42C7916FD007DA2C8 /* UserDefaultsService.swift in Sources */,
 				D94067AC2CD6C28900FA5F1D /* CollectionView.swift in Sources */,

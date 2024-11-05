@@ -159,7 +159,7 @@ struct DatabaseService: Service {
     ///   - coordinate: Bireysel kullanıcın konumu.
     ///   - completion: Optional olarak dükkanları döner.
     func getShops(coordinate: Coordinate, completion: Callback<[Shop]?>?) {
-        guard let userUid = UserDefaultsService.instance.currentUser?.uid else {
+        guard (UserDefaultsService.instance.currentUser?.uid) != nil else {
             show(message: "Please log in.", type: .error)
             return
         }
