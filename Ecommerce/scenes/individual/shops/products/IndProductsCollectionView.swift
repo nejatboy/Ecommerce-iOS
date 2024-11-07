@@ -37,8 +37,10 @@ class IndProductCollectionViewCell: CollectionViewCell<Product> {
             priceLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         )
         
-        productImage.set(cornerRadius: 60)
-        productImage.clipsToBounds = true
+        productImage.set(cornerRadius: 50)
+       
+        contentView.layer.shadowOpacity = 10
+        contentView.layer.shadowRadius = 10
     }
     
     

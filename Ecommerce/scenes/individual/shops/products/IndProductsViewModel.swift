@@ -11,10 +11,13 @@ class IndProductsViewModel: ViewModel {
     
     
     func fetchCurrentShopProducts(completion: Callback<[Product]>?) {
+        showLoading()
+        
         DatabaseService.instance.getProducts(of: selectedShop?.uid) { products in
             guard let products = products else {
                 return
             }
+            self.hideLoading()
             completion?(products)
         }
     }

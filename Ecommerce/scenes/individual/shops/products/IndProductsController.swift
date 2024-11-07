@@ -16,6 +16,8 @@ class IndProductsController: Controller<IndProductsViewModel, IndShopsNavigation
         
         addSubviews(collectionView)
         
+        navigationItem.title = viewModel.selectedShop?.name
+        
         activateConstraints(
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
