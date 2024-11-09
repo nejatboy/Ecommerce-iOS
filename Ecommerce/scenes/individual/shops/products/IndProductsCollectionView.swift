@@ -19,11 +19,11 @@ class IndProductCollectionViewCell: CollectionViewCell<Product> {
     
     
     override func configure() {
-        backgroundColor = .clear
+        backgroundColor = .white
         
         layer.cornerRadius = 8
-        layer.shadowOpacity = 10
-        layer.shadowRadius = 10
+        layer.shadowOpacity = 0.3
+        layer.shadowRadius = 5
         
         contentView.addSubview(productName)
         contentView.addSubview(priceLabel)
@@ -31,9 +31,9 @@ class IndProductCollectionViewCell: CollectionViewCell<Product> {
         
         activateConstraints(
             productImage.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 5),
-            productImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            productImage.widthAnchor.constraint(equalToConstant: 90),
-            productImage.heightAnchor.constraint(equalToConstant: 90),
+            productImage.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            productImage.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            productImage.heightAnchor.constraint(equalTo: productImage.widthAnchor),
             
             productName.topAnchor.constraint(equalTo: productImage.bottomAnchor, constant: 15),
             productName.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
