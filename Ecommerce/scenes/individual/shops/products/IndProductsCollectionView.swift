@@ -7,7 +7,7 @@
 
 
 class IndProductsCollectionView: CollectionView<Product, IndProductCollectionViewCell, IndProductCollectionViewFlowLayout> {
-    
+
 }
 
 
@@ -20,7 +20,10 @@ class IndProductCollectionViewCell: CollectionViewCell<Product> {
     
     override func configure() {
         backgroundColor = .clear
+        
         layer.cornerRadius = 8
+        layer.shadowOpacity = 10
+        layer.shadowRadius = 10
         
         contentView.addSubview(productName)
         contentView.addSubview(priceLabel)
@@ -29,6 +32,8 @@ class IndProductCollectionViewCell: CollectionViewCell<Product> {
         activateConstraints(
             productImage.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 5),
             productImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            productImage.widthAnchor.constraint(equalToConstant: 90),
+            productImage.heightAnchor.constraint(equalToConstant: 90),
             
             productName.topAnchor.constraint(equalTo: productImage.bottomAnchor, constant: 15),
             productName.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -36,11 +41,6 @@ class IndProductCollectionViewCell: CollectionViewCell<Product> {
             priceLabel.topAnchor.constraint(equalTo: productName.bottomAnchor, constant: 15),
             priceLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         )
-        
-        productImage.set(cornerRadius: 50)
-       
-        contentView.layer.shadowOpacity = 10
-        contentView.layer.shadowRadius = 10
     }
     
     
