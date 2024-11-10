@@ -8,4 +8,29 @@
 
 class IndProductsController: Controller<IndProductsViewModel, IndShopsNavigationController> {
     
+    private let collectionView = IndProductsCollectionView()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        addSubviews(collectionView)
+        
+        navigationItem.title = viewModel.selectedShop?.name
+        
+        activateConstraints(
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        )
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.clear()
+        
+        viewModel.fetchCurrentShopProducts(completion: collectionView.setItems)
+    }
 }

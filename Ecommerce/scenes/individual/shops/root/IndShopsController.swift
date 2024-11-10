@@ -17,6 +17,8 @@ class IndShopsController: Controller<IndShopsViewModel, IndShopsNavigationContro
         
         addSubviews(tableView)
         
+        tableView.onItemSelected = navController?.shopsToProduct
+        
         activateConstraints(
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.topAnchor.constraint(equalTo: view.topAnchor),

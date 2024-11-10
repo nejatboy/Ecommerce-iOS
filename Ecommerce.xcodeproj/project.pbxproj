@@ -11,6 +11,7 @@
 		C423BD2E2C5E674A0066ACBC /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C423BD2D2C5E674A0066ACBC /* SignUpController.swift */; };
 		C42C80032C657E6F009D499A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80022C657E6F009D499A /* SignUpViewModel.swift */; };
 		C42C80052C657EE9009D499A /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80042C657EE9009D499A /* SignInViewModel.swift */; };
+		C43636DE2CDAB6050080535B /* IndProductsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43636DD2CDAB6050080535B /* IndProductsCollectionView.swift */; };
 		C439AB3B2CA88F6200400126 /* CorProductsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C439AB3A2CA88F6200400126 /* CorProductsTableView.swift */; };
 		C43FCFB92C56DCB9005A1AFA /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFB82C56DCB9005A1AFA /* SignInController.swift */; };
 		C4519CA52C8E358E0039ACCF /* CorAddShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4519CA42C8E358E0039ACCF /* CorAddShopController.swift */; };
@@ -81,6 +82,7 @@
 		C423BD2D2C5E674A0066ACBC /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		C42C80022C657E6F009D499A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		C42C80042C657EE9009D499A /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		C43636DD2CDAB6050080535B /* IndProductsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndProductsCollectionView.swift; sourceTree = "<group>"; };
 		C439AB3A2CA88F6200400126 /* CorProductsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorProductsTableView.swift; sourceTree = "<group>"; };
 		C43FCFB82C56DCB9005A1AFA /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		C4519CA42C8E358E0039ACCF /* CorAddShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorAddShopController.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				D94067B02CD6E6EE00FA5F1D /* IndProductsViewModel.swift */,
 				D94067B22CD6E70200FA5F1D /* IndProductsController.swift */,
+				C43636DD2CDAB6050080535B /* IndProductsCollectionView.swift */,
 			);
 			path = products;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				D9CCD86E2C62E05B00CA713C /* LoadingView.swift in Sources */,
 				D9D028832C68FFA7008D3731 /* Enums.swift in Sources */,
 				D965CF492CCC3F160036213A /* IndShopsController.swift in Sources */,
+				C43636DE2CDAB6050080535B /* IndProductsCollectionView.swift in Sources */,
 				D9CCD8682C62C42900CA713C /* AuthService.swift in Sources */,
 				D94F15B42C7218BF00CD0850 /* ParserService.swift in Sources */,
 				D9D028852C6901EC008D3731 /* Models.swift in Sources */,

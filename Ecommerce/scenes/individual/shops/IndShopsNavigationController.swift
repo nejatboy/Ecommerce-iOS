@@ -14,4 +14,12 @@ class IndShopsNavigationController: NavigationController {
         let rootController = IndShopsController()
         viewControllers = [rootController]
     }
+    
+    
+    func shopsToProduct(shop: Shop) {
+        let controller = IndProductsController()
+        controller.viewModel.selectedShop = shop
+        
+        pushViewController(controller, animated: true)
+    }
 }
