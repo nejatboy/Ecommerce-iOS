@@ -11,7 +11,7 @@ class IndCardNavigationController: NavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let rootControlller = IndCardController()
+        let rootControlller = IndcardController()
         viewControllers = [rootControlller]
     }
 }

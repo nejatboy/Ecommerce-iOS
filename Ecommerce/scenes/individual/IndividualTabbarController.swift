@@ -17,7 +17,7 @@ class IndividualTabbarController: TabbarController {
         shopsController.tabBarItem = .init(title: "Shops", image: .iconInfo, selectedImage: nil)
         
         let indCardController = IndCardNavigationController()
-        indCardController.tabBarItem = .init(title: "card", image: .iconCard, selectedImage: nil)
+        indCardController.tabBarItem = .init(title: "Card", image: .iconCard, selectedImage: nil)
         
         let profileController = IndProfileNavigationController()
         profileController.tabBarItem = .init(title: "Profile", image: .iconProfile, selectedImage: nil)
@@ -31,7 +31,7 @@ class IndividualTabbarController: TabbarController {
     }
     
     
-    var profileNavigationController: CorProfileNavigationController? { // Şuan farkettim IndProfileNavigationController ismi yazılması gerekmiyor muydu ? 
+    var profileNavigationController: IndProfileNavigationController? {
         findController()
     }
     

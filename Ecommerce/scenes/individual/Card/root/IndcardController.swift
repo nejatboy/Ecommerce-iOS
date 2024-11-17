@@ -5,8 +5,12 @@
 //  Created by muhammed dursun on 13.11.2024.
 //
 
-class IndCardController: Controller<IndCardViewModel, IndCardNavigationController> {
+class IndcardController: Controller<IndcardViewModel, IndCardNavigationController> {
     
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.title = "Card"
+    }
 }
