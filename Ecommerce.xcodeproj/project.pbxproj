@@ -12,6 +12,9 @@
 		C42C80032C657E6F009D499A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80022C657E6F009D499A /* SignUpViewModel.swift */; };
 		C42C80052C657EE9009D499A /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80042C657EE9009D499A /* SignInViewModel.swift */; };
 		C43636DE2CDAB6050080535B /* IndProductsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43636DD2CDAB6050080535B /* IndProductsCollectionView.swift */; };
+		C438AF242CE5337D00CD8A00 /* IndCardNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C438AF232CE5337D00CD8A00 /* IndCardNavigationController.swift */; };
+		C438AF272CE533A100CD8A00 /* IndcardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C438AF262CE533A100CD8A00 /* IndcardController.swift */; };
+		C438AF2B2CE5342C00CD8A00 /* IndcardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C438AF2A2CE5342C00CD8A00 /* IndcardViewModel.swift */; };
 		C439AB3B2CA88F6200400126 /* CorProductsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C439AB3A2CA88F6200400126 /* CorProductsTableView.swift */; };
 		C43FCFB92C56DCB9005A1AFA /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43FCFB82C56DCB9005A1AFA /* SignInController.swift */; };
 		C4519CA52C8E358E0039ACCF /* CorAddShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4519CA42C8E358E0039ACCF /* CorAddShopController.swift */; };
@@ -83,6 +86,9 @@
 		C42C80022C657E6F009D499A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		C42C80042C657EE9009D499A /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		C43636DD2CDAB6050080535B /* IndProductsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndProductsCollectionView.swift; sourceTree = "<group>"; };
+		C438AF232CE5337D00CD8A00 /* IndCardNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndCardNavigationController.swift; sourceTree = "<group>"; };
+		C438AF262CE533A100CD8A00 /* IndcardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndcardController.swift; sourceTree = "<group>"; };
+		C438AF2A2CE5342C00CD8A00 /* IndcardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndcardViewModel.swift; sourceTree = "<group>"; };
 		C439AB3A2CA88F6200400126 /* CorProductsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorProductsTableView.swift; sourceTree = "<group>"; };
 		C43FCFB82C56DCB9005A1AFA /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		C4519CA42C8E358E0039ACCF /* CorAddShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorAddShopController.swift; sourceTree = "<group>"; };
@@ -186,6 +192,24 @@
 			path = signUp;
 			sourceTree = "<group>";
 		};
+		C438AF222CE5336600CD8A00 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				C438AF252CE5338E00CD8A00 /* root */,
+				C438AF232CE5337D00CD8A00 /* IndCardNavigationController.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		C438AF252CE5338E00CD8A00 /* root */ = {
+			isa = PBXGroup;
+			children = (
+				C438AF262CE533A100CD8A00 /* IndcardController.swift */,
+				C438AF2A2CE5342C00CD8A00 /* IndcardViewModel.swift */,
+			);
+			path = root;
+			sourceTree = "<group>";
+		};
 		C43FCFB72C56DC91005A1AFA /* signIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +243,7 @@
 		D946D3EF2C82111900A56EF7 /* individual */ = {
 			isa = PBXGroup;
 			children = (
+				C438AF222CE5336600CD8A00 /* Card */,
 				D965CF412CCC3EAA0036213A /* shops */,
 				D965CF422CCC3EAF0036213A /* profile */,
 				D946D3F32C82114D00A56EF7 /* IndividualTabbarController.swift */,
@@ -587,7 +612,9 @@
 				D953082C2C8CB57400914617 /* CorProfileViewModel.swift in Sources */,
 				D968989E2CA84F9A003FD87F /* CorAddProductController.swift in Sources */,
 				D9B02A932C559E2A0018B499 /* SplashController.swift in Sources */,
+				C438AF242CE5337D00CD8A00 /* IndCardNavigationController.swift in Sources */,
 				C423BD2E2C5E674A0066ACBC /* SignUpController.swift in Sources */,
+				C438AF2B2CE5342C00CD8A00 /* IndcardViewModel.swift in Sources */,
 				D96898A32CA84FF6003FD87F /* CorProductsController.swift in Sources */,
 				D9B02A8B2C559D880018B499 /* ViewModel.swift in Sources */,
 				D9F564CB2C597BA600DEDC66 /* Buttons.swift in Sources */,
@@ -617,6 +644,7 @@
 				D94067AE2CD6D21600FA5F1D /* TrainingCollectionView.swift in Sources */,
 				D93B92372C56DB0400F0BF6F /* Views.swift in Sources */,
 				C439AB3B2CA88F6200400126 /* CorProductsTableView.swift in Sources */,
+				C438AF272CE533A100CD8A00 /* IndcardController.swift in Sources */,
 				D97846842C9CBE73008ED603 /* LocationService.swift in Sources */,
 				D946D3EC2C81EBD200A56EF7 /* TrainingViewModel.swift in Sources */,
 				D965CF4C2CCC3FDE0036213A /* IndProfileNavigationController.swift in Sources */,
