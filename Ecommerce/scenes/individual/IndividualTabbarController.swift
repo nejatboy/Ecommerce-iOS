@@ -16,13 +16,13 @@ class IndividualTabbarController: TabbarController {
         let shopsController = IndShopsNavigationController()
         shopsController.tabBarItem = .init(title: "Shops", image: .iconInfo, selectedImage: nil)
         
-        let indCardController = IndCardNavigationController()
-        indCardController.tabBarItem = .init(title: "Card", image: .iconCard, selectedImage: nil)
+        let indCartController = IndCartNavigationController()
+        indCartController.tabBarItem = .init(title: "Cart", image: .iconCart, selectedImage: nil)
         
         let profileController = IndProfileNavigationController()
         profileController.tabBarItem = .init(title: "Profile", image: .iconProfile, selectedImage: nil)
         
-        viewControllers = [shopsController, indCardController, profileController]
+        viewControllers = [shopsController, indCartController, profileController]
     }
     
     
@@ -36,10 +36,7 @@ class IndividualTabbarController: TabbarController {
     }
     
     
-    var cardNavigationController: IndCardNavigationController? {
+    var cardNavigationController: IndCartNavigationController? {
         findController()
     }
-    
-    
-    
 }
