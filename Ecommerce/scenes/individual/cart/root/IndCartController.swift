@@ -7,11 +7,6 @@
 
 class IndCartController: Controller<IndCartViewModel, IndCartNavigationController> {
     
-    let items : [ExampleModel] =  [
-        .init(name: "Kazak"),
-        .init(name: "Kazak"),
-        .init(name: "Kazak")
-    ]
     private let tableView = IndCartTableView()
     private let cartConfirmButton = ButtonSecondary()
     
@@ -23,10 +18,9 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
         
         addSubviews(tableView, cartConfirmButton)
     
-        tableView.addItems(items)
-        tableView.backgroundColor = .red
+        tableView.backgroundColor = .clear
         
-        cartConfirmButton.backgroundColor = .yellow
+        cartConfirmButton.backgroundColor = .systemRed
         
         activateConstraints(
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -34,7 +28,8 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -160),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            cartConfirmButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 15),
+            cartConfirmButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 10),
+            cartConfirmButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -3),
             cartConfirmButton.centerXAnchor.constraint(equalTo: tableView.centerXAnchor)
         )
     }
@@ -43,9 +38,14 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tableView.clear()
+        
+        viewModel.getAllProductsFromAllShops(completion: tableView.addItems)
     }
     
     override func customizeViews() {
-        cartConfirmButton.setTitle("Cart Confirm", for: .normal)
+        cartConfirmButton.setTitle("Confirm Cart", for: .normal)
+        cartConfirmButton.setTitleColor(.white, for: .normal)
+        cartConfirmButton.layer.cornerRadius = 20
     }
 }

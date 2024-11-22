@@ -11,7 +11,7 @@ struct ExampleModel {
     let name: String?
 }
 
-class IndCartTableView: TableView<ExampleModel, IndCartTableViewCell> {
+class IndCartTableView: TableView<Product, IndCartTableViewCell> {
    
     
     override func configure() {
@@ -20,7 +20,7 @@ class IndCartTableView: TableView<ExampleModel, IndCartTableViewCell> {
 }
 
 
-class IndCartTableViewCell: TableViewCell<ExampleModel> {
+class IndCartTableViewCell: TableViewCell<Product> {
     
     let productName = Label()
     let productPrice = Label()
@@ -32,10 +32,10 @@ class IndCartTableViewCell: TableViewCell<ExampleModel> {
         selectionBackgroundColor = .lightGray
         backgroundColor = .gray
         
-        productName.textColor = .yellow
+     /*   productName.textColor = .yellow
         productPrice.textColor = .orange
         sameNumberOfProductsLabel.backgroundColor = .green
-        productName.backgroundColor = .purple
+        productName.backgroundColor = .purple */
         
         addSubviews(productName, productPrice, productImage, sameNumberOfProductsLabel)
         
@@ -59,16 +59,16 @@ class IndCartTableViewCell: TableViewCell<ExampleModel> {
             productPrice.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -15),
             contentView.bottomAnchor.constraint(equalTo: productImage.bottomAnchor, constant: 10)
         )
+        
+        productImage.layer.cornerRadius = 30
+        productImage.clipsToBounds = true
     }
     
     
-    override func setItem(_ item: ExampleModel) {
-     //   productImage.load(photoUrl: item.imageUrl)
-        productImage.image = UIImage(named: "kazak3")
-        productName.text = "Kazak"
-        productPrice.text = "147,90"
+    override func setItem(_ item: Product) {
+        productImage.load(photoUrl: item.imageUrl)
+        productName.text = item.name
+        productPrice.text = String(item.price ?? 0.0)
         sameNumberOfProductsLabel.text = "0"
-        productImage.layer.cornerRadius = 30
-        productImage.clipsToBounds = true
     }
 }
