@@ -8,6 +8,8 @@
 class IndCartController: Controller<IndCartViewModel, IndCartNavigationController> {
     
     let items : [ExampleModel] =  [
+        .init(name: "Kazak"),
+        .init(name: "Kazak"),
         .init(name: "Kazak")
     ]
     private let tableView = IndCartTableView()
@@ -29,7 +31,7 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
         activateConstraints(
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -170),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -160),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             cartConfirmButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 15),
