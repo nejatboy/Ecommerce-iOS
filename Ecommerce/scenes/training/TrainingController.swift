@@ -7,36 +7,40 @@
 
 class TrainingController: Controller<TrainingViewModel, NavigationController> {
     
-    let items: [TrainingModel] = [
-        .init(title: "Elma"),
-        .init(title: "Armut"),
-        .init(title: "Kiraz"),
-        .init(title: "Karpuz"),
-        .init(title: "Kavun"),
-        .init(title: "Portakal")
-    ]
-    
-    private let collectionView = TrainingCollectionView()
+    private let numberPickerField = NumberPickerField()
+    private let textPickerField = TextPickerField()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addSubviews(collectionView)
+        addSubviews(numberPickerField, textPickerField)
         
-        collectionView.onItemSelected = onItemClicked
-        collectionView.setItems(items: items)
         
         activateConstraints(
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            numberPickerField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            numberPickerField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            textPickerField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            textPickerField.topAnchor.constraint(equalTo: numberPickerField.bottomAnchor, constant: 10)
         )
     }
     
+    override func customizeViews() {
+        numberPickerField.setItems(items: [1, 2, 3, 4, 5, 6, 7, 8, 9])
+        numberPickerField.onItemSelect = onItemNumberSelected
+        
+        textPickerField.setItems(items: ["Elma", "Armut", "Kiraz", "Kavun", "Karpuz", "Üzüm", "Çilek", "Erik"])
+        textPickerField.onItemSelect = onItemTextSelected
+    }
     
-    private func onItemClicked(item: TrainingModel) {
-        print(item.title!)
+    
+    private func onItemNumberSelected(number: Int) {
+        print(number)
+    }
+    
+    
+    private func onItemTextSelected(text: String) {
+        print(text)
     }
 }

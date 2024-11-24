@@ -73,7 +73,9 @@ class Button: UIButton {
 // MARK: TextField
 class TextField: UITextField {
     
-    private let padding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var padding: UIEdgeInsets {
+        .init(top: 10, left: 10, bottom: 10, right: 10)
+    }
     
     
     init() {
