@@ -9,7 +9,8 @@ class IndCartViewModel: ViewModel {
     
     
     func getAllProductsFromAllShops(completion: Callback<[Product]>?) {
-        DatabaseService.instance.getAllProductsFromAllShops { products in
+        DatabaseService.instance.getAllProductsFromAllShops { 
+              products in
            /* guard let products = products else {
                 return
             } */

@@ -18,17 +18,20 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
         
         addSubviews(tableView, cartConfirmButton)
     
-        tableView.backgroundColor = .clear
+        let headerView = View()
+        headerView.backgroundColor = .white
+        tableView.tableHeaderView = headerView
         
         cartConfirmButton.backgroundColor = .systemRed
+        cartConfirmButton.translatesAutoresizingMaskIntoConstraints = false
         
         activateConstraints(
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -160),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             
-            cartConfirmButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 10),
+            cartConfirmButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 8),
             cartConfirmButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -3),
             cartConfirmButton.centerXAnchor.constraint(equalTo: tableView.centerXAnchor)
         )

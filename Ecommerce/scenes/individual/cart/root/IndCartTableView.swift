@@ -7,9 +7,6 @@
 
 import UIKit
 
-struct ExampleModel {
-    let name: String?
-}
 
 class IndCartTableView: TableView<Product, IndCartTableViewCell> {
    
@@ -30,38 +27,42 @@ class IndCartTableViewCell: TableViewCell<Product> {
     
     override func configure() {
         selectionBackgroundColor = .lightGray
-        backgroundColor = .gray
+        backgroundColor = .white
         
-     /*   productName.textColor = .yellow
-        productPrice.textColor = .orange
-        sameNumberOfProductsLabel.backgroundColor = .green
-        productName.backgroundColor = .purple */
+        productPrice.textColor = .lightGray
+        productPrice.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        
+        productName.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        sameNumberOfProductsLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        productImage.contentMode = .scaleAspectFill
+        productImage.clipsToBounds = true
+        productImage.layer.cornerRadius = 10
         
         addSubviews(productName, productPrice, productImage, sameNumberOfProductsLabel)
         
         activateConstraints(
             productImage.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 3),
-            productImage.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 12),
-            productImage.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -285),
-            productImage.heightAnchor.constraint(equalTo: productImage.widthAnchor),
+            productImage.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            productImage.widthAnchor.constraint(equalToConstant: 75),
+            productImage.heightAnchor.constraint(equalToConstant: 100),
+            productImage.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: 8),
             
             productName.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 6),
-            productName.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 8), // Daha sonra yüklenecek olan image'in sağına yerleştirilecek.
-            productName.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            productName.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -110),
+            productName.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 8),
+            productName.widthAnchor.constraint(equalToConstant: 70),
+            productName.heightAnchor.constraint(equalToConstant: 15),
             
-            sameNumberOfProductsLabel.topAnchor.constraint(equalTo: productName.bottomAnchor, constant: 5),
+            sameNumberOfProductsLabel.topAnchor.constraint(equalTo: productName.bottomAnchor, constant: 11),
             sameNumberOfProductsLabel.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 8),
-            sameNumberOfProductsLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -240),
-            sameNumberOfProductsLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -77),
+            sameNumberOfProductsLabel.widthAnchor.constraint(equalToConstant: 70),
+            sameNumberOfProductsLabel.heightAnchor.constraint(equalToConstant: 15),
             
-            productPrice.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -3),
-            productPrice.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            contentView.bottomAnchor.constraint(equalTo: productImage.bottomAnchor, constant: 10)
+            productPrice.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -7),
+            productPrice.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            contentView.bottomAnchor.constraint(equalTo: productImage.bottomAnchor, constant: 11)
         )
-        
-        productImage.layer.cornerRadius = 30
-        productImage.clipsToBounds = true
     }
     
     
@@ -69,6 +70,6 @@ class IndCartTableViewCell: TableViewCell<Product> {
         productImage.load(photoUrl: item.imageUrl)
         productName.text = item.name
         productPrice.text = String(item.price ?? 0.0)
-        sameNumberOfProductsLabel.text = "0"
+        sameNumberOfProductsLabel.text = "0 adet"
     }
 }
