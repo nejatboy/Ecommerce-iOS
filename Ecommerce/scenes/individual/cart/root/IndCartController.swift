@@ -8,7 +8,7 @@
 class IndCartController: Controller<IndCartViewModel, IndCartNavigationController> {
     
     private let tableView = IndCartTableView()
-    private let cartConfirmButton = ButtonSecondary()
+    private let cartConfirmButton = ButtonPrimary()
     
     
     override func viewDidLoad() {
@@ -18,22 +18,14 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
         
         addSubviews(tableView, cartConfirmButton)
     
-        let headerView = View()
-        headerView.backgroundColor = .white
-        tableView.tableHeaderView = headerView
-        
-        cartConfirmButton.backgroundColor = .systemRed
-        cartConfirmButton.translatesAutoresizingMaskIntoConstraints = false
-        
         activateConstraints(
+            cartConfirmButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -14),
+            cartConfirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            
-            cartConfirmButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 8),
-            cartConfirmButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -3),
-            cartConfirmButton.centerXAnchor.constraint(equalTo: tableView.centerXAnchor)
+            tableView.bottomAnchor.constraint(equalTo: cartConfirmButton.topAnchor, constant: -26),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         )
     }
     
@@ -48,7 +40,5 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
     
     override func customizeViews() {
         cartConfirmButton.setTitle("Confirm Cart", for: .normal)
-        cartConfirmButton.setTitleColor(.white, for: .normal)
-        cartConfirmButton.layer.cornerRadius = 20
     }
 }

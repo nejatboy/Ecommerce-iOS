@@ -43,25 +43,20 @@ class IndCartTableViewCell: TableViewCell<Product> {
         addSubviews(productName, productPrice, productImage, sameNumberOfProductsLabel)
         
         activateConstraints(
-            productImage.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 3),
+            productImage.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 4),
             productImage.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            productImage.widthAnchor.constraint(equalToConstant: 75),
+            productImage.widthAnchor.constraint(equalToConstant: 76),
             productImage.heightAnchor.constraint(equalToConstant: 100),
-            productImage.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: 8),
             
             productName.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 6),
             productName.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 8),
-            productName.widthAnchor.constraint(equalToConstant: 70),
-            productName.heightAnchor.constraint(equalToConstant: 15),
             
-            sameNumberOfProductsLabel.topAnchor.constraint(equalTo: productName.bottomAnchor, constant: 11),
+            sameNumberOfProductsLabel.topAnchor.constraint(equalTo: productName.bottomAnchor, constant: 10),
             sameNumberOfProductsLabel.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 8),
-            sameNumberOfProductsLabel.widthAnchor.constraint(equalToConstant: 70),
-            sameNumberOfProductsLabel.heightAnchor.constraint(equalToConstant: 15),
             
-            productPrice.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -7),
+            productPrice.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -6),
             productPrice.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            contentView.bottomAnchor.constraint(equalTo: productImage.bottomAnchor, constant: 11)
+            contentView.bottomAnchor.constraint(equalTo: productImage.bottomAnchor, constant: 10)
         )
     }
     
