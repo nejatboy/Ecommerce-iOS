@@ -38,6 +38,7 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
         viewModel.getAllProductsFromAllShops(completion: tableView.addItems)
     }
     
+    
     override func customizeViews() {
         cartConfirmButton.setTitle("Confirm Cart", for: .normal)
     }
