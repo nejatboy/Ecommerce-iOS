@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C40AA6FF2CCE0C070075544A /* IndShopsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AA6FE2CCE0C070075544A /* IndShopsTableView.swift */; };
+		C4217ECD2CEE69D200FE4E3F /* IndCartTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4217ECC2CEE69D200FE4E3F /* IndCartTableView.swift */; };
 		C423BD2E2C5E674A0066ACBC /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C423BD2D2C5E674A0066ACBC /* SignUpController.swift */; };
 		C42C80032C657E6F009D499A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80022C657E6F009D499A /* SignUpViewModel.swift */; };
 		C42C80052C657EE9009D499A /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C80042C657EE9009D499A /* SignInViewModel.swift */; };
@@ -83,6 +84,7 @@
 		02D4373426EC8798603F4737 /* Pods-Ecommerce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.release.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.release.xcconfig"; sourceTree = "<group>"; };
 		8E4A067E0C7D83D303BC9230 /* Pods-Ecommerce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.debug.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.debug.xcconfig"; sourceTree = "<group>"; };
 		C40AA6FE2CCE0C070075544A /* IndShopsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndShopsTableView.swift; sourceTree = "<group>"; };
+		C4217ECC2CEE69D200FE4E3F /* IndCartTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndCartTableView.swift; sourceTree = "<group>"; };
 		C423BD2D2C5E674A0066ACBC /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		C42C80022C657E6F009D499A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		C42C80042C657EE9009D499A /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			children = (
 				C438AF262CE533A100CD8A00 /* IndCartController.swift */,
 				C438AF2A2CE5342C00CD8A00 /* IndCartViewModel.swift */,
+				C4217ECC2CEE69D200FE4E3F /* IndCartTableView.swift */,
 			);
 			path = root;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				D95308322C8CB5F800914617 /* CorShopsController.swift in Sources */,
 				D9B559A42C7916FD007DA2C8 /* UserDefaultsService.swift in Sources */,
 				D94067AC2CD6C28900FA5F1D /* CollectionView.swift in Sources */,
+				C4217ECD2CEE69D200FE4E3F /* IndCartTableView.swift in Sources */,
 				D95308272C8CB4F500914617 /* CorProfileNavigationController.swift in Sources */,
 				C43FCFB92C56DCB9005A1AFA /* SignInController.swift in Sources */,
 				D94067AE2CD6D21600FA5F1D /* TrainingCollectionView.swift in Sources */,

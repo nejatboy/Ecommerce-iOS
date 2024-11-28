@@ -174,4 +174,46 @@ struct DatabaseService: Service {
             completion?(shops)
         }
     }
+    
+    
+    /// Bütün dükkanların bütün ürünlerini almak için kullanırız.
+    func getAllProductsFromAllShops(completion: Callback<[Product]>?) {
+        guard (UserDefaultsService.instance.currentUser?.uid) != nil else {
+            show(message: "Please log in.", type: .error)
+            return
+        }
+        
+        db.collection("Shops").getDocuments { shopsSnapshot, error in
+            if let error = error {
+                show(message:"Bütün ürünleri almaya çalışırken henüz dükkan bilgileri bile alınmadı.", type: .error)
+                return
+            }
+            
+            guard let shopsSnapshot = shopsSnapshot else {
+                return
+            }
+            
+            var allProducts: [Product] = []
+            
+            for shop in shopsSnapshot.documents {
+                self.db.collection("Shops").document(shop.documentID).collection("Products").getDocuments { productsSnaphot, error in
+                    if let error = error {
+                        show(message:"Bütün ürünleri almaya çalışırken hata çıktı.", type: .error)
+                        return
+                    }
+                    
+                    guard let productsSnaphot = productsSnaphot else {
+                        return
+                    }
+                    let products = ParserService.instance.parseToProducts(snapshot: productsSnaphot)
+                    allProducts.append(contentsOf: products!)
+                    
+                    if allProducts.count == shopsSnapshot.documents.count {
+                        completion?(allProducts)
+                    }
+                }
+            }
+        }
+    }
 }
+
