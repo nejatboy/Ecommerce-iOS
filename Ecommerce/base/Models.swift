@@ -52,4 +52,5 @@ struct Product: Codable {
     let price: Double?
     let imageUrl: String?
     let shopUid: String?
+    var quantity: Int?
 }
