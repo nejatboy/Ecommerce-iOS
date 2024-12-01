@@ -55,7 +55,8 @@ struct ParserService {
             uid: document.documentID,
             name: document.get("name") as? String,
             latitude: document.get("latitude") as? Double,
-            longitude: document.get("longitude") as? Double
+            longitude: document.get("longitude") as? Double,
+            imageUrl: document.get("imageUrl") as? String
         )
     }
     

@@ -67,6 +67,7 @@ extension UIImage {
     static let iconCart = UIImage(systemName: "cart")
     static let iconEdit = UIImage(systemName: "pencil")
     static let iconDelete = UIImage(systemName: "trash")
+    static let iconAddImage = UIImage(systemName: "photo.badge.plus")
     
     static var iconShop: UIImage? {
         UIDevice.current.systemVersion >= "16"
