@@ -307,7 +307,7 @@ class MapView: MKMapView, MKMapViewDelegate {
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
-        annotation.title = "Seçilen Konum"
+        annotation.title = "Selected Location"
         
         addAnnotation(annotation)
         

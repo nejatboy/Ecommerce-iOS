@@ -13,7 +13,7 @@ class CorporateTabbarController: TabbarController {
         super.viewDidLoad()
         
         let shopsController = CorShopsNavigationController()
-        shopsController.tabBarItem = .init(title: "Shops", image: .iconInfo, selectedImage: nil)
+        shopsController.tabBarItem = .init(title: "Shops", image: .iconShop, selectedImage: nil)
         
         let profileController = CorProfileNavigationController()
         profileController.tabBarItem = .init(title: "Profile", image: .iconProfile, selectedImage: nil)
