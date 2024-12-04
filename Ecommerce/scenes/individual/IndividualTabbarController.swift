@@ -14,7 +14,7 @@ class IndividualTabbarController: TabbarController {
         super.viewDidLoad()
         
         let shopsController = IndShopsNavigationController()
-        shopsController.tabBarItem = .init(title: "Shops", image: .iconInfo, selectedImage: nil)
+        shopsController.tabBarItem = .init(title: "Shops", image: .iconShop, selectedImage: nil)
         
         let indCartController = IndCartNavigationController()
         indCartController.tabBarItem = .init(title: "Cart", image: .iconCart, selectedImage: nil)

@@ -24,8 +24,6 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
         
         tableView.tableFooterView = totalPriceLabel
         
-        tableView.backgroundColor = .red
-        
         addSubviews(tableView, totalPriceLabel, cartConfirmButton)
         
         activateConstraints(

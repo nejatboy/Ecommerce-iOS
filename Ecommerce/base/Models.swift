@@ -5,9 +5,22 @@
 //  Created by Nejat Boy on 11.08.2024.
 //
 
+import UIKit
+
+
+
 struct AlertModel {
     let title: String?
     var action: Handler?
+}
+
+
+
+struct SwipeAction {
+    let title: String?
+    let backgroundColor: UIColor?
+    let icon: UIImage?
+    let handler: Handler?
 }
 
 

@@ -33,15 +33,19 @@ class IndCartTableViewCell: TableViewCell<Product> {
         backgroundColor = .white
         
         productPriceLabel.textColor = .lightGray
-        productPriceLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        productPriceLabel.font = .setDynamicFont(size: 20)
         
-        productNameLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        productNameLabel.font = .setDynamicFont(size: 20)
         
-        numberOfProductsNumberPicker.font = UIFont.boldSystemFont(ofSize: 20)
+        numberOfProductsNumberPicker.font = .setDynamicFont(size: 20)
         
+        productImageView.set(cornerRadius: 60)
         productImageView.contentMode = .scaleAspectFill
         productImageView.clipsToBounds = true
         productImageView.layer.cornerRadius = 10
+        
+        numberOfProductsNumberPicker.setItems(items: [1, 2, 3, 4, 5])
+        numberOfProductsNumberPicker.onItemSelect = onItemNumberSelected
         
         addSubviews(productNameLabel, productPriceLabel, productImageView, numberOfProductsNumberPicker)
         
@@ -61,9 +65,6 @@ class IndCartTableViewCell: TableViewCell<Product> {
             productPriceLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             contentView.bottomAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 10)
         )
-        
-        numberOfProductsNumberPicker.setItems(items: [1, 2, 3, 4, 5])
-        numberOfProductsNumberPicker.onItemSelect = onItemNumberSelected
     }
     
     
@@ -78,8 +79,6 @@ class IndCartTableViewCell: TableViewCell<Product> {
     
     
     private func onItemNumberSelected(number: Int) {
-        print(number)
-        
         guard var product = product else { return }
         product.quantity = number
         

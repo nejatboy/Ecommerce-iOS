@@ -17,6 +17,9 @@ class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate,
     ///Tıklanan item'ı handle etmek için kullanırız.
     var onItemSelected: Callback<ITEM>?
     
+    /// Swipe işlemi için set etmemiz yeterli.
+    var swipeActions: [SwipeAction]?
+    
     
     required init() {
         super.init(frame: .zero, style: .plain)
@@ -56,6 +59,27 @@ class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate,
         onItemSelected?(item)
         
         deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let swipeActions = swipeActions, !swipeActions.isEmpty else {
+            return nil
+        }
+        
+        let actions: [UIContextualAction] = swipeActions.map { swipeAction in
+            let item = UIContextualAction(style: .destructive, title: swipeAction.title) { _, _, completionHandler in
+                swipeAction.handler?()
+                completionHandler(true)
+            }
+            
+            item.image = swipeAction.icon
+            item.backgroundColor = swipeAction.backgroundColor
+            
+            return item
+        }
+        
+        return UISwipeActionsConfiguration(actions: actions)
     }
     
     
