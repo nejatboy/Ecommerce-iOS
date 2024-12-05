@@ -18,7 +18,7 @@ class IndCartTableView: TableView<Product, IndCartTableViewCell> {
 }
 
 
-class IndCartTableViewCell: TableViewCell<Product> {
+class IndCartTableViewCell: TableViewCell<Product>, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let productNameLabel = Label()
     let productPriceLabel = Label()
@@ -31,6 +31,10 @@ class IndCartTableViewCell: TableViewCell<Product> {
     override func configure() {
         selectionBackgroundColor = .lightGray
         backgroundColor = .white
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
         
         productPriceLabel.textColor = .lightGray
         productPriceLabel.font = .setDynamicFont(size: 20)
@@ -52,8 +56,6 @@ class IndCartTableViewCell: TableViewCell<Product> {
         activateConstraints(
             productImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 4),
             productImageView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            productImageView.widthAnchor.constraint(equalToConstant: 76),
-            productImageView.heightAnchor.constraint(equalToConstant: 100),
             
             productNameLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 6),
             productNameLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 8),
@@ -86,5 +88,13 @@ class IndCartTableViewCell: TableViewCell<Product> {
         productPriceLabel.text = String(productEndPrice)
         
         onPriceChanged?(product)
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let croppedImage = info[.editedImage] as? UIImage else {
+            return
+        }
+        productImageView.image = croppedImage
     }
 }

@@ -48,6 +48,7 @@ struct Shop: Encodable {
     let latitude: Double?
     let longitude: Double?
     let ownerUid: String? = UserDefaultsService.instance.currentUser?.uid
+    let imageUrl: String?
 }
 
 

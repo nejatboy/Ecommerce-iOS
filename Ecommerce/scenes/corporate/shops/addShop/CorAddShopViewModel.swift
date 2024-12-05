@@ -10,7 +10,8 @@ class CorAddShopViewModel: ViewModel {
     
     
     func addShop(name: String, latitude: Double?, longitude: Double?, completion: Handler?) {
-        let shop = Shop(name: name, latitude: latitude, longitude: longitude)
+        //TODO: Image upload edilecek. url'i database'e yazılacak. @muhammed
+        let shop = Shop(name: name, latitude: latitude, longitude: longitude, imageUrl: nil)
         
         showLoading()
         

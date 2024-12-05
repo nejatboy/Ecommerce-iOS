@@ -67,7 +67,14 @@ extension UIImage {
     static let iconCart = UIImage(systemName: "cart")
     static let iconEdit = UIImage(systemName: "pencil")
     static let iconDelete = UIImage(systemName: "trash")
-    static let iconShop = UIImage(systemName: "storefront")
+    static let iconAddImage = UIImage(systemName: "photo.badge.plus")
+    
+    static var iconShop: UIImage? {
+        UIDevice.current.systemVersion >= "16"
+        ? UIImage(systemName: "storefront")
+        : UIImage(systemName: "house")
+    }
+    
 //    static let iconBack = UIImage(systemName: "arrow.backward")
 //    static let iconAdd = UIImage(systemName: "plus")
 //    static let iconLocation = UIImage(systemName: "mappin.and.ellipse")

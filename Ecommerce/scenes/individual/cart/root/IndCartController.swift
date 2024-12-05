@@ -22,21 +22,19 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
         
         navigationItem.title = "Cart"
         
-        tableView.tableFooterView = totalPriceLabel
-        
         addSubviews(tableView, totalPriceLabel, cartConfirmButton)
         
         activateConstraints(
             cartConfirmButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -14),
             cartConfirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
+            totalPriceLabel.bottomAnchor.constraint(equalTo: cartConfirmButton.topAnchor, constant: -14),
+            totalPriceLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: cartConfirmButton.topAnchor, constant: -36), // -26
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            
-            totalPriceLabel.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 4),
-            totalPriceLabel.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -10)
+            tableView.bottomAnchor.constraint(equalTo: totalPriceLabel.topAnchor, constant: 2),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         )
     }
     
@@ -66,9 +64,9 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
     }
     
     
-    func onpriceChanged(updatedProduct: Product) {
-        if let index = products.firstIndex(where: { $0.uid == updatedProduct.uid }) {
-            products[index].quantity = updatedProduct.quantity
+    private  func onpriceChanged(product: Product) {
+        if let index = products.firstIndex(where: { $0.uid == product.uid }) {
+            products[index].quantity = product.quantity
         }
         
         let totalPrice = products.reduce(0.0) { (result, product) -> Double in
