@@ -67,3 +67,16 @@ struct Product: Codable {
     let imageUrl: String?
     let shopUid: String?
 }
+
+
+
+struct CartItem: Codable {
+    let product: Product
+    var quantity: Int
+}
+
+
+
+struct Cart: Codable {
+    var items: [CartItem]
+}

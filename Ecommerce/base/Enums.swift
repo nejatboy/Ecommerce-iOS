@@ -59,4 +59,5 @@ enum AlertType {
 
 enum UserDefaultsKey: String {
     case user = "user"
+    case cart = "cart"
 }
