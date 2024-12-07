@@ -85,9 +85,10 @@ class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate,
     }
     
     
-    /// cellForRowAt metoduna ek olarak hücrede değişiklik yapmak istenirse override edilir.
-    func handle(cell: C, indexPath: IndexPath) {
-        
+    ///TableView'ın elemanlarını set etmek için kullanırız.
+    func setItems(_ items: [ITEM]) {
+        self.items = items
+        reloadData()
     }
     
     
@@ -145,6 +146,10 @@ class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate,
     
     ///TableView'ın çoğu özellikleri zaten ayarlanmıştır. Ayrıca ayarlamak istediğimiz özellik var ise override ediniz.
     func configure() { }
+    
+    
+    /// cellForRowAt metoduna ek olarak hücrede değişiklik yapmak istenirse override edilir.
+    func handle(cell: C, indexPath: IndexPath) {}
 }
 
 
