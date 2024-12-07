@@ -24,17 +24,13 @@ class IndCartTableViewCell: TableViewCell<Product>, UIImagePickerControllerDeleg
     let productPriceLabel = Label()
     let productImageView = ImageView()
     let numberOfProductsNumberPicker = NumberPickerField()
-    
-    var product: Product?
+
     var onPriceChanged: Callback<Product>?
+    
     
     override func configure() {
         selectionBackgroundColor = .lightGray
         backgroundColor = .white
-        
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        
         
         productPriceLabel.textColor = .lightGray
         productPriceLabel.font = .setDynamicFont(size: 20)
@@ -43,7 +39,6 @@ class IndCartTableViewCell: TableViewCell<Product>, UIImagePickerControllerDeleg
         
         numberOfProductsNumberPicker.font = .setDynamicFont(size: 20)
         
-        productImageView.set(cornerRadius: 60)
         productImageView.contentMode = .scaleAspectFill
         productImageView.clipsToBounds = true
         productImageView.layer.cornerRadius = 10
@@ -56,22 +51,24 @@ class IndCartTableViewCell: TableViewCell<Product>, UIImagePickerControllerDeleg
         activateConstraints(
             productImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 4),
             productImageView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            productImageView.widthAnchor.constraint(equalToConstant: 80),
+            productImageView.heightAnchor.constraint(equalToConstant: 80),
             
-            productNameLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 6),
+            productNameLabel.topAnchor.constraint(equalTo: productImageView.topAnchor, constant: 6),
             productNameLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 8),
             
             numberOfProductsNumberPicker.topAnchor.constraint(equalTo: productNameLabel.bottomAnchor, constant: 10),
-            numberOfProductsNumberPicker.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 8),
+            numberOfProductsNumberPicker.leadingAnchor.constraint(equalTo: productNameLabel.leadingAnchor),
             
             productPriceLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -6),
             productPriceLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            contentView.bottomAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 10)
+            
+            contentView.bottomAnchor.constraint(equalTo: numberOfProductsNumberPicker.bottomAnchor, constant: 10)
         )
     }
     
     
     override func setItem(_ item: Product) {
-        self.product = item
         productImageView.load(photoUrl: item.imageUrl)
         productNameLabel.text = item.name
         productPriceLabel.text = String(item.price ?? 0.0)
@@ -81,20 +78,12 @@ class IndCartTableViewCell: TableViewCell<Product>, UIImagePickerControllerDeleg
     
     
     private func onItemNumberSelected(number: Int) {
-        guard var product = product else { return }
-        product.quantity = number
+        guard var item = item else { return }
+        item.quantity = number
         
-        let productEndPrice = (product.price ?? 0.0) * Double(number)
+        let productEndPrice = (item.price ?? 0.0) * Double(number)
         productPriceLabel.text = String(productEndPrice)
         
-        onPriceChanged?(product)
-    }
-    
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let croppedImage = info[.editedImage] as? UIImage else {
-            return
-        }
-        productImageView.image = croppedImage
+        onPriceChanged?(item)
     }
 }

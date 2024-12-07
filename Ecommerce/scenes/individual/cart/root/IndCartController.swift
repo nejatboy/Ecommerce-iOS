@@ -52,7 +52,7 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
             for index in 0..<products.count {
                 let indexPath = IndexPath(row: index, section: 0)
                 if let cell = self.tableView.cellForRow(at: indexPath) as? IndCartTableViewCell {
-                    cell.onPriceChanged = onpriceChanged
+                    cell.onPriceChanged = onPriceChanged
                 }
             }
         }
@@ -64,7 +64,7 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
     }
     
     
-    private  func onpriceChanged(product: Product) {
+    private  func onPriceChanged(product: Product) {
         if let index = products.firstIndex(where: { $0.uid == product.uid }) {
             products[index].quantity = product.quantity
         }

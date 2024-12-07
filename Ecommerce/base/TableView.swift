@@ -11,7 +11,7 @@ import UIKit
 //MARK: TableView
 class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate, UITableViewDataSource {
     
-    private var items: [ITEM] = []
+    fileprivate var items: [ITEM] = []
     private let cellId = UUID().uuidString
     
     ///Tıklanan item'ı handle etmek için kullanırız.
@@ -50,6 +50,8 @@ class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate,
         let item = items[indexPath.row]
         cell.setItem(item)
         
+        handle(cell: cell, indexPath: indexPath)
+        
         return cell
     }
     
@@ -80,6 +82,12 @@ class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate,
         }
         
         return UISwipeActionsConfiguration(actions: actions)
+    }
+    
+    
+    /// cellForRowAt metoduna ek olarak hücrede değişiklik yapmak istenirse override edilir.
+    func handle(cell: C, indexPath: IndexPath) {
+        
     }
     
     
@@ -191,5 +199,18 @@ class TableViewCell<ITEM>: UITableViewCell {
             selectionView.backgroundColor = newValue
             selectedBackgroundView = selectionView
         }
+    }
+    
+    
+    /// Hücreden ilgili item'a erişmek için kullanırız.
+    var item: ITEM? {
+        guard 
+            let tableView = superview as? TableView<ITEM, Self>,
+            let indexPath = tableView.indexPath(for: self)
+        else {
+            return nil
+        }
+        
+        return tableView.items[indexPath.row]
     }
 }
