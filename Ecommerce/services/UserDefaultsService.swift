@@ -47,9 +47,73 @@ struct UserDefaultsService {
     }
     
     
-    ///Login olmuş olan kullanıcı var ise bilgilerini alabiliriz.
+    /// Login olmuş olan kullanıcı var ise bilgilerini alabiliriz.
     var currentUser: User? {
         fetch(key: .user)
     }
+    
+    
+    /// Sepet bilgisini almak için kullanırız. Sepete henüz ürün eklenmemişse boş bir diziye sahip model döner.
+    var cart: Cart {
+        fetch(key: .cart) ?? .init(items: [])
+    }
+    
+    
+    /// Sepete ürün eklemek için kullanırız. Aynı üründen var ise sadece adet bilgisi değişir.
+    /// - Parameters:
+    ///   - item: Ekelenecek olan item.
+    /// - Returns: Güncel sepet modelini döner.
+    func addItemToCart(item: CartItem) -> Cart {
+        var cart = cart
+        
+        let index = cart.items.firstIndex {
+            $0.product.uid == item.product.uid
+        }
+        
+        if let index = index {
+            cart.items[index].quantity += item.quantity
+            
+        } else {
+            cart.items.append(item)
+        }
+        
+        save(cart, key: .cart)
+        return cart
+    }
+    
+    
+    /// Sepetten ürün silmek için kullanırız. Adet sayısını dikkate almaksızın ürünü sepetten siler.
+    /// - Parameters:
+    ///   - item: Silinecek olan item.
+    /// - Returns: Güncel sepet modelini döner.
+    func removeItemFromCart(item: CartItem) -> Cart {
+        var cart = cart
+        
+        cart.items.removeAll {
+            $0.product.uid == item.product.uid
+        }
+        
+        save(cart, key: .cart)
+        return cart
+    }
+    
+    
+    /// Sepetten ürün silmek için kullanırız. Adet sayısını dikkate almaksızın ürünü sepetten siler.
+    /// - Parameters:
+    ///   - item: Güncellenecek olan item.
+    /// - Returns: Güncel sepet modelini döner.
+    func updateItemOnCart(item: CartItem) -> Cart {
+        var cart = cart
+        
+        let index = cart.items.firstIndex {
+            $0.product.uid == item.product.uid
+        }
+        
+        if let index = index {
+            cart.items[index] = item
+        }
+        
+        save(cart, key: .cart)
+        return cart
+    }
 }
-
