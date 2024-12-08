@@ -22,7 +22,6 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
         
         navigationItem.title = "Cart"
         
-        
         tableView.swipeActions = [
             SwipeAction(title: "Remove", backgroundColor: .red, icon: .remove, handler: {
                 print("Delete action triggered.")
@@ -72,11 +71,12 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
     
     private  func onPriceChanged(product: Product) {
         if let index = products.firstIndex(where: { $0.uid == product.uid }) {
-            products[index].quantity = product.quantity
+          //  products[index].quantity = product.quantity
         }
         
         let totalPrice = products.reduce(0.0) { (result, product) -> Double in
-            return result + (product.price ?? 0.0) * Double(product.quantity ?? 1)
+      //      return result + (product.price ?? 0.0) * Double(product.quantity ?? 1)
+            return 1
         }
         
         self.totalPriceLabel.text = "Toplam: \(totalPrice)"

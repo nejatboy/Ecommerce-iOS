@@ -71,13 +71,13 @@ class IndCartTableViewCell: TableViewCell<Product> {
         productNameLabel.text = item.name
         productPriceLabel.text = String(item.price ?? 0.0)
 
-        numberOfProductsNumberPicker.text = "\(item.quantity ?? 1)"
+      //  numberOfProductsNumberPicker.text = "\(item.quantity ?? 1)"
     }
     
     
     private func onItemNumberSelected(number: Int) {
         guard var item = item else { return }
-        item.quantity = number
+      //  item.quantity = number
         
         let productEndPrice = (item.price ?? 0.0) * Double(number)
         productPriceLabel.text = String(productEndPrice)
