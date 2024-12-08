@@ -22,6 +22,12 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
         
         navigationItem.title = "Cart"
         
+        
+        tableView.swipeActions = [
+            SwipeAction(title: "Remove", backgroundColor: .red, icon: .remove, handler: {
+                print("Delete action triggered.")
+            })]
+        
         addSubviews(tableView, totalPriceLabel, cartConfirmButton)
         
         activateConstraints(
