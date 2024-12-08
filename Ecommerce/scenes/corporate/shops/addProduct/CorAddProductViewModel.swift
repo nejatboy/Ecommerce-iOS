@@ -32,7 +32,8 @@ class CorAddProductViewModel: ViewModel {
                 name: name,
                 price: Double(price.replacingOccurrences(of: ",", with: ".")),
                 imageUrl: imageUrl,
-                shopUid: self.choosenShopUid
+                shopUid: self.choosenShopUid,
+                description: nil
             )
             
             DatabaseService.instance.addProduct(product: product) {

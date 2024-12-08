@@ -83,7 +83,8 @@ struct ParserService {
             name: document.get("name") as? String,
             price: document.get("price") as? Double,
             imageUrl: document.get("imageUrl") as? String,
-            shopUid: document.get("shopUid") as? String
+            shopUid: document.get("shopUid") as? String,
+            description: document.get("description") as? String
         )
     }
 }

@@ -75,6 +75,8 @@
 		D9D028852C6901EC008D3731 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D028842C6901EC008D3731 /* Models.swift */; };
 		D9D6D2252C8DEBF600037CCD /* CorAddShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D6D2242C8DEBF600037CCD /* CorAddShopViewModel.swift */; };
 		D9D7CAD62C7A39AF0006B2FB /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7CAD52C7A39AF0006B2FB /* LoginNavigationController.swift */; };
+		D9E6BE232D05282100944357 /* IndProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E6BE222D05282100944357 /* IndProductDetailViewModel.swift */; };
+		D9E6BE252D05283100944357 /* IndProductDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E6BE242D05283100944357 /* IndProductDetailController.swift */; };
 		D9F564CB2C597BA600DEDC66 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F564CA2C597BA600DEDC66 /* Buttons.swift */; };
 		D9F564CE2C597C1E00DEDC66 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F564CD2C597C1E00DEDC66 /* Device.swift */; };
 		E48A16221C3BA4555456AD04 /* Pods_Ecommerce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3078625EF13FE0A4CFCA136 /* Pods_Ecommerce.framework */; };
@@ -153,6 +155,8 @@
 		D9D028842C6901EC008D3731 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		D9D6D2242C8DEBF600037CCD /* CorAddShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorAddShopViewModel.swift; sourceTree = "<group>"; };
 		D9D7CAD52C7A39AF0006B2FB /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
+		D9E6BE222D05282100944357 /* IndProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IndProductDetailViewModel.swift; path = Ecommerce/components/IndProductDetailViewModel.swift; sourceTree = SOURCE_ROOT; };
+		D9E6BE242D05283100944357 /* IndProductDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndProductDetailController.swift; sourceTree = "<group>"; };
 		D9F564CA2C597BA600DEDC66 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		D9F564CD2C597C1E00DEDC66 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		E3078625EF13FE0A4CFCA136 /* Pods_Ecommerce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ecommerce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -309,6 +313,7 @@
 		D965CF412CCC3EAA0036213A /* shops */ = {
 			isa = PBXGroup;
 			children = (
+				D9E6BE212D05280900944357 /* productDetail */,
 				D965CF452CCC3EF40036213A /* root */,
 				D94067AF2CD6E6BA00FA5F1D /* products */,
 				D965CF432CCC3ED60036213A /* IndShopsNavigationController.swift */,
@@ -467,6 +472,15 @@
 				C4519CA42C8E358E0039ACCF /* CorAddShopController.swift */,
 			);
 			path = addShop;
+			sourceTree = "<group>";
+		};
+		D9E6BE212D05280900944357 /* productDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D9E6BE222D05282100944357 /* IndProductDetailViewModel.swift */,
+				D9E6BE242D05283100944357 /* IndProductDetailController.swift */,
+			);
+			path = productDetail;
 			sourceTree = "<group>";
 		};
 		D9F564C92C597B9700DEDC66 /* components */ = {
@@ -630,6 +644,7 @@
 				D9F564CE2C597C1E00DEDC66 /* Device.swift in Sources */,
 				D9B02A8D2C559DA00018B499 /* NavigationController.swift in Sources */,
 				D9B02A952C559E3A0018B499 /* SplashViewModel.swift in Sources */,
+				D9E6BE252D05283100944357 /* IndProductDetailController.swift in Sources */,
 				D9B02A722C558B890018B499 /* AppDelegate.swift in Sources */,
 				D9B02A892C559D4E0018B499 /* Controller.swift in Sources */,
 				D9B02A742C558B890018B499 /* SceneDelegate.swift in Sources */,
@@ -663,6 +678,7 @@
 				D9B02A8F2C559DE40018B499 /* TabbarController.swift in Sources */,
 				D953082A2C8CB54100914617 /* CorProfileController.swift in Sources */,
 				D9CCD86E2C62E05B00CA713C /* LoadingView.swift in Sources */,
+				D9E6BE232D05282100944357 /* IndProductDetailViewModel.swift in Sources */,
 				D9D028832C68FFA7008D3731 /* Enums.swift in Sources */,
 				D965CF492CCC3F160036213A /* IndShopsController.swift in Sources */,
 				C43636DE2CDAB6050080535B /* IndProductsCollectionView.swift in Sources */,
