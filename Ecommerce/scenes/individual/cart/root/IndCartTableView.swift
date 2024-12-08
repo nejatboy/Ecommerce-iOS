@@ -63,6 +63,7 @@ class IndCartTableViewCell: TableViewCell<Product> {
             
             contentView.bottomAnchor.constraint(equalTo: numberOfProductsNumberPicker.bottomAnchor, constant: 10)
         )
+        
     }
     
     
