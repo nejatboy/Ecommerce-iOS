@@ -5,8 +5,6 @@
 //  Created by muhammed dursun on 20.11.2024.
 //
 
-import UIKit
-
 
 class IndCartTableView: TableView<Product, IndCartTableViewCell> {
    
@@ -18,7 +16,7 @@ class IndCartTableView: TableView<Product, IndCartTableViewCell> {
 }
 
 
-class IndCartTableViewCell: TableViewCell<Product>, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class IndCartTableViewCell: TableViewCell<Product> {
     
     let productNameLabel = Label()
     let productPriceLabel = Label()
