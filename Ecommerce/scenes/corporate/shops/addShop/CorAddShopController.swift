@@ -5,13 +5,21 @@
 //  Created by muhammed dursun on 8.09.2024.
 //
 
+import UIKit
+import MapKit
 
+private protocol ImagePickerProtocol: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+   func selectShopPhoto()
+}
 
-class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationController> {
+class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationController>, ImagePickerProtocol {
     
     private let nameTextField = TextFieldLayout()
     private let addShopButton = ButtonSecondary()
     private let mapView = MapView()
+    private let shopImage = ImageView()
+    let padding : CGFloat = 34
+    let iconImageView = ImageView()
     
     
     override func viewDidLoad() {
@@ -19,22 +27,34 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         
         navigationItem.title = "Add Shop"
         
-        addSubviews(nameTextField, addShopButton, mapView)
+        viewModel.fetchLocation(listener: locationReceived)
+        
+        addSubviews(mapView, nameTextField, addShopButton, shopImage)
+    
+        shopImage.addSubview(iconImageView)
         
         activateConstraints(
-            mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            mapView.heightAnchor.constraint(equalToConstant: 300),
+            mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 6),
+            mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 6),
+            mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -6),
+            mapView.heightAnchor.constraint(equalToConstant: 230),
             
-            nameTextField.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 20),
+            shopImage.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 18),
+            shopImage.widthAnchor.constraint(equalToConstant: 120),
+            shopImage.heightAnchor.constraint(equalToConstant: 120),
+            shopImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            iconImageView.topAnchor.constraint(equalTo: shopImage.topAnchor, constant: padding),
+            iconImageView.bottomAnchor.constraint(equalTo: shopImage.bottomAnchor, constant: -padding),
+            iconImageView.leadingAnchor.constraint(equalTo: shopImage.leadingAnchor, constant: padding),
+            iconImageView.trailingAnchor.constraint(equalTo: shopImage.trailingAnchor, constant: -padding),
+         
+            nameTextField.topAnchor.constraint(equalTo: shopImage.bottomAnchor, constant: 6),
             nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            addShopButton.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
+            addShopButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             addShopButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
-        
-        viewModel.fetchLocation(listener: locationReceived)
     }
     
     
@@ -47,7 +67,24 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         nameTextField.placeholder = "Name"
         
         addShopButton.setTitle("Add Shop", for: .normal)
-        addShopButton.action = addShopButtonClicked
+        
+        mapView.layer.cornerRadius = 20
+        
+        shopImage.layer.borderColor = UIColor.lightGray.cgColor
+        shopImage.layer.borderWidth = 1
+        shopImage.layer.cornerRadius = 10
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectShopPhoto))
+        
+        shopImage.backgroundColor = .white
+        shopImage.tintColor = .lightGray
+        shopImage.contentMode = .scaleAspectFill
+        shopImage.clipsToBounds = true
+        shopImage.isUserInteractionEnabled = true
+        shopImage.addGestureRecognizer(tapGesture)
+        
+        iconImageView.image = .iconAddImage
+        iconImageView.contentMode = .scaleAspectFit
     }
     
     
@@ -62,5 +99,29 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         viewModel.addShop(name: name, latitude: shopLocation.latitude, longitude: shopLocation.longitude) {
             self.navController?.addShopsToShops()
         }
+    }
+    
+    
+    @objc fileprivate func selectShopPhoto() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true)
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        shopImage.image = nil
+
+        guard let croppedImage = info[.editedImage] as? UIImage else {
+            return
+        }
+        
+        shopImage.image = croppedImage
+        iconImageView.image = nil
     }
 }
