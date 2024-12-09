@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import MapKit
+
 
 private protocol ImagePickerProtocol: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
    func selectShopPhoto()
@@ -55,6 +55,8 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
             addShopButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             addShopButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
+        
+        addShopButton.action = addShopButtonClicked
     }
     
     
@@ -96,9 +98,14 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
             return
         }
         
-        viewModel.addShop(name: name, latitude: shopLocation.latitude, longitude: shopLocation.longitude) {
+      /*  viewModel.addShop(name: name, latitude: shopLocation.latitude, longitude: shopLocation.longitude) {
+            self.navController?.addShopsToShops()
+        } */
+        
+        viewModel.shopAddingControl(name: name, latitude: shopLocation.latitude, longitude: shopLocation.longitude) {
             self.navController?.addShopsToShops()
         }
+        
     }
     
     
@@ -115,8 +122,6 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         
-        shopImage.image = nil
-
         guard let croppedImage = info[.editedImage] as? UIImage else {
             return
         }

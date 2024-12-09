@@ -326,13 +326,13 @@ class MapView: MKMapView, MKMapViewDelegate {
         
         setRegion(region, animated: animated) */
         
-        var latDelta: CLLocationDegrees = 0.001
-        var longDelta: CLLocationDegrees = 0.001
+        let latDelta: CLLocationDegrees = 0.001
+        let longDelta: CLLocationDegrees = 0.001
         
-        var theSpan2: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
-        var pointLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(coordinate.latitude ?? 0, coordinate.longitude ?? 0)
+        let theSpan2: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
+        let pointLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(coordinate.latitude ?? 0, coordinate.longitude ?? 0)
         
-        var region: MKCoordinateRegion = MKCoordinateRegion(center: pointLocation, span: theSpan2)
+        let region: MKCoordinateRegion = MKCoordinateRegion(center: pointLocation, span: theSpan2)
         setRegion(region, animated: true)
     }
 }
