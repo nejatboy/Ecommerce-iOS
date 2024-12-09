@@ -176,6 +176,32 @@ struct DatabaseService: Service {
     }
     
     
+    /// Dükkan silmek için kullanırız
+    ///
+    /// - Parameters:
+    ///   - shopUid: Silmek istediğimiz dükkan id'sidir.
+    ///   - completion: Başarılı kod bloğu
+    func deleteShop(shopUid: String?, completion: Handler?) {
+        guard (UserDefaultsService.instance.currentUser?.uid) != nil else {
+            show(message: "Please log in.", type: .error)
+            return
+        }
+        
+        guard let shopUid = shopUid else {
+            return
+        }
+        
+        db.collection("Shops").document(shopUid).delete { error in
+            if let error = error {
+                show(message: error.localizedDescription, type: .error)
+                return
+            }
+            
+            completion?()
+        }
+    }
+    
+    
     /// Bütün dükkanların bütün ürünlerini almak için kullanırız.
     func getAllProductsFromAllShops(completion: Callback<[Product]>?) {
         guard (UserDefaultsService.instance.currentUser?.uid) != nil else {
