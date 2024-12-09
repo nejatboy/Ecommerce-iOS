@@ -153,6 +153,31 @@ struct DatabaseService: Service {
     }
     
     
+    /// Dükkan silmek için kullanırız.
+    ///
+    /// - Parameters:
+    ///   - product: Silinmesi istenen ürün.
+    ///   - completion: Başarılı işlem bloğu.
+    func deleteProduct(product: Product, completion: Handler?) {
+        guard
+            let shopUid = product.shopUid,
+            let productUid = product.uid
+        else {
+            show(message: "Shop cannot find.", type: .error)
+            return
+        }
+        
+        db.collection("Shops").document(shopUid).collection("Products").document(productUid).delete { error in
+            if let error = error {
+                show(message: error.localizedDescription, type: .error)
+                return
+            }
+            
+            completion?()
+        }
+    }
+    
+    
     /// Çevredeki dükkanları getirmek için kullanırız
     ///
     /// - Parameters:
