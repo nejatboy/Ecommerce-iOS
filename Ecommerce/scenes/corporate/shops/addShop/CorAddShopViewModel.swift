@@ -9,26 +9,31 @@
 class CorAddShopViewModel: ViewModel {
     
     
-    func addShop(name: String, latitude: Double?, longitude: Double?, completion: Handler?) {
-        //TODO: Image upload edilecek. url'i database'e yazılacak. @muhammed
-        let shop = Shop(name: name, latitude: latitude, longitude: longitude, imageUrl: nil)
+    func addShop(imageView: ImageView?, name: String, latitude: Double?, longitude: Double?, completion: Handler?) {
+        guard var shopImageView = imageView?.image else {
+            show(message: "Image is required", type: .error)
+            return
+        }
         
-        DatabaseService.instance.addShop(shop: shop) {
-            self.show(message: "Shop added succesfully", type: .success)
+        showLoading()
+        
+        StorageService.instance.upload(image: &shopImageView) { imageUrl in
+            let shop = Shop(name: name, latitude: latitude, longitude: longitude, imageUrl: imageUrl)
             
-            completion?()
+            DatabaseService.instance.addShop(shop: shop) {
+                self.show(message: "Shop added succesfully", type: .success)
+                completion?()
+            }
         }
     }
     
     
-    func shopAddingControl(name: String, latitude: Double?, longitude: Double?, completion: Handler?) {
-        showLoading()
-        
+    func shopAddingControl(shopImageView: ImageView?, name: String, latitude: Double?, longitude: Double?, completion: Handler?) {
         let noAction = AlertModel(title: "No")
         
         let yesAction = AlertModel(title: "Yes") {
             self.hideLoading()
-            self.addShop(name: name, latitude: latitude, longitude: longitude, completion: completion)
+            self.addShop( imageView: shopImageView, name: name, latitude: latitude, longitude: longitude, completion: completion)
         }
         
         showAlert(type: .warning, message: "Do you want to add the shop?", actions: [noAction, yesAction])

@@ -55,8 +55,6 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
             addShopButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             addShopButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
-        
-        addShopButton.action = addShopButtonClicked
     }
     
     
@@ -69,6 +67,7 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         nameTextField.placeholder = "Name"
         
         addShopButton.setTitle("Add Shop", for: .normal)
+        addShopButton.action = addShopButtonClicked
         
         mapView.layer.cornerRadius = 20
         
@@ -97,15 +96,10 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         else {
             return
         }
-        
-      /*  viewModel.addShop(name: name, latitude: shopLocation.latitude, longitude: shopLocation.longitude) {
-            self.navController?.addShopsToShops()
-        } */
-        
-        viewModel.shopAddingControl(name: name, latitude: shopLocation.latitude, longitude: shopLocation.longitude) {
+     
+        viewModel.shopAddingControl(shopImageView: shopImage, name: name, latitude: shopLocation.latitude, longitude: shopLocation.longitude) {
             self.navController?.addShopsToShops()
         }
-        
     }
     
     
