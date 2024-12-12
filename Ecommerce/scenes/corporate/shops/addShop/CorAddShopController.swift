@@ -90,14 +90,7 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
     
     
     private func addShopButtonClicked() {
-        guard
-            let name = nameTextField.text,
-            let shopLocation = mapView.selectedCoordinate
-        else {
-            return
-        }
-     
-        viewModel.shopAddingControl(shopImageView: shopImage, name: name, latitude: shopLocation.latitude, longitude: shopLocation.longitude) {
+        viewModel.shopAddingControl(shopImage: shopImage.image, name: nameTextField.text, coordinate: mapView.selectedCoordinate) {
             self.navController?.addShopsToShops()
         }
     }
