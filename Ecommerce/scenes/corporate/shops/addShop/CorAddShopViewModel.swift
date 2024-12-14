@@ -12,21 +12,24 @@ class CorAddShopViewModel: ViewModel {
     
    
     func shopAddingControl(shopImage: UIImage?, name: String?, coordinate: Coordinate?, completion: Handler?) {
-        guard 
-            let name = name,
-            let shopImage = shopImage,
-            let coordinate = coordinate
-        else {
+        guard  let name = name else {
             return
         }
         
-        showLoading()
+        guard let coordinate = coordinate else {
+            show(message: "Select Location", type: .error)
+            return
+        }
+        
+        guard let shopImage = shopImage else {
+            show(message: "Select Image", type: .error)
+            return
+        }
         
         let noAction = AlertModel(title: "No")
         
         let yesAction = AlertModel(title: "Yes") {
-            self.hideLoading()
-            self.addShop( image: shopImage, name: name, coordinate: coordinate, completion: completion)
+            self.addShop(image: shopImage, name: name, coordinate: coordinate, completion: completion)
         }
         
         showAlert(type: .warning, message: "Do you want to add the shop?", actions: [noAction, yesAction])
@@ -38,6 +41,8 @@ class CorAddShopViewModel: ViewModel {
             show(message: "Image is required", type: .error)
             return
         }
+        
+        showLoading()
         
         StorageService.instance.upload(image: &shopImage) { imageUrl in
             let shop = Shop(name: name, latitude: coordinate?.latitude, longitude: coordinate?.longitude, imageUrl: imageUrl)
