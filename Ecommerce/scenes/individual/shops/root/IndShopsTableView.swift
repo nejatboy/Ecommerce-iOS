@@ -15,47 +15,47 @@ class IndShopsTableView: TableView<Shop, IndShopsCell> {
 
 class IndShopsCell: TableViewCell<Shop> {
    
-    private let shopsImageView = ImageView()
-    private let shopsName = Label()
-    private let distanceShopsLabel = Label()
+    private let shopImageView = ImageView()
+    private let shopNameLabel = Label()
+    private let distanceLabel = Label()
     
     
     override func configure() {
         selectionBackgroundColor = .lightGray
         backgroundColor = .clear
         
-        shopsName.textColor =  .black.withAlphaComponent(1.0)
-        shopsName.font = .setDynamicFont(size: 16)
+        shopNameLabel.textColor = .black
+        shopNameLabel.font = .setDynamicFont(size: 16)
         
-        distanceShopsLabel.textColor = .lightGray
-        distanceShopsLabel.font = .setDynamicFont(size: 16)
+        distanceLabel.textColor = .lightGray
+        distanceLabel.font = .setDynamicFont(size: 16)
         
-        shopsImageView.contentMode = .scaleAspectFill
-        shopsImageView.clipsToBounds = true
-        shopsImageView.layer.cornerRadius = 10
+        shopImageView.contentMode = .scaleAspectFill
+        shopImageView.clipsToBounds = true
+        shopImageView.layer.cornerRadius = 10
         
-        addSubviews(shopsImageView, shopsName, distanceShopsLabel)
+        addSubviews(shopImageView, shopNameLabel, distanceLabel)
         
         activateConstraints(
-            shopsImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 6),
-            shopsImageView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 6),
-            shopsImageView.widthAnchor.constraint(equalToConstant: 80),
-            shopsImageView.heightAnchor.constraint(equalToConstant: 80),
+            shopImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 6),
+            shopImageView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 6),
+            shopImageView.widthAnchor.constraint(equalToConstant: 100),
+            shopImageView.heightAnchor.constraint(equalToConstant: 100),
             
-            shopsName.topAnchor.constraint(equalTo: shopsImageView.topAnchor, constant: 4),
-            shopsName.leadingAnchor.constraint(equalTo: shopsImageView.trailingAnchor, constant: 6),
+            shopNameLabel.topAnchor.constraint(equalTo: shopImageView.topAnchor, constant: 4),
+            shopNameLabel.leadingAnchor.constraint(equalTo: shopImageView.trailingAnchor, constant: 6),
             
-            distanceShopsLabel.topAnchor.constraint(equalTo: shopsName.bottomAnchor, constant: 6),
-            distanceShopsLabel.leadingAnchor.constraint(equalTo: shopsName.leadingAnchor, constant: 0),
+            distanceLabel.topAnchor.constraint(equalTo: shopNameLabel.bottomAnchor, constant: 8),
+            distanceLabel.leadingAnchor.constraint(equalTo: shopNameLabel.leadingAnchor, constant: 0),
             
-            contentView.bottomAnchor.constraint(equalTo: shopsImageView.bottomAnchor, constant: 10)
+            contentView.bottomAnchor.constraint(equalTo: distanceLabel.bottomAnchor, constant: 52)
         )
     }
     
     
     override func setItem(_ item: Shop) {
-        shopsName.text = item.name
-        shopsImageView.load(photoUrl: item.imageUrl)
-        distanceShopsLabel.text = "5 km"
+        shopNameLabel.text = item.name
+        shopImageView.load(photoUrl: item.imageUrl)
+        distanceLabel.text = "5 km"
     }
 }
