@@ -11,7 +11,7 @@ import UIKit
 class CorAddShopViewModel: ViewModel {
     
    
-    func shopAddingControl(shopImage: UIImage?, name: String?, coordinate: Coordinate?, completion: Handler?) {
+    func shopAddingControl(shopImage: inout UIImage?, name: String?, coordinate: Coordinate?, completion: Handler?) {
         guard  let name = name else {
             return
         }
@@ -21,7 +21,7 @@ class CorAddShopViewModel: ViewModel {
             return
         }
         
-        guard let shopImage = shopImage else {
+        guard var shopImage = shopImage else {
             show(message: "Select Image", type: .error)
             return
         }
@@ -29,22 +29,17 @@ class CorAddShopViewModel: ViewModel {
         let noAction = AlertModel(title: "No")
         
         let yesAction = AlertModel(title: "Yes") {
-            self.addShop(image: shopImage, name: name, coordinate: coordinate, completion: completion)
+            self.addShop(image: &shopImage, name: name, coordinate: coordinate, completion: completion)
         }
         
         showAlert(type: .warning, message: "Do you want to add the shop?", actions: [noAction, yesAction])
     }
     
     
-    private func addShop(image: UIImage?, name: String, coordinate: Coordinate?, completion: Handler?) {
-        guard var shopImage = image else {
-            show(message: "Image is required", type: .error)
-            return
-        }
-        
+    private func addShop(image: inout UIImage, name: String, coordinate: Coordinate?, completion: Handler?) {
         showLoading()
         
-        StorageService.instance.upload(image: &shopImage) { imageUrl in
+        StorageService.instance.upload(image: &image) { imageUrl in
             let shop = Shop(name: name, latitude: coordinate?.latitude, longitude: coordinate?.longitude, imageUrl: imageUrl)
             
             DatabaseService.instance.addShop(shop: shop) {
