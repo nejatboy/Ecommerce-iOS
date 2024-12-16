@@ -34,10 +34,10 @@ class TextFieldLayout: View, UITextFieldDelegate {
         NSLayoutConstraint.activate([
             labelPlaceholder.topAnchor.constraint(equalTo: topAnchor),
             labelPlaceholder.leadingAnchor.constraint(equalTo: leadingAnchor),
+            labelPlaceholder.heightAnchor.constraint(equalToConstant: 20),
             
             textField.topAnchor.constraint(equalTo: labelPlaceholder.bottomAnchor, constant: 5),
             textField.leadingAnchor.constraint(equalTo: labelPlaceholder.leadingAnchor),
-            textField.heightAnchor.constraint(equalToConstant: 44),
             
             bottomAnchor.constraint(equalTo: textField.bottomAnchor),
             trailingAnchor.constraint(equalTo: textField.trailingAnchor)
