@@ -8,6 +8,8 @@
 import UIKit
 
 
+
+//MARK: Controller
 class Controller<VM: ViewModel, NC: NavigationController>: UIViewController {
     
     lazy var viewModel = VM()
@@ -63,4 +65,34 @@ class Controller<VM: ViewModel, NC: NavigationController>: UIViewController {
     @objc private func navButtonClicked() {
         navigationBarClicked?()
     }
+}
+
+
+
+//MARK: ControllerHasImagePicker
+class ControllerHasImagePicker<VM: ViewModel, NC: NavigationController>: Controller<VM, NC>, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
+    func openImagePicker() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true)
+    }
+    
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        if let image = info[.editedImage] as? UIImage {
+            onImageSelected(image: image)
+        }
+    }
+    
+    
+    ///Seçilen image'i handle etmek için override ederiz.
+    func onImageSelected(image: UIImage) {}
 }

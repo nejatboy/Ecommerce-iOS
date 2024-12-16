@@ -5,13 +5,16 @@
 //  Created by muhammed dursun on 8.09.2024.
 //
 
+import UIKit
 
 
-class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationController> {
+
+class CorAddShopController: ControllerHasImagePicker<CorAddShopViewModel, CorShopsNavigationController> {
     
     private let nameTextField = TextFieldLayout()
     private let addShopButton = ButtonSecondary()
     private let mapView = MapView()
+    private let shopImage = ImageView()
     
     
     override func viewDidLoad() {
@@ -19,22 +22,27 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         
         navigationItem.title = "Add Shop"
         
-        addSubviews(nameTextField, addShopButton, mapView)
+        viewModel.fetchLocation(listener: locationReceived)
+        
+        addSubviews(mapView, nameTextField, addShopButton, shopImage)
         
         activateConstraints(
-            mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            mapView.heightAnchor.constraint(equalToConstant: 300),
+            mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 6),
+            mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 6),
+            mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -6),
+            mapView.heightAnchor.constraint(equalToConstant: 230),
             
-            nameTextField.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 20),
+            shopImage.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 18),
+            shopImage.widthAnchor.constraint(equalToConstant: 120),
+            shopImage.heightAnchor.constraint(equalToConstant: 120),
+            shopImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+         
+            nameTextField.topAnchor.constraint(equalTo: shopImage.bottomAnchor, constant: 6),
             nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            addShopButton.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
+            addShopButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             addShopButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
-        
-        viewModel.fetchLocation(listener: locationReceived)
     }
     
     
@@ -48,19 +56,37 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         
         addShopButton.setTitle("Add Shop", for: .normal)
         addShopButton.action = addShopButtonClicked
+        
+        mapView.layer.cornerRadius = 20
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageClicked))
+        
+        shopImage.image = .iconAddImage
+        shopImage.tintColor = .lightGray
+        shopImage.contentMode = .scaleAspectFit
+        shopImage.layer.masksToBounds = true
+        shopImage.layer.cornerRadius = 10
+        shopImage.isUserInteractionEnabled = true
+        shopImage.addGestureRecognizer(tapGesture)
     }
     
     
     private func addShopButtonClicked() {
-        guard
-            let name = nameTextField.text,
-            let shopLocation = mapView.selectedCoordinate
-        else {
-            return
-        }
-        
-        viewModel.addShop(name: name, latitude: shopLocation.latitude, longitude: shopLocation.longitude) {
-            self.navController?.addShopsToShops()
-        }
+        viewModel.shopAddingControl(
+            shopImage: shopImage.image,
+            name: nameTextField.text,
+            coordinate: mapView.selectedCoordinate,
+            completion: navController?.addShopsToShops
+        )
+    }
+    
+    
+    @objc private func imageClicked() {
+        super.openImagePicker()
+    }
+    
+    
+    override func onImageSelected(image: UIImage) {
+        shopImage.image = image
     }
 }

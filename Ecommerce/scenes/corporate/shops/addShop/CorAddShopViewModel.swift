@@ -5,20 +5,47 @@
 //  Created by Nejat Boy on 8.09.2024.
 //
 
+import UIKit
+
 
 class CorAddShopViewModel: ViewModel {
     
-    
-    func addShop(name: String, latitude: Double?, longitude: Double?, completion: Handler?) {
-        //TODO: Image upload edilecek. url'i database'e yazılacak. @muhammed
-        let shop = Shop(name: name, latitude: latitude, longitude: longitude, imageUrl: nil)
+   
+    func shopAddingControl(shopImage: UIImage?, name: String?, coordinate: Coordinate?, completion: Handler?) {
+        guard  let name = name else {
+            return
+        }
         
+        guard let coordinate = coordinate else {
+            show(message: "Please select location.", type: .error)
+            return
+        }
+        
+        guard var shopImage = shopImage, shopImage != UIImage.iconAddImage else {
+            show(message: "Please select image.", type: .error)
+            return
+        }
+        
+        let noAction = AlertModel(title: "No")
+        
+        let yesAction = AlertModel(title: "Yes") {
+            self.addShop(image: &shopImage, name: name, coordinate: coordinate, completion: completion)
+        }
+        
+        showAlert(type: .warning, message: "Do you want to add the shop?", actions: [noAction, yesAction])
+    }
+    
+    
+    private func addShop(image: inout UIImage, name: String, coordinate: Coordinate, completion: Handler?) {
         showLoading()
         
-        DatabaseService.instance.addShop(shop: shop) {
-            self.show(message: "Shop added succesfully", type: .success)
+        StorageService.instance.upload(image: &image) { imageUrl in
+            let shop = Shop(name: name, latitude: coordinate.latitude, longitude: coordinate.longitude, imageUrl: imageUrl)
             
-            completion?()
+            DatabaseService.instance.addShop(shop: shop) {
+                self.show(message: "Shop added succesfully", type: .success)
+                completion?()
+            }
         }
     }
     
