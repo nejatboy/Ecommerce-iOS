@@ -8,18 +8,13 @@
 import UIKit
 
 
-private protocol ImagePickerProtocol: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-   func selectShopPhoto()
-}
 
-class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationController>, ImagePickerProtocol {
+class CorAddShopController: ControllerHasImagePicker<CorAddShopViewModel, CorShopsNavigationController> {
     
     private let nameTextField = TextFieldLayout()
     private let addShopButton = ButtonSecondary()
     private let mapView = MapView()
     private let shopImage = ImageView()
-    let padding : CGFloat = 34
-    let iconImageView = ImageView()
     
     
     override func viewDidLoad() {
@@ -30,8 +25,6 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         viewModel.fetchLocation(listener: locationReceived)
         
         addSubviews(mapView, nameTextField, addShopButton, shopImage)
-    
-        shopImage.addSubview(iconImageView)
         
         activateConstraints(
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 6),
@@ -43,11 +36,6 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
             shopImage.widthAnchor.constraint(equalToConstant: 120),
             shopImage.heightAnchor.constraint(equalToConstant: 120),
             shopImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            iconImageView.topAnchor.constraint(equalTo: shopImage.topAnchor, constant: padding),
-            iconImageView.bottomAnchor.constraint(equalTo: shopImage.bottomAnchor, constant: -padding),
-            iconImageView.leadingAnchor.constraint(equalTo: shopImage.leadingAnchor, constant: padding),
-            iconImageView.trailingAnchor.constraint(equalTo: shopImage.trailingAnchor, constant: -padding),
          
             nameTextField.topAnchor.constraint(equalTo: shopImage.bottomAnchor, constant: 6),
             nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -71,49 +59,34 @@ class CorAddShopController: Controller<CorAddShopViewModel, CorShopsNavigationCo
         
         mapView.layer.cornerRadius = 20
         
-        shopImage.layer.borderColor = UIColor.lightGray.cgColor
-        shopImage.layer.borderWidth = 1
-        shopImage.layer.cornerRadius = 10
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageClicked))
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectShopPhoto))
-        
-        shopImage.backgroundColor = .white
+        shopImage.image = .iconAddImage
         shopImage.tintColor = .lightGray
-        shopImage.contentMode = .scaleAspectFill
-        shopImage.clipsToBounds = true
+        shopImage.contentMode = .scaleAspectFit
+        shopImage.layer.masksToBounds = true
+        shopImage.layer.cornerRadius = 10
         shopImage.isUserInteractionEnabled = true
         shopImage.addGestureRecognizer(tapGesture)
-        
-        iconImageView.image = .iconAddImage
-        iconImageView.contentMode = .scaleAspectFit
     }
     
     
     private func addShopButtonClicked() {
-        viewModel.shopAddingControl(shopImage: shopImage.image, name: nameTextField.text, coordinate: mapView.selectedCoordinate) {
-            self.navController?.addShopsToShops()
-        }
+        viewModel.shopAddingControl(
+            shopImage: shopImage.image,
+            name: nameTextField.text,
+            coordinate: mapView.selectedCoordinate,
+            completion: navController?.addShopsToShops
+        )
     }
     
     
-    @objc fileprivate func selectShopPhoto() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = true
-        imagePicker.sourceType = .photoLibrary
-        
-        present(imagePicker, animated: true)
+    @objc private func imageClicked() {
+        super.openImagePicker()
     }
     
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true)
-        
-        guard let croppedImage = info[.editedImage] as? UIImage else {
-            return
-        }
-        
-        shopImage.image = croppedImage
-        iconImageView.image = nil
+    override func onImageSelected(image: UIImage) {
+        shopImage.image = image
     }
 }

@@ -11,18 +11,18 @@ import UIKit
 class CorAddShopViewModel: ViewModel {
     
    
-    func shopAddingControl(shopImage: inout UIImage?, name: String?, coordinate: Coordinate?, completion: Handler?) {
+    func shopAddingControl(shopImage: UIImage?, name: String?, coordinate: Coordinate?, completion: Handler?) {
         guard  let name = name else {
             return
         }
         
         guard let coordinate = coordinate else {
-            show(message: "Select Location", type: .error)
+            show(message: "Please select location.", type: .error)
             return
         }
         
-        guard var shopImage = shopImage else {
-            show(message: "Select Image", type: .error)
+        guard var shopImage = shopImage, shopImage != UIImage.iconAddImage else {
+            show(message: "Please select image.", type: .error)
             return
         }
         
@@ -36,11 +36,11 @@ class CorAddShopViewModel: ViewModel {
     }
     
     
-    private func addShop(image: inout UIImage, name: String, coordinate: Coordinate?, completion: Handler?) {
+    private func addShop(image: inout UIImage, name: String, coordinate: Coordinate, completion: Handler?) {
         showLoading()
         
         StorageService.instance.upload(image: &image) { imageUrl in
-            let shop = Shop(name: name, latitude: coordinate?.latitude, longitude: coordinate?.longitude, imageUrl: imageUrl)
+            let shop = Shop(name: name, latitude: coordinate.latitude, longitude: coordinate.longitude, imageUrl: imageUrl)
             
             DatabaseService.instance.addShop(shop: shop) {
                 self.show(message: "Shop added succesfully", type: .success)
