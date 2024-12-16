@@ -12,7 +12,7 @@ class TextFieldLayout: View, UITextFieldDelegate {
     
     private let textField = TextField()
     private let labelPlaceholder = Label()
-    
+    private var textFieldHeight: NSLayoutConstraint?
     
     override func configure() {
         widthAnchor.constraint(equalToConstant: Device.width * 0.8).isActive = true
@@ -37,11 +37,18 @@ class TextFieldLayout: View, UITextFieldDelegate {
             
             textField.topAnchor.constraint(equalTo: labelPlaceholder.bottomAnchor, constant: 5),
             textField.leadingAnchor.constraint(equalTo: labelPlaceholder.leadingAnchor),
-            textField.heightAnchor.constraint(equalToConstant: 44),
+           // textFieldHeight = textField.heightAnchor.constraint(equalToConstant: 44),
             
             bottomAnchor.constraint(equalTo: textField.bottomAnchor),
             trailingAnchor.constraint(equalTo: textField.trailingAnchor)
         ])
+        textFieldHeight = textField.heightAnchor.constraint(equalToConstant: 44)
+        textFieldHeight?.isActive = true
+    }
+    
+    
+    func setTextFieldHeight(_ height: CGFloat) {
+        textFieldHeight?.constant = height
     }
     
     
