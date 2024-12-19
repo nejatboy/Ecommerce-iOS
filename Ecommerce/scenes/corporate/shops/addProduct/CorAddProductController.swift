@@ -12,7 +12,7 @@ private protocol ImagePickerProtocol: UIImagePickerControllerDelegate, UINavigat
 }
 
 
-class CorAddProductController: Controller<CorAddProductViewModel, CorShopsNavigationController>, ImagePickerProtocol {
+class CorAddProductController: ControllerHasImagePicker<CorAddProductViewModel, CorShopsNavigationController> {
     
     private let productName = TextFieldLayout()
     private let productPrice = TextFieldLayout()
@@ -45,19 +45,20 @@ class CorAddProductController: Controller<CorAddProductViewModel, CorShopsNaviga
             
             productName.topAnchor.constraint(equalTo: productImage.bottomAnchor, constant: 20),
             productName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            productName.heightAnchor.constraint(equalToConstant: 64),
           
             productPrice.topAnchor.constraint(equalTo: productName.bottomAnchor, constant: 20),
             productPrice.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            productPrice.heightAnchor.constraint(equalToConstant: 64),
             
             productDescription.topAnchor.constraint(equalTo: productPrice.bottomAnchor, constant: 20),
             productDescription.leadingAnchor.constraint(equalTo: productPrice.leadingAnchor, constant: 0),
+            productDescription.heightAnchor.constraint(equalToConstant: 104),
            
             addButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -68),
             addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
         
-        productDescription.setTextFieldHeight(104)
-       
         addButton.action = addButtonClicked
     }
     
@@ -76,11 +77,11 @@ class CorAddProductController: Controller<CorAddProductViewModel, CorShopsNaviga
         productImage.layer.borderWidth = 1
         productImage.layer.cornerRadius = 10
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectPhoto))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(photoClicked))
        
         productImage.tintColor = .lightGray
         productImage.backgroundColor = .white
-        productImage.contentMode = .scaleAspectFit
+        productImage.contentMode = .scaleAspectFill
         productImage.clipsToBounds = true
         productImage.isUserInteractionEnabled = true
         productImage.addGestureRecognizer(tapGesture)
@@ -90,31 +91,19 @@ class CorAddProductController: Controller<CorAddProductViewModel, CorShopsNaviga
     }
     
     
-    @objc fileprivate func selectPhoto() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = true
-        imagePicker.sourceType = .photoLibrary
-        
-        present(imagePicker, animated: true)
+    @objc func photoClicked() {
+        super.openImagePicker()
     }
     
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true)
-        
-        productImage.image = nil
-        
-        guard let croppedImage = info[.editedImage] as? UIImage else {
-            return
-        }
-        
-        productImage.image = croppedImage
+    override func onImageSelected(image: UIImage) {
+        productImage.image = image
+        iconImageView.image = nil
     }
-    
+   
     
     func addButtonClicked() {        
-        viewModel.addProduct(imageView: productImage, name: productName.text, price: productPrice.text) {
+        viewModel.addProductControl(productImage: productImage.image, name: productName.text, price: productPrice.text, description: productDescription.text) {
             self.navController?.popViewController(animated: true)
         }
     }

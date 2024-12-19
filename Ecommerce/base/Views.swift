@@ -218,6 +218,7 @@ class UserInteractionView: View {
 //MARK: ImageView
 class ImageView: UIImageView {
     
+    
     init() {
         super.init(frame: .zero)
         
@@ -321,9 +322,18 @@ class MapView: MKMapView, MKMapViewDelegate {
     ///   - meters: Kuşbakışı uzaklık
     ///   - animated: Animasyon olsun mu olmasın mı
     func setRegion(coordinate: Coordinate, meters: CLLocationDistance, animated: Bool) {
-        let clLocationCoordinate = CLLocationCoordinate2D(latitude: coordinate.latitude ?? 0, longitude: coordinate.latitude ?? 0)
+      /*  let clLocationCoordinate = CLLocationCoordinate2D(latitude: coordinate.latitude ?? 0, longitude: coordinate.latitude ?? 0)
         let region = MKCoordinateRegion(center: clLocationCoordinate, latitudinalMeters: meters, longitudinalMeters: meters)
         
-        setRegion(region, animated: animated)
+        setRegion(region, animated: animated) */
+        
+        let latDelta: CLLocationDegrees = 0.001
+        let longDelta: CLLocationDegrees = 0.001
+        
+        let theSpan2: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
+        let pointLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(coordinate.latitude ?? 0, coordinate.longitude ?? 0)
+        
+        let region: MKCoordinateRegion = MKCoordinateRegion(center: pointLocation, span: theSpan2)
+        setRegion(region, animated: true)
     }
 }
