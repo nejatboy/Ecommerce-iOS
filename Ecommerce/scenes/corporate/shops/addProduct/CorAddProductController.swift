@@ -59,7 +59,7 @@ class CorAddProductController: ControllerHasImagePicker<CorAddProductViewModel, 
             addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
         
-        addButton.action = addButtonClicked
+        
     }
     
     
@@ -70,8 +70,6 @@ class CorAddProductController: ControllerHasImagePicker<CorAddProductViewModel, 
         productPrice.keyboardType = .decimalPad
         
         productDescription.placeholder = "Description"
-        
-        addButton.setTitle("Add Product", for: .normal)
         
         productImage.layer.borderColor = UIColor.lightGray.cgColor
         productImage.layer.borderWidth = 1
@@ -88,6 +86,9 @@ class CorAddProductController: ControllerHasImagePicker<CorAddProductViewModel, 
         
         iconImageView.image = .iconAddImage
         iconImageView.contentMode = .scaleAspectFit
+        
+        addButton.setTitle("Add Product", for: .normal)
+        addButton.action = addButtonClicked
     }
     
     

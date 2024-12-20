@@ -20,18 +20,11 @@ class CorAddProductViewModel: ViewModel {
             return
         }
         
-        guard let name = name else {
-            show(message: "Name is required.", type: .error)
-            return
-        }
-        
-        guard let price = price else {
-            show(message: "Price is required", type: .error)
-            return
-        }
-        
-        guard let description = description else {
-            show(message: "Description is required.", type: .error)
+        guard
+            let name = name,
+            let price = price,
+            let description = description
+        else {
             return
         }
         
