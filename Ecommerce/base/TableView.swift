@@ -71,7 +71,7 @@ class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate,
         
         let actions: [UIContextualAction] = swipeActions.map { swipeAction in
             let item = UIContextualAction(style: .destructive, title: swipeAction.title) { _, _, completionHandler in
-                swipeAction.handler?()
+                swipeAction.handler?(indexPath.row)
                 completionHandler(true)
             }
             

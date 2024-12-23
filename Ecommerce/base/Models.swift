@@ -20,7 +20,7 @@ struct SwipeAction {
     let title: String?
     let backgroundColor: UIColor?
     let icon: UIImage?
-    let handler: Handler?
+    let handler: Callback<Int>?
 }
 
 
