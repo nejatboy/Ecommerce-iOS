@@ -7,10 +7,6 @@
 
 import UIKit
 
-private protocol ImagePickerProtocol: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func selectPhoto()
-}
-
 
 class CorAddProductController: ControllerHasImagePicker<CorAddProductViewModel, CorShopsNavigationController> {
     
@@ -18,7 +14,6 @@ class CorAddProductController: ControllerHasImagePicker<CorAddProductViewModel, 
     private let productPrice = TextFieldLayout()
     private let productImage = ImageView()
     private let iconImageView = ImageView()
-    let padding: CGFloat = 30
     private let productDescription = TextFieldLayout()
     private let addButton = ButtonSecondary()
     
@@ -38,15 +33,15 @@ class CorAddProductController: ControllerHasImagePicker<CorAddProductViewModel, 
             productImage.heightAnchor.constraint(equalToConstant: 120),
             productImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            iconImageView.topAnchor.constraint(equalTo: productImage.topAnchor, constant: padding),
-            iconImageView.bottomAnchor.constraint(equalTo: productImage.bottomAnchor, constant: -padding),
-            iconImageView.leadingAnchor.constraint(equalTo: productImage.leadingAnchor, constant: padding),
-            iconImageView.trailingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: -padding),
+            iconImageView.topAnchor.constraint(equalTo: productImage.topAnchor, constant: 30),
+            iconImageView.bottomAnchor.constraint(equalTo: productImage.bottomAnchor, constant: -30),
+            iconImageView.leadingAnchor.constraint(equalTo: productImage.leadingAnchor, constant: 30),
+            iconImageView.trailingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: -30),
             
             productName.topAnchor.constraint(equalTo: productImage.bottomAnchor, constant: 20),
             productName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             productName.heightAnchor.constraint(equalToConstant: 64),
-          
+            
             productPrice.topAnchor.constraint(equalTo: productName.bottomAnchor, constant: 20),
             productPrice.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             productPrice.heightAnchor.constraint(equalToConstant: 64),
@@ -54,12 +49,10 @@ class CorAddProductController: ControllerHasImagePicker<CorAddProductViewModel, 
             productDescription.topAnchor.constraint(equalTo: productPrice.bottomAnchor, constant: 20),
             productDescription.leadingAnchor.constraint(equalTo: productPrice.leadingAnchor, constant: 0),
             productDescription.heightAnchor.constraint(equalToConstant: 104),
-           
+            
             addButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -68),
             addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         )
-        
-        
     }
     
     
@@ -76,7 +69,7 @@ class CorAddProductController: ControllerHasImagePicker<CorAddProductViewModel, 
         productImage.layer.cornerRadius = 10
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(photoClicked))
-       
+        
         productImage.tintColor = .lightGray
         productImage.backgroundColor = .white
         productImage.contentMode = .scaleAspectFill
@@ -101,7 +94,7 @@ class CorAddProductController: ControllerHasImagePicker<CorAddProductViewModel, 
         productImage.image = image
         iconImageView.image = nil
     }
-   
+    
     
     func addButtonClicked() {        
         viewModel.addProductControl(productImage: productImage.image, name: productName.text, price: productPrice.text, description: productDescription.text) {
