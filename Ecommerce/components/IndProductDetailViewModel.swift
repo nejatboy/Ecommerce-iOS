@@ -10,10 +10,9 @@ import UIKit
 class IndProductDetailViewModel: ViewModel {
     
     var selectedProduct: Product?
-    var currentShop: Shop?
+
     
-    
-    func productAddingControl(image: UIImage?, name: String?, quantity: Int?, description: String?, completion: Handler?) {
+    func productAddingControl(image: UIImage?, name: String?, quantity: Int?, description: String?, completion: Callback<Cart>?) {
         guard var image = image else {
             show(message: "Product Image information is missing.", type: .error)
             return
@@ -43,16 +42,16 @@ class IndProductDetailViewModel: ViewModel {
     }
     
     
-    private func addProductToCart(image: inout UIImage, name: String?, quantity: Int?, description: String?, completion: Handler?) {
+    private func addProductToCart(image: inout UIImage, name: String?, quantity: Int?, description: String?, completion: Callback<Cart>?) {
         showLoading()
         
-        StorageService.instance.upload(image: &image) { imageUrl in
-            let product = Product(name: name, price: self.selectedProduct?.price, imageUrl: imageUrl, shopUid: self.currentShop?.uid, description: description)
-            let cartItem = CartItem(product: product, quantity: quantity ?? 1)
-            
-            UserDefaultsService.instance.addItemToCart(item: cartItem)
-            self.show(message: "The product has been added to the cart", type: .success)
-            completion?()
-        }
+        var cart = UserDefaultsService.instance.cart
+        
+        let product = Product(name: name, price: self.selectedProduct?.price, imageUrl: selectedProduct?.imageUrl, shopUid:selectedProduct?.shopUid, description: description)
+        let cartItem = CartItem(product: product, quantity: quantity ?? 1)
+        
+        cart = UserDefaultsService.instance.addItemToCart(item: cartItem)
+        self.show(message: "The product has been added to the cart", type: .success)
+        completion?(cart)
     }
 }

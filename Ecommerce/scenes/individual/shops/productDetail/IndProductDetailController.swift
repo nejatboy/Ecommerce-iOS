@@ -7,10 +7,10 @@
 
 class IndProductDetail: Controller<IndProductDetailViewModel, IndShopsNavigationController> {
     
-    private let imageView = ImageView()
-    private let name = Label()
-    private let productDescription = Label()
-    private let numberPicker = NumberPickerField()
+    private let productImageView = ImageView()
+    private let productNameLabel = Label()
+    private let productDescriptionLabel = Label()
+    private let numberOfProductsNumberPicker = NumberPickerField()
     private let priceButton = ButtonPrimary()
     
     
@@ -19,26 +19,23 @@ class IndProductDetail: Controller<IndProductDetailViewModel, IndShopsNavigation
         
         navigationItem.title = "Product Detail"
         
-        addSubviews(imageView, name, productDescription, numberPicker, priceButton)
-        
-        numberPicker.setItems(items: [1, 2, 3, 4, 5])
-        numberPicker.onItemSelect = onItemNumberSelected
+        addSubviews(productImageView, productNameLabel, productDescriptionLabel, numberOfProductsNumberPicker, priceButton)
         
         activateConstraints(
-            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 18),
-            imageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 60),
-            imageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -60),
-            imageView.heightAnchor.constraint(equalToConstant: 260),
+            productImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 18),
+            productImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 60),
+            productImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -60),
+            productImageView.heightAnchor.constraint(equalToConstant: 260),
             
-            name.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 6),
-            name.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            productNameLabel.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 6),
+            productNameLabel.centerXAnchor.constraint(equalTo: productImageView.centerXAnchor),
            
-            numberPicker.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 6),
-            numberPicker.centerXAnchor.constraint(equalTo: name.centerXAnchor),
+            numberOfProductsNumberPicker.topAnchor.constraint(equalTo: productNameLabel.bottomAnchor, constant: 6),
+            numberOfProductsNumberPicker.centerXAnchor.constraint(equalTo: productNameLabel.centerXAnchor),
             
-            productDescription.topAnchor.constraint(equalTo: numberPicker.bottomAnchor, constant: 6),
-            productDescription.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 6),
-            productDescription.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -6),
+            productDescriptionLabel.topAnchor.constraint(equalTo: numberOfProductsNumberPicker.bottomAnchor, constant: 6),
+            productDescriptionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 6),
+            productDescriptionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -6),
             
             priceButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),
             priceButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -49,32 +46,36 @@ class IndProductDetail: Controller<IndProductDetailViewModel, IndShopsNavigation
         priceButton.setTitle("\(viewModel.selectedProduct?.price ?? 0) TL", for: .normal)
         priceButton.action = addProductToCart
         
-        imageView.tintColor = .lightGray
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 18
-        imageView.load(photoUrl: viewModel.selectedProduct?.imageUrl)
+        productImageView.tintColor = .lightGray
+        productImageView.contentMode = .scaleAspectFill
+        productImageView.clipsToBounds = true
+        productImageView.layer.cornerRadius = 18
+        productImageView.load(photoUrl: viewModel.selectedProduct?.imageUrl)
         
-        name.text = viewModel.selectedProduct?.name
-        numberPicker.text = "1"
+        productNameLabel.text = viewModel.selectedProduct?.name
         
-        productDescription.text = viewModel.selectedProduct?.description
-        productDescription.textColor = .lightGray
+        numberOfProductsNumberPicker.setItems(items: [1, 2, 3, 4, 5])
+        numberOfProductsNumberPicker.onItemSelect = onItemNumberSelected
+        
+        productDescriptionLabel.text = viewModel.selectedProduct?.description
+        productDescriptionLabel.textColor = .lightGray
+        productDescriptionLabel.numberOfLines = 0
+        productDescriptionLabel.textAlignment = .center
     }
     
     
     private func addProductToCart() {
         viewModel.productAddingControl(
-            image: imageView.image,
-            name: name.text,
-            quantity: Int(numberPicker.text ?? "1"),
-            description: productDescription.text, completion: navController?.productsDetailToCart
-        )
+            image: productImageView.image,
+            name: productNameLabel.text,
+            quantity: Int(numberOfProductsNumberPicker.text ?? "1"),
+            description: productDescriptionLabel.text) { cart in
+                self.navController?.productsDetailToCart(cart: cart)
+            }
     }
     
     
     private func onItemNumberSelected(number: Int) {
-        numberPicker.text = "\(number)"
         priceButton.setTitle("\((viewModel.selectedProduct?.price ?? 0) * Double(number)) TL", for: .normal)
     }
 }

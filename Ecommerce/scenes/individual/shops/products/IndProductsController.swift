@@ -19,7 +19,6 @@ class IndProductsController: Controller<IndProductsViewModel, IndShopsNavigation
         addSubviews(collectionView)
         
         collectionView.onItemSelected = navController?.productsToDetail
-        navController?.getShop(shop: viewModel.selectedShop!)
         
         activateConstraints(
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

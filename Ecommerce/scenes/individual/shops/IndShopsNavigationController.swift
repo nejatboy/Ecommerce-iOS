@@ -32,13 +32,8 @@ class IndShopsNavigationController: NavigationController {
     }
  
     
-    func getShop(shop: Shop) {
-        let controller = IndProductDetail()
-        controller.viewModel.currentShop = shop
-    }
-    
-    
-    func productsDetailToCart() {
-        popViewController(animated: true)
+    func productsDetailToCart(cart: Cart) {
+        let controller = IndCartController()
+        tabBarController?.selectedIndex = 1
     }
 }
