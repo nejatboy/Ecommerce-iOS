@@ -14,9 +14,11 @@ class IndProductsController: Controller<IndProductsViewModel, IndShopsNavigation
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = viewModel.selectedShop?.name
+        
         addSubviews(collectionView)
         
-        navigationItem.title = viewModel.selectedShop?.name
+        collectionView.onItemSelected = navController?.productsToDetail
         
         activateConstraints(
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

@@ -22,4 +22,18 @@ class IndShopsNavigationController: NavigationController {
         
         pushViewController(controller, animated: true)
     }
+    
+    
+    func productsToDetail(product: Product) {
+        let controller = IndProductDetail()
+        controller.viewModel.selectedProduct = product
+        
+        pushViewController(controller, animated: true)
+    }
+ 
+    
+    func productsDetailToCart(cart: Cart) {
+        let controller = IndCartController()
+        tabBarController?.selectedIndex = 1
+    }
 }
