@@ -5,10 +5,13 @@
 //  Created by Nejat Boy on 7.09.2024.
 //
 
+import Foundation
+
 
 class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationController> {
     
     private let tableView = CorShopsTableView()
+    private var shops = [Shop]()
     
     
     override func viewDidLoad() {
@@ -34,7 +37,18 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
         super.viewWillAppear(animated)
         
         tableView.clear()
+     
+        viewModel.fetchMyShops { shops in
+            self.shops = shops
+            self.tableView.addItems(shops)
+        }
         
-        viewModel.fetchMyShops(completion: tableView.addItems)
+        tableView.swipeActions = [
+            SwipeAction(title: "Delete", backgroundColor: .red, icon: .remove, handler: { index in
+                self.viewModel.deleteMyShop(shopUid: self.shops[index].uid) {
+                    print("Shop deleted.")
+                }
+            })
+        ]
     }
 }

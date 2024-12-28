@@ -17,29 +17,44 @@ class CorShopsTableView: TableView<Shop, CorShopsCell> {
 
 class CorShopsCell: TableViewCell<Shop> {
     
-    private let shopLabel = Label()
+    private let shopNameLabel = Label()
+    private let shopImageView = ImageView()
+    private let distanceLabel = Label()
     
     
     override func configure() {
         selectionBackgroundColor = .lightGray
         backgroundColor = .clear
         
-        shopLabel.textColor = .systemRed
+        distanceLabel.textColor = .lightGray
         
-        addSubviews(shopLabel)
+        shopImageView.contentMode = .scaleAspectFill
+        shopImageView.clipsToBounds = true
+        shopImageView.layer.cornerRadius = 16
+        
+        addSubviews(shopNameLabel, shopImageView, distanceLabel)
         
         activateConstraints(
-            shopLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            shopLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            shopImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 4),
+            shopImageView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 4),
+            shopImageView.heightAnchor.constraint(equalToConstant: 90),
+            shopImageView.widthAnchor.constraint(equalToConstant: 90),
             
-            contentView.bottomAnchor.constraint(equalTo: shopLabel.bottomAnchor, constant: 10)
+            shopNameLabel.topAnchor.constraint(equalTo: shopImageView.topAnchor, constant: 4),
+            shopNameLabel.leadingAnchor.constraint(equalTo: shopImageView.trailingAnchor, constant: 4),
+            
+            distanceLabel.topAnchor.constraint(equalTo: shopNameLabel.bottomAnchor, constant: 4),
+            distanceLabel.leadingAnchor.constraint(equalTo: shopNameLabel.leadingAnchor, constant: 0),
+            
+            contentView.bottomAnchor.constraint(equalTo: distanceLabel.bottomAnchor, constant: 48)
         )
     }
     
     
     override func setItem(_ item: Shop) {
-        shopLabel.text = item.name
-        shopLabel.font = .setDynamicFont(size: 25)
+        shopNameLabel.text = item.name
+        distanceLabel.text = "0.4 km"
+        shopImageView.load(photoUrl: item.imageUrl)
     }
     
 }
