@@ -8,6 +8,11 @@
 import UIKit
 
 
+protocol ListItem {
+    var uid: String? { get }
+}
+
+
 
 struct AlertModel {
     let title: String?
@@ -16,13 +21,12 @@ struct AlertModel {
 
 
 
-struct SwipeAction {
+struct SwipeAction<I: ListItem> {
     let title: String?
     let backgroundColor: UIColor?
     let icon: UIImage?
-    let handler: Callback<Int>?
+    let handler: Callback<I>?
 }
-
 
 
 struct User: Codable {
@@ -42,7 +46,7 @@ enum UserType: String, Codable, CaseIterable {
 
 
 
-struct Shop: Encodable {
+struct Shop: Encodable, ListItem {
     var uid: String?
     let name: String?
     let latitude: Double?
@@ -60,7 +64,7 @@ struct Coordinate {
 
 
 
-struct Product: Codable {
+struct Product: Codable, ListItem {
     var uid: String?
     let name: String?
     let price: Double?

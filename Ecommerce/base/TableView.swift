@@ -9,16 +9,16 @@ import UIKit
 
 
 //MARK: TableView
-class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate, UITableViewDataSource {
+class TableView<I: ListItem, C: TableViewCell<I>>: UITableView, UITableViewDelegate, UITableViewDataSource {
     
-    fileprivate var items: [ITEM] = []
+    fileprivate var items: [I] = []
     private let cellId = UUID().uuidString
     
     ///Tıklanan item'ı handle etmek için kullanırız.
-    var onItemSelected: Callback<ITEM>?
+    var onItemSelected: Callback<I>?
     
     /// Swipe işlemi için set etmemiz yeterli.
-    var swipeActions: [SwipeAction]?
+    var swipeActions: [SwipeAction<I>]?
     
     
     required init() {
@@ -71,7 +71,7 @@ class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate,
         
         let actions: [UIContextualAction] = swipeActions.map { swipeAction in
             let item = UIContextualAction(style: .destructive, title: swipeAction.title) { _, _, completionHandler in
-                swipeAction.handler?(indexPath.row)
+                swipeAction.handler?(self.items[indexPath.row])
                 completionHandler(true)
             }
             
@@ -86,14 +86,14 @@ class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate,
     
     
     ///TableView'ın elemanlarını set etmek için kullanırız.
-    func setItems(_ items: [ITEM]) {
+    func setItems(_ items: [I]) {
         self.items = items
         reloadData()
     }
     
     
     ///TableView'a liste halinde eleman eklemek için kullanırız.
-    func addItems(_ newItems: [ITEM]) {
+    func addItems(_ newItems: [I]) {
         items.append(contentsOf: newItems)
         reloadData()
     }
@@ -103,7 +103,7 @@ class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate,
     ///
     /// - Parameters:
     ///   - withScroll: Eleman eklendikten sonra o item'a scroll etmek istiyorsak true set ederiz.
-    func addToFirst(item: ITEM, withScroll: Bool) {
+    func addToFirst(item: I, withScroll: Bool) {
         items.insert(item, at: 0)
         
         let indexPath = IndexPath(row: 0, section: 0)
@@ -122,7 +122,7 @@ class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate,
     ///
     /// - Parameters:
     ///   - withScroll: Eleman eklendikten sonra o item'a scroll etmek istiyorsak true set ederiz.
-    func addToLast(item: ITEM, withScroll: Bool) {
+    func addToLast(item: I, withScroll: Bool) {
         items.append(item)
         
         let indexPath = IndexPath(row: items.count - 1, section: 0)
@@ -144,6 +144,19 @@ class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate,
     }
     
     
+    ///Bir item'ı listeden silmek için kullanırız.
+    func remove(item: I, animation: UITableView.RowAnimation) {
+        guard let index = (items.firstIndex { $0.uid == item.uid }) else {
+            return
+        }
+        
+        items.remove(at: index)
+        
+        let indexPath = IndexPath(row: index, section: 0)
+        deleteRows(at: [indexPath], with: animation)
+    }
+    
+    
     ///TableView'ın çoğu özellikleri zaten ayarlanmıştır. Ayrıca ayarlamak istediğimiz özellik var ise override ediniz.
     func configure() { }
     
@@ -156,7 +169,7 @@ class TableView<ITEM, C: TableViewCell<ITEM>>: UITableView, UITableViewDelegate,
 
 
 //MARK: TableViewCell
-class TableViewCell<ITEM>: UITableViewCell {
+class TableViewCell<I: ListItem>: UITableViewCell {
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -184,7 +197,7 @@ class TableViewCell<ITEM>: UITableViewCell {
     
     
     /// Gelen item'ı arayüze bağlamak için override ediniz.
-    func setItem(_ item: ITEM) {}
+    func setItem(_ item: I) {}
     
     
     /// Aktif etmek istediğimiz constraint'leri dizi halince verebiliriz.
@@ -208,9 +221,9 @@ class TableViewCell<ITEM>: UITableViewCell {
     
     
     /// Hücreden ilgili item'a erişmek için kullanırız.
-    var item: ITEM? {
+    var item: I? {
         guard 
-            let tableView = superview as? TableView<ITEM, Self>,
+            let tableView = superview as? TableView<I, Self>,
             let indexPath = tableView.indexPath(for: self)
         else {
             return nil
