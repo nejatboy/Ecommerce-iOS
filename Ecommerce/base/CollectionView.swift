@@ -10,20 +10,20 @@ import UIKit
 
 //MARK: CollectionView
 private protocol Source: UICollectionViewDelegate, UICollectionViewDataSource {
-    associatedtype ITEM
+    associatedtype I: ListItem
     
-    func setItems(items: [ITEM])
-    func addItem(item: ITEM)
-    func addItems(newItems: [ITEM])
+    func setItems(items: [I])
+    func addItem(item: I)
+    func addItems(newItems: [I])
 }
 
 
 //MARK: CollectionView
-class CollectionView<ITEM, C: CollectionViewCell<ITEM>, L: CollectionViewFlowLayout>: UICollectionView, Source {
+class CollectionView<I: ListItem, C: CollectionViewCell<I>, L: CollectionViewFlowLayout>: UICollectionView, Source {
     
     private let cellId = UUID().uuidString
-    private var items: [ITEM] = []
-    var onItemSelected: Callback<ITEM>?
+    private var items: [I] = []
+    var onItemSelected: Callback<I>?
     
     
     init() {
@@ -89,14 +89,14 @@ class CollectionView<ITEM, C: CollectionViewCell<ITEM>, L: CollectionViewFlowLay
     
     
     ///TableView'a liste halinde eleman eklemek için kullanırız.
-    func setItems(items: [ITEM]) {
+    func setItems(items: [I]) {
         self.items = items
         reloadData()
     }
     
     
     /// Listenin sonuna eleman eklemek için kullanırız.
-    func addItem(item: ITEM) {
+    func addItem(item: I) {
         items.append(item)
         let indexPath = IndexPath(item: items.count - 1, section: 0)
         reloadItems(at: [indexPath])
@@ -104,7 +104,7 @@ class CollectionView<ITEM, C: CollectionViewCell<ITEM>, L: CollectionViewFlowLay
     
     
     /// Listenin sonuna elemanlar eklemek için kullanırız.
-    func addItems(newItems: [ITEM]) {
+    func addItems(newItems: [I]) {
         items.append(contentsOf: newItems)
         
         let startIndex = items.count - newItems.count
@@ -178,7 +178,7 @@ class CollectionViewFlowLayout: UICollectionViewFlowLayout {
 
 
 //MARK: CollectionViewCell
-class CollectionViewCell<ITEM>: UICollectionViewCell {
+class CollectionViewCell<I: ListItem>: UICollectionViewCell {
     
     
     override init(frame: CGRect) {
@@ -196,7 +196,7 @@ class CollectionViewCell<ITEM>: UICollectionViewCell {
     func configure() { }
     
     
-    func setItem(item: ITEM) { }
+    func setItem(item: I) { }
     
     
     func activateConstraints(_ constraints: NSLayoutConstraint...) {

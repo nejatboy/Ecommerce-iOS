@@ -11,7 +11,6 @@ import Foundation
 class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationController> {
     
     private let tableView = CorShopsTableView()
-    private var shops = [Shop]()
     
     
     override func viewDidLoad() {
@@ -22,8 +21,6 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
         
         addSubviews(tableView)
         
-        tableView.onItemSelected = navController?.shopsToProduct
-        
         activateConstraints(
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -33,22 +30,25 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
     }
     
     
+    override func customizeViews() {
+        tableView.onItemSelected = navController?.shopsToProduct
+        
+        tableView.swipeActions = [
+            SwipeAction(title: "Delete", backgroundColor: .red, icon: .iconDelete, handler: onItemDeleted)
+        ]
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         tableView.clear()
-     
-        viewModel.fetchMyShops { shops in
-            self.shops = shops
-            self.tableView.addItems(shops)
+        viewModel.fetchMyShops(completion: tableView.addItems)
+    }
+    
+    private func onItemDeleted(shop: Shop) {
+        viewModel.deleteMyShop(shopUid: shop.uid) {
+            self.tableView.remove(item: shop, animation: .fade)
         }
-        
-        tableView.swipeActions = [
-            SwipeAction(title: "Delete", backgroundColor: .red, icon: .remove, handler: { index in
-                self.viewModel.deleteMyShop(shopUid: self.shops[index].uid) {
-                    print("Shop deleted.")
-                }
-            })
-        ]
     }
 }
