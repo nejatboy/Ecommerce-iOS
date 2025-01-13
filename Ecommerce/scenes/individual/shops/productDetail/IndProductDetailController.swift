@@ -28,8 +28,9 @@ class IndProductDetail: Controller<IndProductDetailViewModel, IndShopsNavigation
             productImageView.heightAnchor.constraint(equalToConstant: 260),
             
             productNameLabel.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 6),
-            productNameLabel.centerXAnchor.constraint(equalTo: productImageView.centerXAnchor),
-           
+            productNameLabel.leadingAnchor.constraint(equalTo: productImageView.leadingAnchor, constant: 130),
+            productNameLabel.trailingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: -130),
+            
             numberOfProductsNumberPicker.topAnchor.constraint(equalTo: productNameLabel.bottomAnchor, constant: 6),
             numberOfProductsNumberPicker.centerXAnchor.constraint(equalTo: productNameLabel.centerXAnchor),
             
@@ -65,13 +66,14 @@ class IndProductDetail: Controller<IndProductDetailViewModel, IndShopsNavigation
     
     
     private func addProductToCart() {
-        viewModel.productAddingControl(
+        viewModel.addProductToCart(
             image: productImageView.image,
             name: productNameLabel.text,
             quantity: Int(numberOfProductsNumberPicker.text ?? "1"),
             description: productDescriptionLabel.text) { cart in
                 self.navController?.productsDetailToCart(cart: cart)
             }
+        
     }
     
     

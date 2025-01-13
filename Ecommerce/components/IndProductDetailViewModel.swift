@@ -12,37 +12,18 @@ class IndProductDetailViewModel: ViewModel {
     var selectedProduct: Product?
 
     
-    func productAddingControl(image: UIImage?, name: String?, quantity: Int?, description: String?, completion: Callback<Cart>?) {
-        guard var image = image else {
-            show(message: "Product Image information is missing.", type: .error)
-            return
-        }
-        
-        guard let name = name else {
-            show(message: "Product name information is missing.", type: .error)
-            return
-        }
-        
-        guard let description = description else {
-            show(message: "Product description information is missing.", type: .error)
-            return
-        }
-        
-        guard var quantity = quantity else {
-            return
-        }
-        
+    func addProductToCart(image: UIImage?, name: String?, quantity: Int?, description: String?, completion: Callback<Cart>?) {
         let noAction = AlertModel(title: "No")
         
         let yesAction = AlertModel(title: "Yes") {
-            self.addProductToCart(image: &image, name: name, quantity: quantity, description: description, completion: completion)
+            self.addProductToCartControl(image: image, name: name, quantity: quantity, description: description, completion: completion)
         }
         
         showAlert(type: .warning, message: "Do you want to add to cart?", actions: [noAction, yesAction])
     }
     
     
-    private func addProductToCart(image: inout UIImage, name: String?, quantity: Int?, description: String?, completion: Callback<Cart>?) {
+    private func addProductToCartControl(image: UIImage?, name: String?, quantity: Int?, description: String?, completion: Callback<Cart>?) {
         showLoading()
         
         var cart = UserDefaultsService.instance.cart
