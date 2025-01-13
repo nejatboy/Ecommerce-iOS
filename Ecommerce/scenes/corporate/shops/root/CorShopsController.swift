@@ -5,6 +5,8 @@
 //  Created by Nejat Boy on 7.09.2024.
 //
 
+import Foundation
+
 
 class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationController> {
     
@@ -19,8 +21,6 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
         
         addSubviews(tableView)
         
-        tableView.onItemSelected = navController?.shopsToProduct
-        
         activateConstraints(
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -30,11 +30,25 @@ class CorShopsController: Controller<CorShopsViewModel, CorShopsNavigationContro
     }
     
     
+    override func customizeViews() {
+        tableView.onItemSelected = navController?.shopsToProduct
+        
+        tableView.swipeActions = [
+            SwipeAction(title: "Delete", backgroundColor: .red, icon: .iconDelete, handler: onItemDeleted)
+        ]
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         tableView.clear()
-        
         viewModel.fetchMyShops(completion: tableView.addItems)
+    }
+    
+    private func onItemDeleted(shop: Shop) {
+        viewModel.deleteMyShop(shopUid: shop.uid) {
+            self.tableView.remove(item: shop, animation: .fade)
+        }
     }
 }

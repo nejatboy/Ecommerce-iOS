@@ -5,6 +5,8 @@
 //  Created by Nejat Boy on 28.09.2024.
 //
 
+import UIKit
+
 
 
 class CorAddProductViewModel: ViewModel {
@@ -12,19 +14,31 @@ class CorAddProductViewModel: ViewModel {
     var choosenShopUid: String?
     
     
-    func addProduct(imageView: ImageView?, name: String?, price: String?, completion: Handler?) {
-        guard var image = imageView?.image, image != .add else {
+    func addProductControl(productImage: UIImage?, name: String?, price: String?, description: String?, completion: Handler?) {
+        guard var image = productImage, image != .add else {
             show(message: "Image is required", type: .error)
             return
         }
         
         guard
             let name = name,
-            let price = price
+            let price = price,
+            let description = description
         else {
             return
         }
         
+        let noAction = AlertModel(title: "No")
+        
+        let yesAction = AlertModel(title: "Yes") {
+            self.addProduct(image: &image, name: name, price: price, description: description, completion: completion)
+        }
+        
+        showAlert(type: .warning, message: "Do you want to add the product ?", actions: [noAction, yesAction])
+    }
+    
+    
+    private func addProduct(image: inout UIImage, name: String, price: String, description: String, completion: Handler?) {
         showLoading()
         
         StorageService.instance.upload(image: &image) { imageUrl in
@@ -33,14 +47,14 @@ class CorAddProductViewModel: ViewModel {
                 price: Double(price.replacingOccurrences(of: ",", with: ".")),
                 imageUrl: imageUrl,
                 shopUid: self.choosenShopUid,
-                description: nil
+                description: description
             )
             
             DatabaseService.instance.addProduct(product: product) {
                 self.show(message: "Product Add Succesfully", type: .success)
-                
                 completion?()
             }
         }
+        
     }
 }

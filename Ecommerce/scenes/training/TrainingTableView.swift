@@ -6,8 +6,12 @@
 //
 
 
-struct TrainingModel {
+struct TrainingModel: ListItem {
     let title: String?
+    
+    var uid: String? {
+        nil
+    }
 }
 
 

@@ -23,7 +23,7 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
         navigationItem.title = "Cart"
         
         tableView.swipeActions = [
-            SwipeAction(title: "Remove", backgroundColor: .red, icon: .remove, handler: {
+            SwipeAction(title: "Remove", backgroundColor: .red, icon: .remove, handler: { index in
                 print("Delete action triggered.")
             })]
         
