@@ -66,14 +66,9 @@ class IndProductDetail: Controller<IndProductDetailViewModel, IndShopsNavigation
     
     
     private func addProductToCart() {
-        viewModel.addProductToCart(
-            image: productImageView.image,
-            name: productNameLabel.text,
-            quantity: Int(numberOfProductsNumberPicker.text ?? "1"),
-            description: productDescriptionLabel.text) { cart in
-                self.navController?.productsDetailToCart(cart: cart)
-            }
-        
+        viewModel.addProductToCart(quantity: Int(numberOfProductsNumberPicker.text ?? "1")) { cart in
+            self.navController?.productsDetailToCart(cart: cart)
+        }
     }
     
     

@@ -35,4 +35,28 @@ class IndProductDetailViewModel: ViewModel {
         self.show(message: "The product has been added to the cart", type: .success)
         completion?(cart)
     }
+    
+    
+    func addProductToCart(quantity: Int?, completion: Callback<Cart>?) {
+        guard let selectedProduct = selectedProduct else {
+            return
+        }
+        
+        guard var quantity = quantity else {
+            return
+        }
+        
+        let noAction = AlertModel(title: "No")
+        
+        let yesAction = AlertModel(title: "Yes") {
+            var cart = UserDefaultsService.instance.cart
+            
+            let cartItem = CartItem(product: selectedProduct, quantity: quantity)
+            
+            cart = UserDefaultsService.instance.addItemToCart(item: cartItem)
+            completion?(cart)
+        }
+        
+        showAlert(type: .warning, message: "Do you want to add to cart?", actions: [noAction, yesAction])
+    }
 }
