@@ -32,8 +32,7 @@ class IndShopsNavigationController: NavigationController {
     }
  
     
-    func productsDetailToCart(cart: Cart) {
-        let controller = IndCartController()
+    func productsDetailToCart() {
         tabBarController?.selectedIndex = 1
     }
 }
