@@ -44,7 +44,8 @@ class IndProductDetail: Controller<IndProductDetailViewModel, IndShopsNavigation
     }
     
     override func customizeViews() {
-        priceButton.setTitle("\(viewModel.selectedProduct?.price ?? 0) TL", for: .normal)
+        let totalPrice = viewModel.calculatePrice(quantity: 1)
+        priceButton.setTitle(totalPrice, for: .normal)
         priceButton.action = addProductToCart
         
         productImageView.tintColor = .lightGray
@@ -66,13 +67,12 @@ class IndProductDetail: Controller<IndProductDetailViewModel, IndShopsNavigation
     
     
     private func addProductToCart() {
-        viewModel.addProductToCart(quantity: numberOfProductsNumberPicker.text) { 
-            self.navController?.productsDetailToCart()
-        }
+        viewModel.addProductToCart(quantity: numberOfProductsNumberPicker.value, completion: navController?.productsDetailToCart)
     }
     
     
     private func onItemNumberSelected(number: Int) {
-        priceButton.setTitle("\((viewModel.selectedProduct?.price ?? 0) * Double(number)) TL", for: .normal)
+        let totalPrice = viewModel.calculatePrice(quantity: number)
+        priceButton.setTitle(totalPrice, for: .normal)
     }
 }

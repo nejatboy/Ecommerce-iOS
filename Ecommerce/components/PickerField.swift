@@ -22,6 +22,7 @@ class NumberPickerField: PickerField<Int> {
         let row = pickerView.selectedRow(inComponent: 0)
         let item = items[row]
         text = String(item)
+        value = item
         onItemSelect?(item)
         
         super.donePressed()
@@ -50,6 +51,7 @@ class TextPickerField: PickerField<String> {
         let row = pickerView.selectedRow(inComponent: 0)
         let item = items[row]
         text = item
+        value = item
         onItemSelect?(item)
         
         super.donePressed()
@@ -69,7 +71,12 @@ class PickerField<ITEM>: TextField, UIPickerViewDelegate, UIPickerViewDataSource
     
     fileprivate let pickerView = UIPickerView()
     fileprivate var items: [ITEM] = []
+    
+    /// Seçimi dinlemek için set ediniz.
     var onItemSelect: ((ITEM) -> Void)?
+    
+    /// Güncel değeri almak için kullanırız.
+    var value: ITEM?
     
     
     override var padding: UIEdgeInsets {
@@ -125,6 +132,7 @@ class PickerField<ITEM>: TextField, UIPickerViewDelegate, UIPickerViewDataSource
     
     func setItems(items: [ITEM]) {
         self.items = items
+        value = items.first
         pickerView.reloadAllComponents()
     }
 }
