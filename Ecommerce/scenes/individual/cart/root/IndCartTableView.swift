@@ -70,9 +70,14 @@ class IndCartTableViewCell: TableViewCell<Product> {
     override func setItem(_ item: Product) {
         productImageView.load(photoUrl: item.imageUrl)
         productNameLabel.text = item.name
-        productPriceLabel.text = String(item.price ?? 0.0)
-
-      //  numberOfProductsNumberPicker.text = "\(item.quantity ?? 1)"
+        
+        if let cartItem = UserDefaultsService.instance.cart.items.first(where: { $0.product.uid == item.uid }) {
+            numberOfProductsNumberPicker.text = "\(cartItem.quantity)"
+            
+            productPriceLabel.text = String((item.price ?? 0.0) * Double(cartItem.quantity))
+        } else {
+            numberOfProductsNumberPicker.text = "0"
+        }
     }
     
     

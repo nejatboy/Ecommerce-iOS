@@ -13,9 +13,8 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
     private let tableView = IndCartTableView()
     private let cartConfirmButton = ButtonPrimary()
     private let totalPriceLabel = Label()
-    
     private var products: [Product] = []
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,17 +48,10 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
         
         tableView.clear()
         
-        viewModel.getAllProductsFromAllShops { [self] products in
+        if let cart = viewModel.cart {
+            self.products = cart.items.map { $0.product }
+            
             self.tableView.addItems(products)
-            
-            self.products = products
-            
-            for index in 0..<products.count {
-                let indexPath = IndexPath(row: index, section: 0)
-                if let cell = self.tableView.cellForRow(at: indexPath) as? IndCartTableViewCell {
-                    cell.onPriceChanged = onPriceChanged
-                }
-            }
         }
     }
     
