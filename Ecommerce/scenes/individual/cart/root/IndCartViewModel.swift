@@ -11,4 +11,10 @@ class IndCartViewModel: ViewModel {
     var cart: Cart? {
         UserDefaultsService.instance.cart
     }
+    
+    
+    func deleteProduct(item: CartItem, completion: Handler?) {
+       _ = UserDefaultsService.instance.removeItemFromCart(item: item)
+        completion?()
+    }
 }
