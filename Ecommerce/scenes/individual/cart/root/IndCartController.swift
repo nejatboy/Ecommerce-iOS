@@ -13,7 +13,6 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
     private let tableView = IndCartTableView()
     private let cartConfirmButton = ButtonPrimary()
     private let totalPriceLabel = Label()
-    private var products: [Product] = []
     
     
     override func viewDidLoad() {
@@ -48,13 +47,9 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
          tableView.clear()
         
         if let cart = viewModel.cart {
-            self.products = cart.items.map { $0.product }
-            
-            self.tableView.setItems(products)
-            
-            let totalPrice = cart.items.map { (Double ($0.quantity) * ($0.product.price ?? 0.0) )}.reduce(0.0, +)
-            
-            totalPriceLabel.text = "Toplam: \(totalPrice)"
+            totalPriceCalculate(cart: cart, completion: { products in
+                self.tableView.setItems(products!)
+            })
         }
     }
     
@@ -65,11 +60,20 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
     
     
     func cartChanged(newCard: Cart) {
-        self.products = newCard.items.map { $0.product }
+        totalPriceCalculate(cart: newCard, completion: { products in
+            print("PRİNT: TOPLAM FİYAT DEĞİŞTİİİİİİ......")
+        })
+    }
+    
+    
+    func totalPriceCalculate(cart: Cart, completion: Callback<[Product]?>) {
+        let products = cart.items.map { $0.product }
         
-        let totalPrice = newCard.items.map { (Double ($0.quantity) * ($0.product.price ?? 0.0) )}.reduce(0.0, +)
+        let totalPrice = cart.items.map { (Double ( $0.quantity) * ($0.product.price ?? 0.0))}.reduce(0.0, +)
         
-        totalPriceLabel.text = "\(totalPrice)"
+        totalPriceLabel.text = " Toplam Fiyat : \(totalPrice)"
+        
+        completion(products)
     }
     
     
@@ -78,6 +82,16 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
         
         viewModel.deleteProduct(item: cartItem) {
             self.tableView.remove(item: product, animation: .fade)
+            
+            if ((self.viewModel.cart?.items.isEmpty) != nil) {
+                self.totalPriceLabel.isHidden = true
+                self.cartConfirmButton.isHidden = true
+            }
+            
+            else {
+                self.totalPriceLabel.isHidden = false
+                self.cartConfirmButton.isHidden = false
+            }
         }
     }
 }
