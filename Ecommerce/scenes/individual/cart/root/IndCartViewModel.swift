@@ -7,12 +7,14 @@
 
 class IndCartViewModel: ViewModel {
     
-   
-    func getAllProductsFromAllShops(completion: Callback<[Product]>?) {
-        DatabaseService.instance.getAllProductsFromAllShops { products in
-          
-            completion?(products)
-        }
+    
+    var cart: Cart? {
+        UserDefaultsService.instance.cart
     }
     
+    
+    func deleteProduct(item: CartItem, completion: Callback<Cart>?) {
+       let cart = UserDefaultsService.instance.removeItemFromCart(item: item)
+        completion?(cart)
+    }
 }

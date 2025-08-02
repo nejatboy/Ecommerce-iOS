@@ -98,7 +98,7 @@ struct UserDefaultsService {
     }
     
     
-    /// Sepetten ürün silmek için kullanırız. Adet sayısını dikkate almaksızın ürünü sepetten siler.
+    /// Sepetteki ürünü gücellemek için kullanırız.
     /// - Parameters:
     ///   - item: Güncellenecek olan item.
     /// - Returns: Güncel sepet modelini döner.

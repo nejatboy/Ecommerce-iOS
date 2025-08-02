@@ -14,8 +14,6 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
     private let cartConfirmButton = ButtonPrimary()
     private let totalPriceLabel = Label()
     
-    private var products: [Product] = []
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +21,8 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
         navigationItem.title = "Cart"
         
         tableView.swipeActions = [
-            SwipeAction(title: "Remove", backgroundColor: .red, icon: .remove, handler: { index in
-                print("Delete action triggered.")
-            })]
+            SwipeAction(title: "Remove", backgroundColor: .red, icon: .iconDelete, handler: onItemDeleted)
+        ]
         
         addSubviews(tableView, totalPriceLabel, cartConfirmButton)
         
@@ -33,13 +30,13 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
             cartConfirmButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -14),
             cartConfirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            totalPriceLabel.bottomAnchor.constraint(equalTo: cartConfirmButton.topAnchor, constant: -14),
+            totalPriceLabel.bottomAnchor.constraint(equalTo: cartConfirmButton.topAnchor, constant: -16),
             totalPriceLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: totalPriceLabel.topAnchor, constant: 2),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: totalPriceLabel.topAnchor, constant: -8)
         )
     }
     
@@ -47,19 +44,12 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableView.clear()
+         tableView.clear()
         
-        viewModel.getAllProductsFromAllShops { [self] products in
-            self.tableView.addItems(products)
-            
-            self.products = products
-            
-            for index in 0..<products.count {
-                let indexPath = IndexPath(row: index, section: 0)
-                if let cell = self.tableView.cellForRow(at: indexPath) as? IndCartTableViewCell {
-                    cell.onPriceChanged = onPriceChanged
-                }
-            }
+        if let cart = viewModel.cart {
+            totalPriceCalculate(cart: cart, completion: { products in
+                self.tableView.setItems(products!)
+            })
         }
     }
     
@@ -69,16 +59,43 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
     }
     
     
-    private  func onPriceChanged(product: Product) {
-        if let index = products.firstIndex(where: { $0.uid == product.uid }) {
-          //  products[index].quantity = product.quantity
-        }
+    func cartChanged(newCard: Cart) {
+        totalPriceCalculate(cart: newCard, completion: { products in
+            print("PRİNT: TOPLAM FİYAT DEĞİŞTİİİİİİ......")
+        })
+    }
+    
+    
+    func totalPriceCalculate(cart: Cart, completion: Callback<[Product]?>) {
+        let products = cart.items.map { $0.product }
         
-        let totalPrice = products.reduce(0.0) { (result, product) -> Double in
-      //      return result + (product.price ?? 0.0) * Double(product.quantity ?? 1)
-            return 1
-        }
+        let totalPrice = cart.items.map { (Double ( $0.quantity) * ($0.product.price ?? 0.0))}.reduce(0.0, +)
         
-        self.totalPriceLabel.text = "Toplam: \(totalPrice)"
+        totalPriceLabel.text = " Toplam Fiyat : \(totalPrice)"
+        
+        completion(products)
+    }
+    
+    
+    private func onItemDeleted(product: Product) {
+        let cartItem = CartItem(product: product, quantity: 0)
+        
+        viewModel.deleteProduct(item: cartItem, completion: { cart in
+            self.tableView.remove(item: product, animation: .fade)
+            
+            if ((self.viewModel.cart?.items.isEmpty) != nil) {
+                self.cartChanged(newCard: cart)
+                
+                self.totalPriceLabel.isHidden = false
+                self.cartConfirmButton.isHidden = false
+            }
+            
+            else {
+                self.totalPriceLabel.isHidden = true
+                self.cartConfirmButton.isHidden = true
+            }
+        })
+        
+        
     }
 }

@@ -231,4 +231,9 @@ class TableViewCell<I: ListItem>: UITableViewCell {
         
         return tableView.items[indexPath.row]
     }
+    
+    /// Hücrenin bulunduğu ViewController'ı verir. İlgili Controller'a cast işlemi yapınız.
+    var controller: UIViewController? {
+        superview?.next?.next as? UIViewController
+    }
 }

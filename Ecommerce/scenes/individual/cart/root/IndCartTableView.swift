@@ -10,7 +10,7 @@ class IndCartTableView: TableView<Product, IndCartTableViewCell> {
    
     
     override func configure() {
-    
+        
     }
     
 }
@@ -22,8 +22,6 @@ class IndCartTableViewCell: TableViewCell<Product> {
     let productPriceLabel = Label()
     let productImageView = ImageView()
     let numberOfProductsNumberPicker = NumberPickerField()
-
-    var onPriceChanged: Callback<Product>?
     
     
     override func configure() {
@@ -63,26 +61,33 @@ class IndCartTableViewCell: TableViewCell<Product> {
             
             contentView.bottomAnchor.constraint(equalTo: numberOfProductsNumberPicker.bottomAnchor, constant: 10)
         )
-        
     }
-    
+
     
     override func setItem(_ item: Product) {
         productImageView.load(photoUrl: item.imageUrl)
         productNameLabel.text = item.name
-        productPriceLabel.text = String(item.price ?? 0.0)
-
-      //  numberOfProductsNumberPicker.text = "\(item.quantity ?? 1)"
+        
+        if let cartItem = UserDefaultsService.instance.cart.items.first(where: { $0.product.uid == item.uid }) {
+            numberOfProductsNumberPicker.text = "\(cartItem.quantity)"
+            
+            productPriceLabel.text = String((item.price ?? 0.0) * Double(cartItem.quantity))
+        } else {
+            numberOfProductsNumberPicker.text = "0"
+        }
     }
     
     
     private func onItemNumberSelected(number: Int) {
-        guard var item = item else { return }
-      //  item.quantity = number
+        guard let product = item else {
+            return
+        }
         
-        let productEndPrice = (item.price ?? 0.0) * Double(number)
+        let productEndPrice = (product.price ?? 0.0) * Double(number)
         productPriceLabel.text = String(productEndPrice)
         
-        onPriceChanged?(item)
+        let newCardItem = CartItem(product: product, quantity: number)
+        let cart = UserDefaultsService.instance.updateItemOnCart(item: newCardItem)
+        (controller as? IndCartController)?.cartChanged(newCard: cart)
     }
 }
