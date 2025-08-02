@@ -13,8 +13,8 @@ class IndCartViewModel: ViewModel {
     }
     
     
-    func deleteProduct(item: CartItem, completion: Handler?) {
-       _ = UserDefaultsService.instance.removeItemFromCart(item: item)
-        completion?()
+    func deleteProduct(item: CartItem, completion: Callback<Cart>?) {
+       let cart = UserDefaultsService.instance.removeItemFromCart(item: item)
+        completion?(cart)
     }
 }

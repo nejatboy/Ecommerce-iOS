@@ -80,18 +80,22 @@ class IndCartController: Controller<IndCartViewModel, IndCartNavigationControlle
     private func onItemDeleted(product: Product) {
         let cartItem = CartItem(product: product, quantity: 0)
         
-        viewModel.deleteProduct(item: cartItem) {
+        viewModel.deleteProduct(item: cartItem, completion: { cart in
             self.tableView.remove(item: product, animation: .fade)
             
             if ((self.viewModel.cart?.items.isEmpty) != nil) {
-                self.totalPriceLabel.isHidden = true
-                self.cartConfirmButton.isHidden = true
-            }
-            
-            else {
+                self.cartChanged(newCard: cart)
+                
                 self.totalPriceLabel.isHidden = false
                 self.cartConfirmButton.isHidden = false
             }
-        }
+            
+            else {
+                self.totalPriceLabel.isHidden = true
+                self.cartConfirmButton.isHidden = true
+            }
+        })
+        
+        
     }
 }
